@@ -3,7 +3,7 @@
     {
       "name": "SnakeRiverAuctions",
       "brandOverrideHex": "#d04f14",
-      "logoUrl": "logos/SnakeRiverAuctions.png",
+      "logoUrl": "logos/SnakeRiverAuctions",
       "colorState": {
         "gradDir": true,
         "photoBorder": true,
