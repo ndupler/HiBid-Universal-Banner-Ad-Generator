@@ -58,6 +58,24 @@
       }
     },
     {
+  "name": "ChuckCyderman&AssociatesLLC",
+  "logoUrl": "logos/chuckcydermanassociatesllc.png",
+  "colorState": {
+    "gradDir": false,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": false,
+    "btnText": false,
+    "auctionText": true,
+    "dateText": true
+  },
+  "pickerColors": {
+    "photoBorder": "#2d7237",
+    "btnBg": "#e9ab00",
+    "bannerBorder": "#276d2d"
+      }
+    },
+    {
       "name": "Bryan'sAuctionServices",
       "brandOverrideHex": "#c2c2c2",
       "logoUrl": "logos/Bryan'sAuctionServices",
