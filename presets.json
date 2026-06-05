@@ -55,6 +55,25 @@
         "photoBorder": "#d01c27",
         "btnBg": "#d11b26",
         "bannerBorder": "#d11b27"
+     }
+    },
+    {
+"name": "ColeRingerLLC",
+  "brandOverrideHex": "#a7a5a5",
+  "logoUrl": "logos/ColeRingerLLC",
+  "colorState": {
+    "gradDir": false,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": false,
+    "btnText": true,
+    "auctionText": false,
+    "dateText": false
+  },
+  "pickerColors": {
+    "photoBorder": "#ffffff",
+    "btnBg": "#4424ee",
+    "bannerBorder": "#4828f2"
       }
     },
     {
