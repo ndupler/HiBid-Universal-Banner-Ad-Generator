@@ -39,6 +39,25 @@
       }
     },
     {
+"name": "DeMossAuctionCo",
+  "brandOverrideHex": "#b8b8b8",
+  "logoUrl": "logos/DeMossAuctionCo",
+  "colorState": {
+    "gradDir": false,
+    "photoBorder": false,
+    "bannerBorder": true,
+    "btnBorder": false,
+    "btnText": false,
+    "auctionText": false,
+    "dateText": false
+  },
+  "pickerColors": {
+    "photoBorder": "#ffffff",
+    "btnBg": "#f00000",
+    "bannerBorder": "#ec0000"
+      }
+    },
+    {
       "name": "BillRamsey&Associates",
       "brandOverrideHex": "#cccccc",
       "logoUrl": "logos/BillRamsey&Associates,LLC",
