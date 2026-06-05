@@ -41,7 +41,7 @@
     {
       "name": "BillRamsey&Associates",
       "brandOverrideHex": "#cccccc",
-      "logoUrl": "logos/BillRamsey&Associates",
+      "logoUrl": "logos/BillRamsey&Associates,LLC",
       "colorState": {
         "gradDir": false,
         "photoBorder": true,
@@ -60,7 +60,7 @@
     {
       "name": "Bryan'sAuctionServices",
       "brandOverrideHex": "#c2c2c2",
-      "logoUrl": "logos/Bryan'sAUctionServices",
+      "logoUrl": "logos/Bryan'sAuctionServices",
       "colorState": {
         "gradDir": false,
         "photoBorder": true,
