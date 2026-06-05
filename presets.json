@@ -18,6 +18,25 @@
         "btnBg": "#000000",
         "bannerBorder": "#FFFFFF"
       }
+    },
+    {
+      "name": "SnakeRiverAuctions",
+      "brandOverrideHex": "#d04f14",
+      "logoUrl": "logos/snakeriverauctions.png",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#0a2d3a",
+        "btnBg": "#d15016",
+        "bannerBorder": "#0e3549"
+      }
     }
   ]
 }
