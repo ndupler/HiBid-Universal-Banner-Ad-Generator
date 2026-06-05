@@ -3,7 +3,7 @@
     {
       "name": "SnakeRiverAuctions",
       "brandOverrideHex": "#d04f14",
-      "logoUrl": "logos/SnakeRiverAuctions",
+      "logoUrl": "logos/SnakeRiverAuctions.png",
       "colorState": {
         "gradDir": true,
         "photoBorder": true,
@@ -17,6 +17,25 @@
         "photoBorder": "#0a2d3a",
         "btnBg": "#d15016",
         "bannerBorder": "#0e3549"
+      }
+    },
+    {
+      "name": "AllStarAuctionsInc.",
+      "brandOverrideHex": "#ffffff",
+      "logoUrl": "logos/allstarauctionsinc.png",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#b82127",
+        "btnBg": "#b82127",
+        "bannerBorder": "#b82127"
       }
     }
   ]
