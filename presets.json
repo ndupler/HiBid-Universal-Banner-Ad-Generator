@@ -22,7 +22,7 @@
     {
       "name": "AllStarAuctionsInc.",
       "brandOverrideHex": "#ffffff",
-      "logoUrl": "logos/AllStarAuctionsInc.",
+      "logoUrl": "logos/AllStarAuctionsInc",
       "colorState": {
         "gradDir": true,
         "photoBorder": true,
@@ -36,6 +36,25 @@
         "photoBorder": "#b82127",
         "btnBg": "#b82127",
         "bannerBorder": "#b82127"
+      }
+    },
+    {
+      "name": "BillRamsey&Associates",
+      "brandOverrideHex": "#cccccc",
+      "logoUrl": "logos/BillRamsey&Associates,LLC",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#d01c27",
+        "btnBg": "#d11b26",
+        "bannerBorder": "#d11b27"
       }
     }
   ]
