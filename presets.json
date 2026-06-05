@@ -41,7 +41,7 @@
     {
       "name": "BillRamsey&Associates",
       "brandOverrideHex": "#cccccc",
-      "logoUrl": "logos/BillRamsey&Associates,LLC",
+      "logoUrl": "logos/BillRamsey&Associates",
       "colorState": {
         "gradDir": false,
         "photoBorder": true,
@@ -55,6 +55,25 @@
         "photoBorder": "#d01c27",
         "btnBg": "#d11b26",
         "bannerBorder": "#d11b27"
+      }
+    },
+    {
+      "name": "Bryan'sAuctionServices",
+      "brandOverrideHex": "#c2c2c2",
+      "logoUrl": "logos/Bryan'sAUctionServices",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#101c36",
+        "btnBg": "#f0c100",
+        "bannerBorder": "#18455c"
       }
     }
   ]
