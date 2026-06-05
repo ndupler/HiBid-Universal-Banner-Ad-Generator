@@ -1,0 +1,23 @@
+{
+  "presets": [
+    {
+      "name": "Smith Auction Co",
+      "brandOverrideHex": "#0057FF",
+      "logoUrl": "logos/smith-auction.png",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": false,
+        "btnBorder": true,
+        "btnText": true,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#FFFFFF",
+        "btnBg": "#000000",
+        "bannerBorder": "#FFFFFF"
+      }
+    }
+  ]
+}
