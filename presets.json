@@ -114,6 +114,44 @@
       }
     },
     {
+  "name": "FinestKnown",
+  "brandOverrideHex": "#ffffff",
+  "logoUrl": "logos/finestknown",
+  "colorState": {
+    "gradDir": true,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": true,
+    "btnText": true,
+    "auctionText": false,
+    "dateText": false
+  },
+  "pickerColors": {
+    "photoBorder": "#ffffff",
+    "btnBg": "#030303",
+    "bannerBorder": "#000000"
+      }
+    },
+    {
+"name": "FirstPickCollectibles",
+  "brandOverrideHex": "#000000",
+  "logoUrl": "logos/firstpickcollectibles",
+  "colorState": {
+    "gradDir": true,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": false,
+    "btnText": false,
+    "auctionText": true,
+    "dateText": true
+  },
+  "pickerColors": {
+    "photoBorder": "#b1842c",
+    "btnBg": "#b28927",
+    "bannerBorder": "#b68a31"
+      }
+    },
+    {
       "name": "Bryan'sAuctionServices",
       "brandOverrideHex": "#c2c2c2",
       "logoUrl": "logos/Bryan'sAuctionServices",
