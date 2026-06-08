@@ -171,6 +171,25 @@
       }
     },
     {
+ "name": "JRSAuctions",
+  "brandOverrideHex": "#ffffff",
+  "logoUrl": "logos/JRSAuctions",
+  "colorState": {
+    "gradDir": true,
+    "photoBorder": false,
+    "bannerBorder": true,
+    "btnBorder": false,
+    "btnText": true,
+    "auctionText": false,
+    "dateText": false
+  },
+  "pickerColors": {
+    "photoBorder": "#ffffff",
+    "btnBg": "#da1300",
+    "bannerBorder": "#000000"
+      }
+    },
+    { 
       "name": "Bryan'sAuctionServices",
       "brandOverrideHex": "#c2c2c2",
       "logoUrl": "logos/Bryan'sAuctionServices",
