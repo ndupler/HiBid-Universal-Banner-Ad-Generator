@@ -152,6 +152,25 @@
       }
     },
     {
+"name": "Johnny'sAuctionLakeHavasu",
+  "brandOverrideHex": "#000000",
+  "logoUrl": "logos/johnnysauctionlakehavasu.png",
+  "colorState": {
+    "gradDir": true,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": false,
+    "btnText": false,
+    "auctionText": true,
+    "dateText": true
+  },
+  "pickerColors": {
+    "photoBorder": "#f48900",
+    "btnBg": "#fceb00",
+    "bannerBorder": "#f48900"
+      }
+    },
+    {
       "name": "Bryan'sAuctionServices",
       "brandOverrideHex": "#c2c2c2",
       "logoUrl": "logos/Bryan'sAuctionServices",
