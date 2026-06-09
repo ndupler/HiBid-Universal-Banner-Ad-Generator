@@ -322,6 +322,25 @@
       }
     },
     { 
+      "name": "TexAuctionsBuda",
+  "brandOverrideHex": "#9faafe",
+  "logoUrl": "logos/TexAuctionsBuda",
+  "colorState": {
+    "gradDir": false,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": false,
+    "btnText": false,
+    "auctionText": false,
+    "dateText": false
+  },
+  "pickerColors": {
+    "photoBorder": "#ffffff",
+    "btnBg": "#00a7f5",
+    "bannerBorder": "#00a7f5"
+      }
+    },
+    { 
       "name": "Bryan'sAuctionServices",
       "brandOverrideHex": "#c2c2c2",
       "logoUrl": "logos/Bryan'sAuctionServices",
