@@ -11,121 +11,153 @@
     --border: #1c3050; --border2: #243d5c;
     --accent: #4fa8cc; --accent-dim: #2a6a96; --accent-glow: rgba(79,168,204,0.15);
     --text: #e8edf2; --text-dim: #7a9ab8; --text-faint: #3d5a78;
-    --green: #2ecc71; --red: #e74c3c;
-    --radius: 10px; --radius-sm: 6px;
+    --green: #2ecc71; --red: #e74c3c; --yellow: #f0c040;
+    --radius: 12px; --radius-sm: 7px;
   }
   body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
-  .header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 11px 28px; display: flex; align-items: center; gap: 14px; flex-shrink: 0; position: sticky; top: 0; z-index: 10; backdrop-filter: blur(8px); }
+
+  /* ── Header ── */
+  .header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 12px 28px; display: flex; align-items: center; gap: 14px; position: sticky; top: 0; z-index: 10; backdrop-filter: blur(8px); }
   .header-logo { height: 22px; }
   .header-divider { width: 1px; height: 20px; background: var(--border2); }
-  .header-info { display: flex; flex-direction: column; gap: 1px; }
-  .header-title { font-size: 12px; font-weight: 700; color: var(--text); letter-spacing: 0.3px; }
-  .header-sub { font-size: 10px; color: var(--accent); }
-  .header-status { display: flex; align-items: center; gap: 7px; margin-left: auto; background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; padding: 4px 12px 4px 8px; }
-  .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-dim); flex-shrink: 0; transition: background 0.3s, box-shadow 0.3s; }
+  .header-title { font-size: 13px; font-weight: 700; color: var(--text); }
+  .header-sub { font-size: 10px; color: var(--accent); margin-top: 1px; }
+  .header-status { display: flex; align-items: center; gap: 7px; margin-left: auto; background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; padding: 5px 14px 5px 10px; }
+  .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-dim); flex-shrink: 0; transition: all 0.3s; }
   .status-dot.green { background: var(--green); box-shadow: 0 0 6px rgba(46,204,113,0.5); }
   .status-msg { font-size: 10px; color: var(--text-dim); }
-  .page { display: flex; flex-direction: column; flex: 1; padding: 16px; gap: 12px; }
-  .row1 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
-  .card-header { padding: 9px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.015); }
-  .card-title { font-size: 10px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; flex: 1; display: flex; align-items: center; gap: 7px; }
-  .card-num { width: 17px; height: 17px; border-radius: 50%; background: var(--accent); color: var(--surface); font-size: 8px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .card-body { padding: 14px 16px; }
-  .card-hint { font-size: 9px; color: var(--text-faint); }
-  .upload-area { position: relative; border: 1.5px dashed var(--border2); border-radius: 8px; padding: 18px 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; cursor: pointer; transition: all 0.2s; background: var(--surface2); }
+
+  /* ── Layout ── */
+  .page { padding: 20px; display: flex; flex-direction: column; gap: 16px; max-width: 1200px; margin: 0 auto; width: 100%; }
+
+  /* ── Step labels ── */
+  .step-label { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .step-num { width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: var(--surface); font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .step-title { font-size: 13px; font-weight: 700; color: var(--text); }
+  .step-desc { font-size: 10px; color: var(--text-dim); margin-top: 1px; }
+
+  /* ── Cards ── */
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+  .card-inner { padding: 18px 20px; }
+
+  /* ── Step 1: Auctioneer ── */
+  .auctioneer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .section-heading { font-size: 10px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+  .section-heading::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* Preset list */
+  .preset-search { width: 100%; padding: 8px 11px; border-radius: var(--radius-sm); border: 1px solid var(--border2); background: var(--surface2); color: var(--text); font-size: 11px; outline: none; margin-bottom: 8px; transition: border-color 0.15s; }
+  .preset-search:focus { border-color: var(--accent); }
+  .preset-list { display: flex; flex-direction: column; gap: 5px; max-height: 200px; overflow-y: auto; }
+  .preset-item { display: flex; align-items: center; gap: 9px; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 8px 10px; cursor: pointer; transition: all 0.15s; }
+  .preset-item:hover { border-color: var(--accent); background: var(--accent-glow); }
+  .preset-item.active { border-color: var(--accent); background: var(--accent-glow); }
+  .preset-swatch { width: 28px; height: 28px; border-radius: 5px; border: 1px solid rgba(255,255,255,0.1); flex-shrink: 0; }
+  .preset-thumb { height: 28px; max-width: 52px; object-fit: contain; border-radius: 3px; }
+  .preset-name { font-size: 11px; font-weight: 700; color: var(--text); flex: 1; }
+  .preset-hex { font-size: 9px; color: var(--text-faint); }
+  .preset-load-btn { padding: 4px 10px; border-radius: 5px; font-size: 9px; font-weight: 700; border: none; background: var(--accent); color: var(--surface); cursor: pointer; white-space: nowrap; }
+  .preset-load-btn:hover { filter: brightness(1.1); }
+  .preset-empty { font-size: 10px; color: var(--text-faint); padding: 12px 0; text-align: center; }
+
+  /* Logo upload */
+  .upload-area { position: relative; border: 1.5px dashed var(--border2); border-radius: 10px; padding: 22px 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; cursor: pointer; transition: all 0.2s; background: var(--surface2); }
   .upload-area:hover { border-color: var(--accent); background: var(--accent-glow); }
   .upload-area input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
-  .upload-icon { font-size: 22px; color: var(--accent-dim); line-height: 1; }
-  .upload-title { font-size: 11px; font-weight: 700; color: var(--text); margin-top: 2px; }
-  .upload-sub { font-size: 9px; color: var(--text-dim); }
-  .loaded-bar { display: flex; align-items: center; justify-content: space-between; background: rgba(46,204,113,0.07); border: 1px solid rgba(46,204,113,0.3); border-radius: 8px; padding: 9px 12px; }
-  .loaded-bar .info { display: flex; align-items: center; gap: 9px; }
-  .loaded-bar .check { color: var(--green); font-size: 15px; }
+  .upload-icon { font-size: 26px; color: var(--accent-dim); }
+  .upload-title { font-size: 12px; font-weight: 700; color: var(--text); }
+  .upload-sub { font-size: 9px; color: var(--text-dim); text-align: center; }
+  .loaded-bar { display: flex; align-items: center; gap: 10px; background: rgba(46,204,113,0.07); border: 1px solid rgba(46,204,113,0.3); border-radius: 8px; padding: 10px 12px; }
+  .loaded-bar .check { color: var(--green); font-size: 16px; flex-shrink: 0; }
   .loaded-bar .lname { font-size: 11px; font-weight: 700; color: var(--text); }
   .loaded-bar .lsub { font-size: 9px; color: var(--text-dim); margin-top: 1px; }
-  .btn-reupload { background: transparent; border: 1px solid var(--border2); color: var(--text-dim); border-radius: 5px; padding: 4px 9px; font-size: 9px; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
+  .btn-reupload { margin-left: auto; background: transparent; border: 1px solid var(--border2); color: var(--text-dim); border-radius: 5px; padding: 4px 9px; font-size: 9px; cursor: pointer; white-space: nowrap; transition: all 0.15s; flex-shrink: 0; }
   .btn-reupload:hover { border-color: var(--accent); color: var(--accent); }
-  .palette-section { margin-top: 10px; }
-  .palette-label { font-size: 9px; color: var(--text-dim); font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; }
-  .palette-row { display: flex; gap: 6px; align-items: center; margin-top: 5px; }
-  .swatch { width: 20px; height: 20px; border-radius: 5px; border: 1px solid rgba(255,255,255,0.1); }
-  .override-row { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
-  .color-input-group { display: flex; align-items: center; gap: 5px; }
+
+  /* Brand color */
+  .brand-color-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 12px; padding: 10px 12px; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-sm); }
+  .palette-row { display: flex; gap: 5px; align-items: center; }
+  .swatch { width: 18px; height: 18px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1); }
   input[type=color] { width: 26px; height: 22px; border: 1px solid var(--border2); border-radius: 4px; cursor: pointer; padding: 1px; background: var(--surface2); }
-  input[type=text].hex-input { width: 68px; padding: 4px 8px; border-radius: var(--radius-sm); border: 1px solid var(--border2); background: var(--surface2); color: var(--text); font-size: 10px; font-family: 'Consolas', monospace; outline: none; transition: border-color 0.15s; }
-  input[type=text].hex-input:focus { border-color: var(--accent); }
-  .override-label { display: none; margin-top: 6px; font-size: 9px; color: var(--accent); align-items: center; gap: 4px; }
-  .override-label.visible { display: flex; }
-  .field { display: flex; flex-direction: column; gap: 4px; }
+  .hex-input { width: 72px; padding: 4px 8px; border-radius: var(--radius-sm); border: 1px solid var(--border2); background: var(--surface2); color: var(--text); font-size: 10px; font-family: Consolas, monospace; outline: none; transition: border-color 0.15s; }
+  .hex-input:focus { border-color: var(--accent); }
+  .override-badge { display: none; font-size: 9px; color: var(--accent); align-items: center; gap: 3px; margin-top: 6px; }
+  .override-badge.visible { display: flex; }
+
+  /* ── Step 2: Details ── */
+  .details-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; align-items: start; }
+  .field { display: flex; flex-direction: column; gap: 5px; }
   .field label { font-size: 9px; color: var(--text-dim); font-weight: 700; text-transform: uppercase; letter-spacing: 0.7px; }
-  .field input[type=text] { padding: 8px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border2); background: var(--surface2); color: var(--text); font-size: 11px; outline: none; transition: border-color 0.15s, box-shadow 0.15s; width: 100%; }
+  .field input[type=text] { padding: 9px 11px; border-radius: var(--radius-sm); border: 1px solid var(--border2); background: var(--surface2); color: var(--text); font-size: 12px; outline: none; transition: border-color 0.15s, box-shadow 0.15s; }
   .field input[type=text]:focus { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-glow); }
-  .template-row { display: flex; align-items: center; gap: 10px; padding: 8px 10px; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-sm); }
-  .template-row .palette-label { margin: 0; }
-  .tmpl-btn { padding: 5px 12px; border-radius: var(--radius-sm); font-size: 10px; font-weight: 700; cursor: pointer; border: 1px solid var(--accent); background: rgba(79,168,204,0.12); color: var(--accent); transition: all 0.2s; }
+  .template-toggle-wrap { display: flex; flex-direction: column; gap: 5px; }
+  .template-toggle-wrap label { font-size: 9px; color: var(--text-dim); font-weight: 700; text-transform: uppercase; letter-spacing: 0.7px; }
+  .tmpl-btn { padding: 9px 16px; border-radius: var(--radius-sm); font-size: 11px; font-weight: 700; cursor: pointer; border: 1px solid var(--accent); background: rgba(79,168,204,0.12); color: var(--accent); transition: all 0.2s; text-align: left; width: 100%; }
   .tmpl-btn:hover { background: rgba(79,168,204,0.22); }
   .tmpl-btn.begins { border-color: var(--green); background: rgba(46,204,113,0.1); color: var(--green); }
-  .tmpl-btn.begins:hover { background: rgba(46,204,113,0.2); }
-  .photos-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+
+  /* ── Step 3: Photos ── */
+  .photos-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
   .slot-wrap { display: flex; flex-direction: column; gap: 6px; }
-  .drop-zone { width: 100%; height: 88px; border: 1.5px dashed var(--border2); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; position: relative; overflow: hidden; transition: all 0.2s; background: var(--surface2); gap: 2px; }
+  .drop-zone { width: 100%; aspect-ratio: 1; border: 1.5px dashed var(--border2); border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; position: relative; overflow: hidden; transition: all 0.2s; background: var(--surface2); gap: 3px; }
   .drop-zone:hover, .drop-zone.dragover { border-color: var(--accent); background: var(--accent-glow); }
   .drop-zone.filled { border-color: rgba(46,204,113,0.5); border-style: solid; }
-  .drop-zone img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; border-radius: 7px; }
-  .drop-zone .dz-icon { font-size: 18px; color: var(--accent-dim); pointer-events: none; z-index: 1; }
-  .drop-zone .dz-label { font-size: 9px; color: var(--text-faint); pointer-events: none; z-index: 1; }
-  .drop-zone .clear-btn { position: absolute; top: 4px; right: 4px; z-index: 2; background: rgba(0,0,0,0.65); border: 1px solid rgba(255,255,255,0.15); color: #fff; border-radius: 50%; width: 17px; height: 17px; font-size: 9px; cursor: pointer; display: none; align-items: center; justify-content: center; transition: background 0.15s; }
-  .drop-zone .clear-btn:hover { background: rgba(231,76,60,0.8); }
+  .drop-zone img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; border-radius: 9px; }
+  .dz-icon { font-size: 22px; color: var(--accent-dim); pointer-events: none; z-index: 1; }
+  .dz-label { font-size: 9px; color: var(--text-faint); pointer-events: none; z-index: 1; }
+  .clear-btn { position: absolute; top: 5px; right: 5px; z-index: 2; background: rgba(0,0,0,0.65); border: 1px solid rgba(255,255,255,0.15); color: #fff; border-radius: 50%; width: 18px; height: 18px; font-size: 9px; cursor: pointer; display: none; align-items: center; justify-content: center; transition: background 0.15s; }
+  .clear-btn:hover { background: rgba(231,76,60,0.8); }
   .drop-zone.filled .clear-btn { display: flex; }
   .drop-zone input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; z-index: 1; }
-  .slot-badge { position: absolute; bottom: 4px; left: 5px; font-size: 8px; font-weight: 700; color: var(--accent); z-index: 1; pointer-events: none; background: rgba(8,17,31,0.75); padding: 1px 5px; border-radius: 3px; }
-  .drop-zone.filled .slot-badge { color: rgba(255,255,255,0.85); background: rgba(0,0,0,0.5); }
-  .trans-btn { width: 100%; padding: 5px 4px; border-radius: var(--radius-sm); border: 1px solid var(--border2); background: var(--surface2); color: var(--text-dim); font-size: 9px; font-weight: 700; cursor: pointer; transition: all 0.2s; text-align: center; }
+  .slot-num { position: absolute; bottom: 5px; left: 6px; font-size: 8px; font-weight: 700; color: var(--accent); z-index: 1; background: rgba(8,17,31,0.75); padding: 1px 5px; border-radius: 3px; pointer-events: none; }
+  .drop-zone.filled .slot-num { color: rgba(255,255,255,0.85); background: rgba(0,0,0,0.5); }
+  .trans-btn { width: 100%; padding: 5px; border-radius: var(--radius-sm); border: 1px solid var(--border2); background: var(--surface2); color: var(--text-dim); font-size: 9px; font-weight: 700; cursor: pointer; transition: all 0.2s; text-align: center; }
   .trans-btn:hover { border-color: var(--accent-dim); color: var(--text); }
   .trans-btn.active { background: rgba(79,168,204,0.12); color: var(--accent); border-color: var(--accent); }
-  .preview-wrap { background: repeating-conic-gradient(#111c2e 0% 25%, #0d1828 0% 50%) 0 0 / 16px 16px; margin: 12px; border-radius: 8px; border: 1px solid var(--border); padding: 12px; display: flex; align-items: center; justify-content: center; min-height: 80px; }
+
+  /* ── Step 4: Color Controls ── */
+  .color-controls-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .cc-item { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .cc-label { font-size: 10px; color: var(--text-dim); font-weight: 600; }
+  .cc-right { display: flex; align-items: center; gap: 6px; }
+  .toggle-track { width: 38px; height: 20px; border-radius: 10px; background: var(--surface); border: 1px solid var(--border2); cursor: pointer; display: flex; align-items: center; padding: 2px; transition: all 0.2s; flex-shrink: 0; }
+  .toggle-track.on { background: rgba(79,168,204,0.15); border-color: var(--accent); }
+  .toggle-thumb { width: 14px; height: 14px; border-radius: 50%; background: var(--border2); transition: all 0.2s; }
+  .toggle-track.on .toggle-thumb { transform: translateX(18px); background: var(--accent); }
+  .tog-color-btn { width: 24px; height: 18px; border-radius: 4px; border: 1px solid var(--border2); cursor: pointer; padding: 1px; background: var(--surface2); display: block; }
+  .tog-color-btn:hover { border-color: var(--accent); }
+
+  /* ── Preview ── */
+  .preview-bg { background: repeating-conic-gradient(#111c2e 0% 25%, #0d1828 0% 50%) 0 0 / 16px 16px; border-radius: 10px; border: 1px solid var(--border); padding: 16px; display: flex; align-items: center; justify-content: center; min-height: 100px; }
   .preview-placeholder { color: var(--text-faint); font-size: 12px; }
   canvas { border-radius: 4px; display: block; max-width: 100%; height: auto; }
-  .export-row { display: flex; gap: 8px; padding: 0 12px 12px; }
-  .toggles-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; }
-  .toggle-item { display: flex; flex-direction: column; align-items: center; gap: 5px; }
-  .toggle-label { font-size: 9px; color: var(--text-dim); text-align: center; line-height: 1.35; }
-  .toggle-track { width: 40px; height: 21px; border-radius: 11px; background: var(--surface2); border: 1px solid var(--border2); cursor: pointer; display: flex; align-items: center; padding: 2px; transition: all 0.22s; }
-  .toggle-track.on { background: rgba(79,168,204,0.15); border-color: var(--accent); }
-  .toggle-thumb { width: 15px; height: 15px; border-radius: 50%; background: var(--border2); color: var(--text-dim); border: none; transition: all 0.22s; display: flex; align-items: center; justify-content: center; font-size: 7px; font-weight: 700; }
-  .toggle-track.on .toggle-thumb { transform: translateX(19px); background: var(--accent); color: var(--surface); }
-  .tog-color-btn { width: 26px; height: 18px; border-radius: 4px; border: 1px solid var(--border2); cursor: pointer; padding: 1px; background: var(--surface2); display: block; transition: border-color 0.15s; }
-  .tog-color-btn:hover { border-color: var(--accent); }
-  .btn { padding: 8px 14px; border-radius: 8px; border: none; font-size: 11px; font-weight: 700; cursor: pointer; transition: all 0.18s; display: flex; align-items: center; gap: 6px; white-space: nowrap; justify-content: center; }
+  .preview-actions { display: flex; gap: 10px; margin-top: 12px; }
+
+  /* ── Buttons ── */
+  .btn { padding: 10px 18px; border-radius: 8px; border: none; font-size: 11px; font-weight: 700; cursor: pointer; transition: all 0.18s; display: flex; align-items: center; gap: 6px; white-space: nowrap; justify-content: center; }
   .btn:hover { filter: brightness(1.1); }
   .btn:active { transform: scale(0.97); }
   .btn-primary { background: var(--text); color: var(--surface); flex: 1; }
   .btn-secondary { background: rgba(255,255,255,0.04); color: var(--text); border: 1px solid var(--border2); flex: 1; }
-  .btn-secondary:hover { border-color: var(--accent-dim); }
-  .btn-ghost { background: transparent; color: var(--text-dim); border: 1px solid var(--border); padding: 5px 10px; font-size: 10px; }
+  .btn-ghost { background: transparent; color: var(--text-dim); border: 1px solid var(--border); font-size: 10px; padding: 6px 12px; }
   .btn-ghost:hover { color: var(--text); border-color: var(--border2); }
-  .btn-danger { background: transparent; color: var(--red); border: 1px solid rgba(231,76,60,0.35); padding: 5px 10px; font-size: 10px; }
+  .btn-danger { background: transparent; color: var(--red); border: 1px solid rgba(231,76,60,0.35); font-size: 10px; padding: 6px 12px; }
   .btn-danger:hover { background: rgba(231,76,60,0.1); border-color: var(--red); }
-  .btn-sm { padding: 4px 9px; border-radius: 5px; font-size: 9px; font-weight: 700; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
+  .btn-sm { padding: 5px 10px; border-radius: 5px; font-size: 9px; font-weight: 700; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
   .btn-sm-accent { border: none; background: var(--accent); color: var(--surface); }
   .btn-sm-accent:hover { filter: brightness(1.12); }
   .btn-sm-ghost { border: 1px solid var(--border2); background: transparent; color: var(--text-dim); }
   .btn-sm-ghost:hover { border-color: var(--accent-dim); color: var(--text); }
-  .btn-sm-danger { border: 1px solid rgba(231,76,60,0.35); background: transparent; color: var(--red); }
-  .btn-sm-danger:hover { background: rgba(231,76,60,0.1); border-color: var(--red); }
-  .presets-body { display: flex; flex-direction: column; gap: 10px; }
-  .preset-search-row { display: flex; gap: 7px; align-items: center; }
-  .preset-search-row input[type=text] { flex: 1; padding: 7px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border2); background: var(--surface2); color: var(--text); font-size: 11px; outline: none; transition: border-color 0.15s; }
-  .preset-search-row input[type=text]:focus { border-color: var(--accent); }
-  .preset-list { display: flex; flex-direction: column; gap: 5px; max-height: 160px; overflow-y: auto; }
-  .preset-item { display: flex; align-items: center; gap: 8px; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 7px 10px; transition: border-color 0.15s; }
-  .preset-item:hover { border-color: var(--border2); }
-  .preset-item.active-preset { border-color: var(--accent); background: var(--accent-glow); }
-  .preset-name { font-size: 11px; font-weight: 700; color: var(--text); flex: 1; }
-  .preset-meta { font-size: 9px; color: var(--text-faint); }
-  .preset-actions { display: flex; gap: 5px; }
-  .preset-empty { font-size: 10px; color: var(--text-faint); padding: 8px 0; text-align: center; }
+
+  /* ── JSON output ── */
+  .json-output { margin-top: 10px; padding: 10px 12px; background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--radius-sm); display: none; }
+  .json-output textarea { width: 100%; height: 110px; background: transparent; border: none; color: var(--text); font-size: 10px; font-family: Consolas, monospace; resize: none; outline: none; }
+  .json-copy-row { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+  .copy-confirm { font-size: 9px; color: var(--green); display: none; }
+
+  /* ── Divider ── */
+  .step-divider { display: flex; align-items: center; gap: 12px; color: var(--text-faint); font-size: 10px; }
+  .step-divider::before, .step-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 </style>
 </head>
 <body>
@@ -133,7 +165,7 @@
 <div class="header">
   <img src="https://i.imgur.com/o7qWsZ4.png" class="header-logo" alt="HiBid">
   <div class="header-divider"></div>
-  <div class="header-info">
+  <div style="display:flex;flex-direction:column;">
     <div class="header-title">Universal Banner Ad Generator</div>
     <div class="header-sub" id="auctioneerLabel">No auctioneer loaded</div>
   </div>
@@ -144,174 +176,224 @@
 </div>
 
 <div class="page">
-  <div class="row1">
-    <div class="card">
-      <div class="card-header"><div class="card-title"><span class="card-num">1</span> Auctioneer Logo</div></div>
-      <div class="card-body">
-        <div id="logoArea" class="upload-area">
-          <div class="upload-icon">↑</div>
-          <div class="upload-title">Click or drag to upload logo</div>
-          <div class="upload-sub">PNG recommended · filename becomes auctioneer name</div>
-          <input type="file" id="logoFile" accept="image/png,image/jpeg">
+
+  <!-- ── STEP 1 ── -->
+  <div class="card">
+    <div class="card-inner">
+      <div class="step-label">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-title">Load Auctioneer</div>
+          <div class="step-desc">Select a saved preset or upload a new logo</div>
         </div>
-        <div id="paletteDisplay" style="display:none;" class="palette-section">
-          <div class="palette-label">Matched gradient</div>
-          <div class="palette-row" id="paletteRow"></div>
-          <div class="override-row">
-            <span class="palette-label" style="margin-right:2px;">Brand color override</span>
-            <div class="color-input-group">
+      </div>
+
+      <div class="auctioneer-grid">
+
+        <!-- Presets -->
+        <div>
+          <div class="section-heading">Saved Presets <span id="presetCount" style="color:var(--text-faint);font-weight:400;text-transform:none;letter-spacing:0;font-size:9px;"></span></div>
+          <input type="text" class="preset-search" id="presetSearch" placeholder="Search auctioneers…" oninput="renderPresetList()">
+          <div class="preset-list" id="presetList"></div>
+          <div class="json-output" id="presetJsonOutput">
+            <div style="font-size:9px;color:var(--text-dim);margin-bottom:6px;">Copy and paste this into your <strong>presets.json</strong> on GitHub:</div>
+            <textarea id="presetJsonText" readonly></textarea>
+            <div class="json-copy-row">
+              <button class="btn-sm btn-sm-accent" onclick="copyPresetJSON()">📋 Copy to Clipboard</button>
+              <span class="copy-confirm" id="copyConfirm">✓ Copied!</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Upload -->
+        <div>
+          <div class="section-heading">New Auctioneer Logo</div>
+          <div id="logoArea" class="upload-area">
+            <div class="upload-icon">↑</div>
+            <div class="upload-title">Click or drag logo here</div>
+            <div class="upload-sub">PNG recommended · filename becomes auctioneer name</div>
+            <input type="file" id="logoFile" accept="image/png,image/jpeg">
+          </div>
+          <div id="paletteDisplay" style="display:none;">
+            <div class="brand-color-row" style="margin-top:10px;">
+              <div class="palette-row" id="paletteRow"></div>
+              <span style="font-size:9px;color:var(--text-dim);margin-left:4px;margin-right:4px;">Override:</span>
               <input type="color" id="brandColorPicker" value="#0057FF" oninput="document.getElementById('brandColorHex').value=this.value;">
               <input type="text" id="brandColorHex" value="#0057FF" class="hex-input" oninput="var v=this.value;if(v.indexOf('#')!==0)v='#'+v;if(/^#[0-9A-Fa-f]{6}$/.test(v))document.getElementById('brandColorPicker').value=v;">
+              <button class="btn-sm btn-sm-accent" onclick="applyBrandOverride()">Apply</button>
+              <button class="btn-sm btn-sm-ghost" onclick="clearBrandOverride()">Reset</button>
             </div>
-            <button class="btn-sm btn-sm-accent" onclick="applyBrandOverride()">Apply</button>
-            <button class="btn-sm btn-sm-ghost" onclick="clearBrandOverride()">Reset</button>
+            <div id="overrideLabel" class="override-badge"><span style="font-size:11px;">●</span> Using brand color override</div>
           </div>
-          <div id="overrideLabel" class="override-label"><span style="color:var(--accent);font-size:11px;">●</span> Using brand color override</div>
+          <div style="margin-top:12px;">
+            <button class="btn-sm btn-sm-ghost" style="width:100%;" onclick="generatePresetJSON()">💾 Generate Preset JSON</button>
+          </div>
         </div>
-      </div>
-    </div>
 
-    <div class="card">
-      <div class="card-header"><div class="card-title"><span class="card-num">2</span> Auction Details</div></div>
-      <div class="card-body" style="display:flex;flex-direction:column;gap:12px;">
-        <div class="field"><label>Auction Date</label><input type="text" id="auctionDate" placeholder="e.g. June 16th" oninput="renderPreview()"></div>
-        <div class="field"><label>File Name</label><input type="text" id="fileName" value="Banner"></div>
-        <div class="template-row">
-          <span class="palette-label">Template</span>
-          <button id="templateToggleBtn" class="tmpl-btn" onclick="toggleTemplate()">Auction Ends</button>
-        </div>
       </div>
     </div>
   </div>
 
+  <!-- ── STEP 2 ── -->
   <div class="card">
-    <div class="card-header">
-      <div class="card-title"><span class="card-num">3</span> Auctioneer Presets</div>
-      <span class="card-hint" id="presetCount"></span>
-    </div>
-    <div class="card-body presets-body">
-      <div class="preset-search-row">
-        <input type="text" id="presetSearch" placeholder="Search presets…" oninput="renderPresetList()">
-        <button class="btn-sm btn-sm-accent" onclick="generatePresetJSON()">💾 Generate JSON</button>
+    <div class="card-inner">
+      <div class="step-label">
+        <div class="step-num">2</div>
+        <div>
+          <div class="step-title">Auction Details</div>
+          <div class="step-desc">Enter the date, file name, and choose a template</div>
+        </div>
       </div>
-      <div id="presetJsonOutput" style="display:none;margin-top:8px;">
-        <div style="font-size:9px;color:var(--text-dim);margin-bottom:4px;">Copy this and paste it into your presets.json on GitHub:</div>
-        <textarea id="presetJsonText" readonly style="width:100%;height:120px;background:var(--surface2);border:1px solid var(--border2);border-radius:6px;color:var(--text);font-size:10px;font-family:Consolas,monospace;padding:8px;resize:none;outline:none;"></textarea>
-        <button class="btn-sm btn-sm-accent" style="margin-top:5px;width:100%;" onclick="copyPresetJSON()">📋 Copy to Clipboard</button>
-        <div id="copyConfirm" style="display:none;font-size:9px;color:var(--green);margin-top:4px;text-align:center;">✓ Copied!</div>
+      <div class="details-grid">
+        <div class="field">
+          <label>Auction Date</label>
+          <input type="text" id="auctionDate" placeholder="e.g. June 16th" oninput="renderPreview()">
+        </div>
+        <div class="field">
+          <label>Export File Name</label>
+          <input type="text" id="fileName" value="Banner">
+        </div>
+        <div class="template-toggle-wrap">
+          <label>Template</label>
+          <button id="templateToggleBtn" class="tmpl-btn" onclick="toggleTemplate()">⏱ Auction Ends</button>
+        </div>
       </div>
-      <div class="preset-list" id="presetList"></div>
     </div>
   </div>
 
+  <!-- ── STEP 3 ── -->
   <div class="card">
-    <div class="card-header">
-      <div class="card-title"><span class="card-num">4</span> Photos</div>
-      <span class="card-hint">Toggle BG / Transparent per slot</span>
-    </div>
-    <div class="card-body">
-      <div class="photos-row" id="slotsGrid"></div>
+    <div class="card-inner">
+      <div class="step-label">
+        <div class="step-num">3</div>
+        <div>
+          <div class="step-title">Auction Photos</div>
+          <div class="step-desc">Upload up to 5 photos — toggle BG or Transparent per slot</div>
+        </div>
+      </div>
+      <div class="photos-grid" id="slotsGrid"></div>
     </div>
   </div>
 
+  <!-- ── STEP 4 ── -->
   <div class="card">
-    <div class="card-header">
-      <div class="card-title">Preview</div>
-      <div style="display:flex;gap:6px;">
-        <button class="btn btn-ghost" onclick="renderPreview()">↻ Refresh</button>
-        <button class="btn btn-danger" onclick="resetAll()">✕ Reset</button>
+    <div class="card-inner">
+      <div class="step-label">
+        <div class="step-num">4</div>
+        <div>
+          <div class="step-title">Color Controls</div>
+          <div class="step-desc">Fine-tune colors, borders, and text</div>
+        </div>
       </div>
-    </div>
-    <div class="preview-wrap">
-      <div id="previewPlaceholder" class="preview-placeholder">Upload a logo to preview</div>
-      <canvas id="previewCanvas" style="display:none;width:100%;"></canvas>
-    </div>
-    <div class="export-row">
-      <button class="btn btn-primary" onclick="exportBanner(1078,120,'Desktop')">↓ Export Desktop</button>
-      <button class="btn btn-secondary" onclick="exportBanner(468,60,'Mobile')">↓ Export Mobile</button>
+      <div class="color-controls-grid">
+        <div class="cc-item">
+          <span class="cc-label">Gradient Direction</span>
+          <div class="cc-right">
+            <span style="font-size:9px;color:var(--text-faint);" id="lbl-gradDir">L→R</span>
+            <div class="toggle-track on" id="tog-gradDir" onclick="doToggle('gradDir')"><div class="toggle-thumb"></div></div>
+          </div>
+        </div>
+        <div class="cc-item">
+          <span class="cc-label">Photo Borders</span>
+          <div class="cc-right">
+            <input type="color" class="tog-color-btn" id="col-photoBorder" value="#FFFFFF" oninput="renderPreview()">
+            <div class="toggle-track on" id="tog-photoBorder" onclick="doToggle('photoBorder')"><div class="toggle-thumb"></div></div>
+          </div>
+        </div>
+        <div class="cc-item">
+          <span class="cc-label">Banner Border</span>
+          <div class="cc-right">
+            <input type="color" class="tog-color-btn" id="col-bannerBorder" value="#FFFFFF" oninput="renderPreview()" style="opacity:0.35;pointer-events:none;">
+            <div class="toggle-track" id="tog-bannerBorder" onclick="doToggle('bannerBorder')"><div class="toggle-thumb"></div></div>
+          </div>
+        </div>
+        <div class="cc-item">
+          <span class="cc-label">Bid Now BG</span>
+          <div class="cc-right">
+            <input type="color" class="tog-color-btn" id="col-btnBg" value="#000000" oninput="renderPreview()">
+          </div>
+        </div>
+        <div class="cc-item">
+          <span class="cc-label">Bid Now Border</span>
+          <div class="cc-right">
+            <div class="toggle-track on" id="tog-btnBorder" onclick="doToggle('btnBorder')"><div class="toggle-thumb"></div></div>
+          </div>
+        </div>
+        <div class="cc-item">
+          <span class="cc-label">Bid Now Text</span>
+          <div class="cc-right">
+            <div class="toggle-track on" id="tog-btnText" onclick="doToggle('btnText')"><div class="toggle-thumb"></div></div>
+          </div>
+        </div>
+        <div class="cc-item">
+          <span class="cc-label">Auction Text</span>
+          <div class="cc-right">
+            <div class="toggle-track on" id="tog-auctionText" onclick="doToggle('auctionText')"><div class="toggle-thumb"></div></div>
+          </div>
+        </div>
+        <div class="cc-item">
+          <span class="cc-label">Date Text</span>
+          <div class="cc-right">
+            <div class="toggle-track on" id="tog-dateText" onclick="doToggle('dateText')"><div class="toggle-thumb"></div></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
+  <!-- ── STEP 5: Preview & Export ── -->
   <div class="card">
-    <div class="card-header"><div class="card-title">Color Controls</div></div>
-    <div class="card-body">
-      <div class="toggles-grid">
-        <div class="toggle-item">
-          <div class="toggle-label">Gradient Dir</div>
-          <div class="toggle-track on" id="tog-gradDir" onclick="doToggle('gradDir')"><div class="toggle-thumb">L</div></div>
-          <div style="height:18px;"></div>
+    <div class="card-inner">
+      <div class="step-label">
+        <div class="step-num">5</div>
+        <div>
+          <div class="step-title">Preview & Export</div>
+          <div class="step-desc">Review your banner and export in desktop or mobile size</div>
         </div>
-        <div class="toggle-item">
-          <div class="toggle-label">Photo Borders</div>
-          <div class="toggle-track on" id="tog-photoBorder" onclick="doToggle('photoBorder')"><div class="toggle-thumb">W</div></div>
-          <input type="color" class="tog-color-btn" id="col-photoBorder" value="#FFFFFF" title="Photo border color" oninput="renderPreview()">
+        <div style="margin-left:auto;display:flex;gap:8px;">
+          <button class="btn btn-ghost" onclick="renderPreview()">↻ Refresh</button>
+          <button class="btn btn-danger" onclick="resetAll()">✕ Reset All</button>
         </div>
-        <div class="toggle-item">
-          <div class="toggle-label">Banner Border</div>
-          <div class="toggle-track" id="tog-bannerBorder" onclick="doToggle('bannerBorder')"><div class="toggle-thumb">Off</div></div>
-          <input type="color" class="tog-color-btn" id="col-bannerBorder" value="#FFFFFF" title="Banner border color" oninput="renderPreview()" style="opacity:0.35;pointer-events:none;">
-        </div>
-        <div class="toggle-item">
-          <div class="toggle-label">Bid Now BG</div>
-          <div style="height:21px;"></div>
-          <input type="color" class="tog-color-btn" id="col-btnBg" value="#000000" title="Bid Now background color" oninput="renderPreview()">
-        </div>
-        <div class="toggle-item">
-          <div class="toggle-label">Bid Now Border</div>
-          <div class="toggle-track on" id="tog-btnBorder" onclick="doToggle('btnBorder')"><div class="toggle-thumb">W</div></div>
-          <div style="height:18px;"></div>
-        </div>
-        <div class="toggle-item">
-          <div class="toggle-label">Bid Now Text</div>
-          <div class="toggle-track on" id="tog-btnText" onclick="doToggle('btnText')"><div class="toggle-thumb">W</div></div>
-          <div style="height:18px;"></div>
-        </div>
-        <div class="toggle-item">
-          <div class="toggle-label">Auction Text</div>
-          <div class="toggle-track on" id="tog-auctionText" onclick="doToggle('auctionText')"><div class="toggle-thumb">W</div></div>
-          <div style="height:18px;"></div>
-        </div>
-        <div class="toggle-item">
-          <div class="toggle-label">Date Text</div>
-          <div class="toggle-track on" id="tog-dateText" onclick="doToggle('dateText')"><div class="toggle-thumb">W</div></div>
-          <div style="height:18px;"></div>
-        </div>
+      </div>
+      <div class="preview-bg">
+        <div id="previewPlaceholder" class="preview-placeholder">Complete steps 1–3 to see your banner preview</div>
+        <canvas id="previewCanvas" style="display:none;width:100%;"></canvas>
+      </div>
+      <div class="preview-actions">
+        <button class="btn btn-primary" onclick="exportBanner(1078,120,'Desktop')">↓ Export Desktop (1078×120)</button>
+        <button class="btn btn-secondary" onclick="exportBanner(468,60,'Mobile')">↓ Export Mobile (468×60)</button>
       </div>
     </div>
   </div>
+
 </div>
 
 <canvas id="exportCanvas" style="display:none;"></canvas>
 
 <script>
 // ── Zones ──────────────────────────────────────────────────────────────────
-var LOGO_ZONE   = {x:13,  y:12,  w:240, h:96};
+var LOGO_ZONE   = {x:5,   y:8,   w:260, h:104};
 var PHOTO_ZONE  = {x:258, y:7,   w:629, h:106};
 var BTN_ZONE    = {x:905, y:67,  w:160, h:40};
 var DATE_ZONE   = {x:913, y:38,  w:144, h:23};
 var ENDS_ZONE   = {x:903, y:12,  w:162, h:20};
 var BEGINS_ZONE = {x:903, y:13,  w:165, h:19};
-
 var MIN_GAP=6, MAX_GAP=20;
 var TOGGLE_KEYS=['gradDir','photoBorder','bannerBorder','btnBorder','btnText','auctionText','dateText'];
 var COLOR_PICKER_KEYS=['photoBorder','btnBg','bannerBorder'];
 
-// ── Embedded templates ─────────────────────────────────────────────────────
+// ── Templates ─────────────────────────────────────────────────────────────
 var TEMPLATE_ENDS_SRC   = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABDYAAAB4CAIAAACGrOUUAAAACXBIWXMAAC4jAAAuIwF4pT92AAAEgElEQVR4nO3dMW7bMACGUbPIGqBrl9ylJ89dunQtkAOwQ6ciqUuJpPjTeW9LIIu0k0EfKIu3GwAAAAAAAAAAAAAAAAAAAAAAAHBe6XgtPIK6egIA8KhcaHLOl5OvAwAAmECiAAAAQSQKAAAQRKIAAABBJAoAABDkqfG4t18/J88Exnj++m31FACAw368fV89BaZ7eX5tOcwqCgAAEESiAAAAQSQKAAAQRKIAAABBJAoAABBEogAAAEEkCgAAEESiAAAAQSQKAAAQRKIAAABBJAoAABBEogAAAEEkCgAAEESiAAAAQSQKAAAQRKIAAABBJAoAABBEogAAAEEkCgAAEORp9QQAAOD28vy6egqksIoCAAAEkSgAAEAQiQIAAASRKAAAQBCJAgAABPFELwAA8tXVE+CQcutgFQUAAAgiUQAAgCASBQAACCJRAACAIBIFAAAIIlEAAIAgEgUAAAgiUQAAgCASBQAACCJRAACAIBIFAAAIIlEAAIAgEgUAAAgiUQAAgCASBQAACCJRAACAIBIFAAAIIlEAAIAgEgUAAAgiUQAAgCASBQAACCJRAACAIE+rJwAAAP9VVk+A61hFAQAAgkgUAAAgiEQBAACCSBQAACCIRAEAAIJ4ohcAADHq6gkQ8GA2qygAAEAQiQIAAASRKAAAQBCJAgAABJEoAABAEIkCAAAEkSgAAEAQ+6IAAPAQ+2nUIyepp0bp3LalNJ+tHBy0dH8g7fO5c2T7Ce+yigIAwCfaFrB3iIGjlMlTKgeHuOADbCNRAAB4FNdcZI8NlR6l75jGVY5zb7ZjxcmNXgAAbKXevYAu3bdjtYwyaqCek5TmCY/6TK5iFQUAgJ3VS66/rxmlXfn7x3o8sQaOPnoIiQIAAG1mXPf3n6S2/b7lK/UZN7BJFAAAaDZjLeVoGJTm+Qy5Fe2EvnElCgAAnHV62WHJbWOl47UXTliiAACwuaO7iGy9kFIOzqTOeTvvn1IwjkQBAGBnF/fJQJmzLd0T7n5fHjoMAMBWzu2kni/w0cBlzbBWUQAA2F/OdoqHhDxQq546YNpsJQoAAI9i01DZSL3iXjs3egEAsJX3F8FbZ0nN2wm+LJ6DVRQAADa38HapIZfyy5vklhV+EgUAgP1deZU/+9q9DD2y/y6s+u8fy5S/gkQBAIDV6lZLLpNJFAAACNiGZcgWitdvGjNhTUmiAACwv2u+OFG2+u5N6ThtuRs27b88RaIAALC5Od+IWDDK6du9yqLPZA4PHQYAYCv3FwfqVqN8eOZy6sg7r9qqT6yiAADwQC64Fq9JV/x10DHnDh7ywo9YRQEAYHPXNMNlZVKPfI3kz6zKnAnXQZM8SKIAABDvmh0S67ZPFq6H5zLgVNM+Ljd6AQAAQSQKAAAQRKIAAABBJAoAABBEogAAAEEkCgAAEESiAAAAQSQKAAAQxNaNAADEmLZhORvxX8BnN3sbWQD4tFxoco4bvQAAgCASBQAACCJRAACAIBIFAAAIIlEAAAAAAAAAAAAAAAAAAAAAAAAAAADg9hh+A89OdNJ4zIyiAAAAAElFTkSuQmCC';
 var TEMPLATE_BEGINS_SRC = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABDYAAAB4CAIAAACGrOUUAAAACXBIWXMAAC4jAAAuIwF4pT92AAAEgElEQVR4nO3dPW7bMACGYbPIGqBrl9ylJ89dunQtkAOwQ6ciqSuJfx+d59mSyCLtdtALyuLtBgAAAAAAAAAAAAAAAAAAAAAAAFxXGl4Lj6CungAAPCoXmlzz5eLrAAAABpAoAABAEIkCAAAEkSgAAEAQiQIAAAR5Onjc26+fg2cCfTx//bZ6CgAAjE8UAAAY58fb99VTYJ6X59c7f3WjFwAAEESiAAAAQSQKAAAQRKIAAABBJAoAABBEogAAAEEkCgAAEESiAAAAQSQKAAAQRKIAAABBJAoAABBEogAAAEEkCgAAEESiAAAAQSQKAAAQRKIAAABBJAoAABBEogAAAEGeVk8AAABuL8+vq6dACqsoAABAEIkCAAAEkSgAAEAQiQIAAASRKAAAQBBP9AIAIF9dPQFOKbcGVlEAAIAgEgUAAAgiUQAAgCASBQAACCJRAACAIBIFAAAIIlEAAIAgEgUAAAgiUQAAgCASBQAACCJRAACAIBIFAAAIIlEAAIAgEgUAAAgiUQAAgCASBQAACCJRAACAIBIFAAAIIlEAAIAgEgUAAAgiUQAAgCASBQAACPK0egIAAPBfZfUEmMcqCgAAEESiAAAAQSQKAAAQRKIAAABBJAoAABDEE70AAIhRV0+AgAezWUUBAACCSBQAACCIRAEAAIJIFAAAIIhEAQAAgkgUAAAgiEQBAACC2BcFAICH2E+jnjlJvTRK47Yt5fDZyslBS/MHcnw+d448fsK7rKIAAPCJtgVsHaLjKGXwlMrJISZ8gMdIFAAAHsWci+y+odKitB1zcJXj2pttWHFyoxcAAFupdy+gS/PtWEdG6TVQy0nK4Qn3+kxmsYoCAMDO6pTr7zmjHFf+/rGeT6yOo/ceQqIAAMAxI677209Sj/3+yFfqM25gkygAAHDYiLWUs2FQDs+ny61oF7SNK1EAAOCqy8sOS24bKw2vnThhiQIAwObO7iKy9UJKOTmTOubtvH9KQT8SBQCAnU3uk44yZ1uaJ9z8vjx0GACArVzbST1f4KOBy5phraIAALC/nO0UTwl5oFa9dMCw2UoUAAAexaahspE64147N3oBALCV9xfBW2dJzdsJviyeg1UUAAA2t/B2qS6X8sub5JYVfhIFAID9zbzKH33tXroe2X4XVv33j2XIv4JEAQCA1epWSy6DSRQAAAjYhqXLForzN40ZsKYkUQAA2N+cL06Urb57UxpOW+6GzfFfXiJRAADY3JhvRCwY5fLtXmXRZzKGhw4DALCV+4sDdatRPjxzuXTknVdt1SdWUQAAeCATrsVr0hV/7XTMtYO7vPAjVlEAANjcnGaYVib1zNdI/syqjJlw7TTJkyQKAADx5uyQWLd9snA9PZcOpxr2cbnRCwAACCJRAACAIBIFAAAIIlEAAIAgEgUAAAgiUQAAgCASBQAACCJRAACAILZuBAAgxrANy9mI/wV8dqO3kQWAT8uFJte40QsAAAgiUQAAgCASBQAACCJRAACAIBIFAAAAAAAAAAAAAAAAAAAAAAAAAAAAbo/hN2zBdNQ87rQ3AAAAAElFTkSuQmCC';
 
-// ── State ──────────────────────────────────────────────────────────────────
-var useEnds = true;
-var templateEndsImg = null, templateBeginsImg = null;
-var logoImg = null;
-var photoImgs = [null,null,null,null,null];
-var photoTransparent = [false,false,false,false,false];
-var logoPalette = [], brandOverride = null;
-var colorState = {gradDir:true,photoBorder:true,bannerBorder:false,btnBorder:true,btnText:true,auctionText:true,dateText:true};
-var currentPresetName = null;
-var configPresets = []; // loaded from presets.json
+// ── State ─────────────────────────────────────────────────────────────────
+var useEnds=true, templateEndsImg=null, templateBeginsImg=null;
+var logoImg=null, photoImgs=[null,null,null,null,null], photoTransparent=[false,false,false,false,false];
+var logoPalette=[], brandOverride=null;
+var colorState={gradDir:true,photoBorder:true,bannerBorder:false,btnBorder:true,btnText:true,auctionText:true,dateText:true};
+var currentPresetName=null, configPresets=[];
 
-// ── Gradient table ─────────────────────────────────────────────────────────
+// ── Gradient table ────────────────────────────────────────────────────────
 var GRADIENT_DIR=[
   {from:'#FF0000',stops:['#FF0000','#DC143C','#800000','#4A0000']},
   {from:'#FFA500',stops:['#FFA500','#CC5500','#A0522D','#6B3A2A']},
@@ -345,15 +427,15 @@ var GRADIENT_DIR=[
   {from:'#D2B48C',stops:['#D2B48C','#DEB887','#FFE4B5','#FFE4C4']}
 ];
 
-// ── Helpers ────────────────────────────────────────────────────────────────
+// ── Helpers ───────────────────────────────────────────────────────────────
 function hexToRgb(h){return[parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)];}
 function rgbToHex(rgb){return'#'+rgb.map(function(v){return v.toString(16).padStart(2,'0');}).join('');}
 function colorDist(a,b){return Math.sqrt(Math.pow(a[0]-b[0],2)+Math.pow(a[1]-b[1],2)+Math.pow(a[2]-b[2],2));}
 function matchGradient(rgb){var best=GRADIENT_DIR[0],bd=Infinity;for(var i=0;i<GRADIENT_DIR.length;i++){var d=colorDist(rgb,hexToRgb(GRADIENT_DIR[i].from));if(d<bd){bd=d;best=GRADIENT_DIR[i];}}return best.stops.map(hexToRgb);}
 function extractPalette(img){var c=document.createElement('canvas'),scale=Math.min(1,100/Math.max(img.width,img.height));c.width=Math.round(img.width*scale);c.height=Math.round(img.height*scale);var ctx=c.getContext('2d');ctx.drawImage(img,0,0,c.width,c.height);var data=ctx.getImageData(0,0,c.width,c.height).data,buckets={};for(var i=0;i<data.length;i+=4){var r=data[i],g=data[i+1],b=data[i+2],a=data[i+3];if(a<30)continue;var br=(r+g+b)/3,sat=Math.max(r,g,b)-Math.min(r,g,b);if(br>230||br<20||sat<25)continue;if(r>200&&g<60&&b<60)continue;if(g>200&&r<60&&b<60)continue;var qr=Math.round(r/32)*32,qg=Math.round(g/32)*32,qb=Math.round(b/32)*32;var key=qr+','+qg+','+qb;buckets[key]=(buckets[key]||0)+1;}var keys=Object.keys(buckets).sort(function(a,b){return buckets[b]-buckets[a];});return keys.length===0?[[30,80,130]]:keys.slice(0,5).map(function(k){return k.split(',').map(Number);});}
-function trimImage(img,cb){var c=document.createElement('canvas');c.width=img.width;c.height=img.height;var ctx=c.getContext('2d');ctx.drawImage(img,0,0);var data=ctx.getImageData(0,0,c.width,c.height).data,W=c.width,H=c.height;var minX=W,maxX=0,minY=H,maxY=0;for(var y=0;y<H;y++){for(var x=0;x<W;x++){var idx=(y*W+x)*4,r=data[idx],g=data[idx+1],b=data[idx+2],a=data[idx+3];if(a<30||(r<30&&g<30&&b<30))continue;if(x<minX)minX=x;if(x>maxX)maxX=x;if(y<minY)minY=y;if(y>maxY)maxY=y;}}if(minX>maxX||minY>maxY){cb(img);return;}var tw=maxX-minX+1,th=maxY-minY+1;var out=document.createElement('canvas');out.width=tw;out.height=th;out.getContext('2d').drawImage(c,minX,minY,tw,th,0,0,tw,th);var trimmed=new Image();trimmed.onload=function(){cb(trimmed);};trimmed.src=out.toDataURL();}
+function trimImage(img,cb){var c=document.createElement('canvas');c.width=img.width;c.height=img.height;var ctx=c.getContext('2d');ctx.drawImage(img,0,0);var data=ctx.getImageData(0,0,c.width,c.height).data,W=c.width,H=c.height;var minX=W,maxX=0,minY=H,maxY=0;for(var y=0;y<H;y++){for(var x=0;x<W;x++){var idx=(y*W+x)*4,a=data[idx+3];if(a<30)continue;if(x<minX)minX=x;if(x>maxX)maxX=x;if(y<minY)minY=y;if(y>maxY)maxY=y;}}if(minX>maxX||minY>maxY){cb(img);return;}var tw=maxX-minX+1,th=maxY-minY+1;var out=document.createElement('canvas');out.width=tw;out.height=th;out.getContext('2d').drawImage(c,minX,minY,tw,th,0,0,tw,th);var trimmed=new Image();trimmed.onload=function(){cb(trimmed);};trimmed.src=out.toDataURL();}
 function getActivePalette(){return brandOverride?[brandOverride]:logoPalette;}
-function updatePaletteSwatches(rgb){var matched=matchGradient(rgb);document.getElementById('paletteRow').innerHTML='<div class="swatch" style="background:rgb('+matched[0]+');"></div><span style="font-size:10px;color:var(--text-faint);">→</span><div class="swatch" style="background:rgb('+matched[matched.length-1]+');"></div>';}
+function updatePaletteSwatches(rgb){var matched=matchGradient(rgb);document.getElementById('paletteRow').innerHTML='<div class="swatch" style="background:rgb('+matched[0]+');"></div><span style="font-size:9px;color:var(--text-faint);">→</span><div class="swatch" style="background:rgb('+matched[matched.length-1]+');"></div>';}
 function setStatus(msg,green){document.getElementById('status').textContent=msg;document.getElementById('statusDot').classList.toggle('green',!!green);}
 function loadImageFile(file,cb){var r=new FileReader();r.onload=function(e){var img=new Image();img.onload=function(){cb(img);};img.src=e.target.result;};r.readAsDataURL(file);}
 function loadImageSrc(src,cb){var img=new Image();img.crossOrigin='anonymous';img.onload=function(){cb(img);};img.src=src;}
@@ -361,124 +443,108 @@ function makeGrad(ctx,gc,W){var g=ctx.createLinearGradient(0,0,W,0);for(var i=0;
 function roundRect(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();}
 function getColor(key){if(!colorState[key])return'#000000';var el=document.getElementById('col-'+key);return el?el.value:'#FFFFFF';}
 function updateTogglePickerState(key){var el=document.getElementById('col-'+key);if(!el)return;var on=colorState[key];el.style.opacity=on?'1':'0.35';el.style.pointerEvents=on?'auto':'none';}
-function showLoadedBar(areaId,name,sub,accept,reloadCb){var area=document.getElementById(areaId);area.innerHTML='<div class="loaded-bar" style="width:100%;"><div class="info"><span class="check">✓</span><div><div class="lname">'+name+'</div><div class="lsub">'+sub+'</div></div></div><label style="cursor:pointer;"><span class="btn-reupload">Replace</span><input type="file" accept="'+accept+'" style="display:none;"></label></div>';area.querySelector('input[type=file]').addEventListener('change',function(){if(this.files[0])reloadCb(this.files[0]);});}
+function showLoadedBar(areaId,name,sub,accept,reloadCb){var area=document.getElementById(areaId);area.innerHTML='<div class="loaded-bar"><span class="check">✓</span><div><div class="lname">'+name+'</div><div class="lsub">'+sub+'</div></div><label style="cursor:pointer;"><span class="btn-reupload">Replace</span><input type="file" accept="'+accept+'" style="display:none;"></label></div>';area.querySelector('input[type=file]').addEventListener('change',function(){if(this.files[0])reloadCb(this.files[0]);});}
 function currentTemplateImg(){return useEnds?templateEndsImg:templateBeginsImg;}
 
-// ── Load presets.json ──────────────────────────────────────────────────────
+// ── Config loader ─────────────────────────────────────────────────────────
 async function loadConfig(){
   try{
     var res=await fetch('presets.json');
-    if(!res.ok)throw new Error('Not found');
+    if(!res.ok)throw new Error();
     var data=await res.json();
     configPresets=data.presets||[];
-    document.getElementById('presetCount').textContent=configPresets.length+' preset'+(configPresets.length!==1?'s':'');
+    document.getElementById('presetCount').textContent='('+configPresets.length+')';
     renderPresetList();
   }catch(e){
-    document.getElementById('presetCount').textContent='No presets.json found';
+    document.getElementById('presetCount').textContent='';
     renderPresetList();
   }
 }
 
-// ── Preset list ────────────────────────────────────────────────────────────
+// ── Preset list ───────────────────────────────────────────────────────────
 function renderPresetList(){
   var list=document.getElementById('presetList');
   var search=document.getElementById('presetSearch').value.trim().toLowerCase();
   var filtered=search?configPresets.filter(function(p){return p.name.toLowerCase().includes(search);}):configPresets;
-  if(filtered.length===0){
-    list.innerHTML='<div class="preset-empty">'+(configPresets.length===0?'No presets loaded. Add entries to presets.json.':'No presets match your search.')+'</div>';
-    return;
-  }
+  if(filtered.length===0){list.innerHTML='<div class="preset-empty">'+(configPresets.length===0?'No presets loaded.':'No results.')+'</div>';return;}
   list.innerHTML='';
   filtered.forEach(function(p){
     var item=document.createElement('div');
-    item.className='preset-item'+(currentPresetName===p.name?' active-preset':'');
+    item.className='preset-item'+(currentPresetName===p.name?' active':'');
     var gradColors=p.brandOverrideHex?matchGradient(hexToRgb(p.brandOverrideHex)):null;
     var swatchStyle=gradColors?'background:linear-gradient(to right,rgb('+gradColors[0]+'),rgb('+gradColors[gradColors.length-1]+'));':'background:#4fa8cc;';
-    item.innerHTML='<div style="'+swatchStyle+'height:12px;width:32px;border-radius:3px;border:1px solid rgba(255,255,255,0.1);flex-shrink:0;"></div>'
-      +(p.logoUrl?'<img src="'+p.logoUrl+'" style="height:20px;max-width:48px;object-fit:contain;border-radius:2px;" onerror="this.style.display=\'none\'">':'')
+    item.innerHTML='<div class="preset-swatch" style="'+swatchStyle+'"></div>'
+      +(p.logoUrl?'<img class="preset-thumb" src="'+p.logoUrl+'" onerror="this.style.display=\'none\'">':'')
       +'<span class="preset-name">'+p.name+'</span>'
-      +(p.brandOverrideHex?'<span class="preset-meta">'+p.brandOverrideHex+'</span>':'')
-      +'<div class="preset-actions"><button class="btn-sm btn-sm-accent">Load</button></div>';
+      +(p.brandOverrideHex?'<span class="preset-hex">'+p.brandOverrideHex+'</span>':'')
+      +'<button class="preset-load-btn">Load</button>';
     item.querySelector('button').addEventListener('click',function(){loadPreset(p);});
     list.appendChild(item);
   });
 }
 
 function loadPreset(p){
-  // Apply brand color
-  if(p.brandOverrideHex){
-    brandOverride=hexToRgb(p.brandOverrideHex);
-    document.getElementById('brandColorPicker').value=p.brandOverrideHex;
-    document.getElementById('brandColorHex').value=p.brandOverrideHex;
-    document.getElementById('overrideLabel').classList.add('visible');
-  }else{
-    brandOverride=null;
-    document.getElementById('overrideLabel').classList.remove('visible');
-  }
-  // Apply color state
-  if(p.colorState){
-    TOGGLE_KEYS.forEach(function(k){
-      if(k in p.colorState){
-        colorState[k]=p.colorState[k];
-        var track=document.getElementById('tog-'+k),thumb=track.querySelector('.toggle-thumb');
-        if(colorState[k]){track.classList.add('on');thumb.textContent=(k==='gradDir')?'L':(k==='bannerBorder')?'On':'W';}
-        else{track.classList.remove('on');thumb.textContent=(k==='gradDir')?'D':(k==='bannerBorder')?'Off':'B';}
-        updateTogglePickerState(k);
-      }
-    });
-  }
-  // Apply picker colors
-  if(p.pickerColors){
-    COLOR_PICKER_KEYS.forEach(function(k){
-      var el=document.getElementById('col-'+k);
-      if(el&&p.pickerColors[k])el.value=p.pickerColors[k];
-    });
-  }
-  // Load logo from URL if provided
+  if(p.brandOverrideHex){brandOverride=hexToRgb(p.brandOverrideHex);document.getElementById('brandColorPicker').value=p.brandOverrideHex;document.getElementById('brandColorHex').value=p.brandOverrideHex;document.getElementById('overrideLabel').classList.add('visible');}
+  else{brandOverride=null;document.getElementById('overrideLabel').classList.remove('visible');}
+  if(p.colorState)TOGGLE_KEYS.forEach(function(k){if(k in p.colorState){colorState[k]=p.colorState[k];var track=document.getElementById('tog-'+k);if(colorState[k])track.classList.add('on');else track.classList.remove('on');updateTogglePickerState(k);}});
+  if(p.pickerColors)COLOR_PICKER_KEYS.forEach(function(k){var el=document.getElementById('col-'+k);if(el&&p.pickerColors[k])el.value=p.pickerColors[k];});
   if(p.logoUrl){
     loadImageSrc(p.logoUrl,function(img){
       logoPalette=extractPalette(img);
       trimImage(img,function(trimmed){
         logoImg=trimmed;
-        if(!p.brandOverrideHex&&logoPalette.length)updatePaletteSwatches(logoPalette[0]);
-        else if(p.brandOverrideHex)updatePaletteSwatches(hexToRgb(p.brandOverrideHex));
+        var pal=p.brandOverrideHex?hexToRgb(p.brandOverrideHex):logoPalette[0];
+        if(pal)updatePaletteSwatches(pal);
         document.getElementById('paletteDisplay').style.display='block';
         document.getElementById('auctioneerLabel').textContent=p.name;
-        showLoadedBar('logoArea',p.name,'From preset','image/png,image/jpeg',function(f){
-          loadImageFile(f,function(i){logoPalette=extractPalette(i);trimImage(i,function(t){logoImg=t;updatePaletteSwatches(logoPalette[0]);renderPreview();});});
-        });
-        currentPresetName=p.name;
-        renderPresetList();
-        setStatus('Preset loaded: '+p.name,true);
-        renderPreview();
+        showLoadedBar('logoArea',p.name,'From preset','image/png,image/jpeg',function(f){loadImageFile(f,function(i){logoPalette=extractPalette(i);trimImage(i,function(t){logoImg=t;updatePaletteSwatches(logoPalette[0]);renderPreview();});});});
+        currentPresetName=p.name;renderPresetList();
+        setStatus('Loaded: '+p.name,true);renderPreview();
       });
     });
-  }else{
-    currentPresetName=p.name;
-    renderPresetList();
-    setStatus('Preset loaded: '+p.name+' (no logo URL)',true);
-    renderPreview();
-  }
+  }else{currentPresetName=p.name;renderPresetList();setStatus('Preset loaded (no logo)',true);renderPreview();}
 }
 
-// ── Template toggle ────────────────────────────────────────────────────────
+// ── Generate JSON ─────────────────────────────────────────────────────────
+function generatePresetJSON(){
+  var name=document.getElementById('auctioneerLabel').textContent.trim();
+  if(!name||name==='No auctioneer loaded'){setStatus('Upload a logo first.',false);return;}
+  var pickerColors={};COLOR_PICKER_KEYS.forEach(function(k){var el=document.getElementById('col-'+k);if(el)pickerColors[k]=el.value;});
+  var slug=name.toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'');
+  var preset={name:name,logoUrl:'logos/'+slug,colorState:Object.assign({},colorState),pickerColors:pickerColors};
+  if(brandOverride)preset.brandOverrideHex=rgbToHex(brandOverride);
+  document.getElementById('presetJsonText').value=JSON.stringify(preset,null,2);
+  document.getElementById('presetJsonOutput').style.display='block';
+  document.getElementById('copyConfirm').style.display='none';
+  setStatus('JSON ready — paste into presets.json on GitHub.',true);
+}
+function copyPresetJSON(){var ta=document.getElementById('presetJsonText');ta.select();document.execCommand('copy');document.getElementById('copyConfirm').style.display='inline';setTimeout(function(){document.getElementById('copyConfirm').style.display='none';},2000);}
+
+// ── Template toggle ───────────────────────────────────────────────────────
 function toggleTemplate(){
   useEnds=!useEnds;
   var btn=document.getElementById('templateToggleBtn');
-  if(useEnds){btn.textContent='Auction Ends';btn.classList.remove('begins');}
-  else{btn.textContent='Auction Begins';btn.classList.add('begins');}
+  if(useEnds){btn.textContent='⏱ Auction Ends';btn.classList.remove('begins');}
+  else{btn.textContent='⏱ Auction Begins';btn.classList.add('begins');}
   setStatus('Switched to '+(useEnds?'Auction Ends':'Auction Begins')+'.',true);
   renderPreview();
 }
 
-// ── Color toggles ──────────────────────────────────────────────────────────
-function doToggle(key){var track=document.getElementById('tog-'+key),thumb=track.querySelector('.toggle-thumb');colorState[key]=!colorState[key];if(colorState[key]){track.classList.add('on');thumb.textContent=(key==='gradDir')?'L':(key==='bannerBorder')?'On':'W';}else{track.classList.remove('on');thumb.textContent=(key==='gradDir')?'D':(key==='bannerBorder')?'Off':'B';}updateTogglePickerState(key);renderPreview();}
+// ── Color toggles ─────────────────────────────────────────────────────────
+function doToggle(key){
+  colorState[key]=!colorState[key];
+  var track=document.getElementById('tog-'+key);
+  if(colorState[key])track.classList.add('on');else track.classList.remove('on');
+  if(key==='gradDir'){document.getElementById('lbl-gradDir').textContent=colorState[key]?'L→R':'R→L';}
+  updateTogglePickerState(key);
+  renderPreview();
+}
 
-// ── Brand override ─────────────────────────────────────────────────────────
+// ── Brand override ────────────────────────────────────────────────────────
 function applyBrandOverride(){var hex=document.getElementById('brandColorHex').value.trim();if(hex.indexOf('#')!==0)hex='#'+hex;if(!/^#[0-9A-Fa-f]{6}$/.test(hex)){setStatus('Invalid hex.',false);return;}document.getElementById('brandColorPicker').value=hex;brandOverride=hexToRgb(hex);document.getElementById('overrideLabel').classList.add('visible');updatePaletteSwatches(brandOverride);renderPreview();}
 function clearBrandOverride(){brandOverride=null;document.getElementById('overrideLabel').classList.remove('visible');if(logoPalette.length)updatePaletteSwatches(logoPalette[0]);renderPreview();}
 
-// ── Logo upload ────────────────────────────────────────────────────────────
+// ── Logo upload ───────────────────────────────────────────────────────────
 function bindLogoFile(){var el=document.getElementById('logoFile');if(el)el.addEventListener('change',function(){if(this.files[0])onLogoChange(this.files[0]);});}
 function onLogoChange(file){
   var rawName=file.name.replace(/\.[^.]+$/,'').replace(/[_-]/g,' ');
@@ -492,72 +558,69 @@ function onLogoChange(file){
       document.getElementById('overrideLabel').classList.remove('visible');
       updatePaletteSwatches(logoPalette[0]);
       document.getElementById('paletteDisplay').style.display='block';
-      showLoadedBar('logoArea',rawName,img.width+'x'+img.height+'px','image/png,image/jpeg',function(f){
+      showLoadedBar('logoArea',rawName,img.width+'×'+img.height,'image/png,image/jpeg',function(f){
         var n=f.name.replace(/\.[^.]+$/,'').replace(/[_-]/g,' ');
         document.getElementById('auctioneerLabel').textContent=n;
         loadImageFile(f,function(i){logoPalette=extractPalette(i);trimImage(i,function(t){logoImg=t;brandOverride=null;updatePaletteSwatches(logoPalette[0]);setStatus('Logo replaced.',true);renderPreview();});});
       });
-      setStatus('Logo loaded.',true);
+      setStatus('Logo loaded: '+rawName,true);
       renderPreview();
     });
   });
 }
 
-// ── Reset ──────────────────────────────────────────────────────────────────
+// ── Reset ─────────────────────────────────────────────────────────────────
 function resetAll(){
   logoImg=null;logoPalette=[];brandOverride=null;currentPresetName=null;
   photoImgs=[null,null,null,null,null];photoTransparent=[false,false,false,false,false];
-  document.getElementById('logoArea').innerHTML='<div class="upload-icon">↑</div><div class="upload-title">Click or drag to upload logo</div><div class="upload-sub">PNG recommended · filename becomes auctioneer name</div><input type="file" id="logoFile" accept="image/png,image/jpeg">';
+  document.getElementById('logoArea').innerHTML='<div class="upload-icon">↑</div><div class="upload-title">Click or drag logo here</div><div class="upload-sub">PNG recommended · filename becomes auctioneer name</div><input type="file" id="logoFile" accept="image/png,image/jpeg">';
   bindLogoFile();
   document.getElementById('paletteDisplay').style.display='none';
   document.getElementById('auctioneerLabel').textContent='No auctioneer loaded';
-  for(var i=0;i<5;i++){var t=document.getElementById('thumb'+i);t.src='';t.style.display='none';document.getElementById('zone'+i).classList.remove('filled');document.getElementById('zone'+i).querySelector('input[type=file]').value='';var tb=document.getElementById('transTog'+i);if(tb){tb.textContent='BG';tb.classList.remove('active');}}
+  for(var i=0;i<5;i++){var t=document.getElementById('thumb'+i);if(t){t.src='';t.style.display='none';}var z=document.getElementById('zone'+i);if(z){z.classList.remove('filled');var fi=z.querySelector('input[type=file]');if(fi)fi.value='';}var tb=document.getElementById('transTog'+i);if(tb){tb.textContent='BG';tb.classList.remove('active');}}
   document.getElementById('auctionDate').value='';
   document.getElementById('fileName').value='Banner';
   document.getElementById('brandColorHex').value='#0057FF';
   document.getElementById('brandColorPicker').value='#0057FF';
   document.getElementById('overrideLabel').classList.remove('visible');
+  document.getElementById('presetJsonOutput').style.display='none';
   useEnds=true;
-  var tbtn=document.getElementById('templateToggleBtn');
-  tbtn.textContent='Auction Ends';tbtn.classList.remove('begins');
-  TOGGLE_KEYS.forEach(function(k){var isOn=k!=='bannerBorder';colorState[k]=isOn;var track=document.getElementById('tog-'+k);if(isOn)track.classList.add('on');else track.classList.remove('on');track.querySelector('.toggle-thumb').textContent=(k==='gradDir')?'L':(k==='bannerBorder')?'Off':'W';var cpEl=document.getElementById('col-'+k);if(cpEl){cpEl.value='#FFFFFF';updateTogglePickerState(k);}});
+  var tbtn=document.getElementById('templateToggleBtn');tbtn.textContent='⏱ Auction Ends';tbtn.classList.remove('begins');
+  TOGGLE_KEYS.forEach(function(k){var isOn=k!=='bannerBorder';colorState[k]=isOn;var track=document.getElementById('tog-'+k);if(isOn)track.classList.add('on');else track.classList.remove('on');var cpEl=document.getElementById('col-'+k);if(cpEl){cpEl.value='#FFFFFF';updateTogglePickerState(k);}});
   document.getElementById('col-btnBg').value='#000000';
+  document.getElementById('lbl-gradDir').textContent='L→R';
   document.getElementById('previewCanvas').style.display='none';
   document.getElementById('previewPlaceholder').style.display='block';
-  currentPresetName=null;
   renderPresetList();
   setStatus('Reset.',true);
 }
 
-// ── Photo slots ────────────────────────────────────────────────────────────
+// ── Photo slots ───────────────────────────────────────────────────────────
 (function(){
   var grid=document.getElementById('slotsGrid');
   for(var si=0;si<5;si++){
     (function(i){
       var wrap=document.createElement('div');wrap.className='slot-wrap';
       var zone=document.createElement('div');zone.className='drop-zone';zone.id='zone'+i;
-      zone.innerHTML='<span class="dz-icon">+</span><span class="dz-label">Photo '+(i+1)+'</span><span class="slot-badge">Slot '+(i+1)+'</span><img id="thumb'+i+'" style="display:none;"><button class="clear-btn" onclick="clearSlot(event,'+i+')">✕</button><input type="file" accept="image/*">';
+      zone.innerHTML='<span class="dz-icon">+</span><span class="dz-label">Photo '+(i+1)+'</span><span class="slot-num">Slot '+(i+1)+'</span><img id="thumb'+i+'" style="display:none;"><button class="clear-btn" onclick="clearSlot(event,'+i+')">✕</button><input type="file" accept="image/*">';
       zone.querySelector('input[type=file]').addEventListener('change',function(){if(this.files[0])handlePhoto(this.files[0],i);});
       zone.addEventListener('dragover',function(e){e.preventDefault();zone.classList.add('dragover');});
       zone.addEventListener('dragleave',function(){zone.classList.remove('dragover');});
       zone.addEventListener('drop',function(e){e.preventDefault();zone.classList.remove('dragover');if(e.dataTransfer.files[0])handlePhoto(e.dataTransfer.files[0],i);});
-      var btn=document.createElement('button');btn.className='trans-btn';btn.id='transTog'+i;btn.textContent='BG';
-      btn.onclick=function(){toggleTransparent(i);};
+      var btn=document.createElement('button');btn.className='trans-btn';btn.id='transTog'+i;btn.textContent='BG';btn.onclick=function(){toggleTransparent(i);};
       wrap.appendChild(zone);wrap.appendChild(btn);grid.appendChild(wrap);
     })(si);
   }
 })();
 
-function handlePhoto(file,idx){if(!file||!file.type.startsWith('image/'))return;loadImageFile(file,function(img){photoImgs[idx]=img;var reader=new FileReader();reader.onload=function(e){var t=document.getElementById('thumb'+idx);t.src=e.target.result;t.style.display='block';};reader.readAsDataURL(file);document.getElementById('zone'+idx).classList.add('filled');setStatus('Photo '+(idx+1)+' loaded.',true);});}
-function clearSlot(e,idx){e.stopPropagation();photoImgs[idx]=null;photoTransparent[idx]=false;var t=document.getElementById('thumb'+idx);t.src='';t.style.display='none';document.getElementById('zone'+idx).classList.remove('filled');document.getElementById('zone'+idx).querySelector('input[type=file]').value='';var tb=document.getElementById('transTog'+idx);if(tb){tb.textContent='BG';tb.classList.remove('active');}}
+function handlePhoto(file,idx){if(!file||!file.type.startsWith('image/'))return;loadImageFile(file,function(img){photoImgs[idx]=img;var reader=new FileReader();reader.onload=function(e){var t=document.getElementById('thumb'+idx);t.src=e.target.result;t.style.display='block';};reader.readAsDataURL(file);document.getElementById('zone'+idx).classList.add('filled');setStatus('Photo '+(idx+1)+' loaded.',true);renderPreview();});}
+function clearSlot(e,idx){e.stopPropagation();photoImgs[idx]=null;photoTransparent[idx]=false;var t=document.getElementById('thumb'+idx);t.src='';t.style.display='none';document.getElementById('zone'+idx).classList.remove('filled');document.getElementById('zone'+idx).querySelector('input[type=file]').value='';var tb=document.getElementById('transTog'+idx);if(tb){tb.textContent='BG';tb.classList.remove('active');}renderPreview();}
 function toggleTransparent(i){photoTransparent[i]=!photoTransparent[i];var btn=document.getElementById('transTog'+i);if(photoTransparent[i]){btn.textContent='Transparent';btn.classList.add('active');}else{btn.textContent='BG';btn.classList.remove('active');}renderPreview();}
 
-// ── Draw banner ────────────────────────────────────────────────────────────
+// ── Draw banner ───────────────────────────────────────────────────────────
 function drawBanner(canvas){
-  var tmpl=currentTemplateImg();
-  if(!tmpl||!logoImg)return false;
-  var W=tmpl.width,H=tmpl.height;
-  canvas.width=W;canvas.height=H;
+  var tmpl=currentTemplateImg();if(!tmpl||!logoImg)return false;
+  var W=tmpl.width,H=tmpl.height;canvas.width=W;canvas.height=H;
   var ctx=canvas.getContext('2d');
   var gColors=matchGradient(getActivePalette()[0]);
   if(!colorState.gradDir)gColors=gColors.slice().reverse();
@@ -623,48 +686,40 @@ function drawBanner(canvas){
   ctx.fill();
   ctx.save();ctx.clip();
   var btnFontSize=bz.h;
-  do{btnFontSize--;ctx.font='bold '+btnFontSize+'px Candara, Calibri, serif';}
+  do{btnFontSize--;ctx.font='bold '+btnFontSize+'px Candara,Calibri,serif';}
   while((ctx.measureText('BID NOW').width>bz.w-4||btnFontSize>bz.h-4)&&btnFontSize>6);
   ctx.fillStyle=getColor('btnText');ctx.textAlign='center';ctx.textBaseline='middle';
   ctx.strokeStyle=getColor('btnText');ctx.lineWidth=0.75;ctx.lineJoin='round';
-  ctx.strokeText('BID NOW',bz.x+bz.w/2,bz.y+bz.h/2+3);
-  ctx.fillText('BID NOW',bz.x+bz.w/2,bz.y+bz.h/2+3);
+  ctx.strokeText('BID NOW',bz.x+bz.w/2,bz.y+bz.h/2+3);ctx.fillText('BID NOW',bz.x+bz.w/2,bz.y+bz.h/2+3);
   ctx.restore();
   ctx.beginPath();roundRect(ctx,bz.x,bz.y,bz.w,bz.h,br);
   ctx.strokeStyle=getColor('btnBorder');ctx.lineWidth=1;ctx.stroke();
   var dz=DATE_ZONE;
   ctx.fillStyle=makeGrad(ctx,gColors,W);ctx.fillRect(dz.x,dz.y,dz.w,dz.h);
   var dateText=document.getElementById('auctionDate').value.trim();
-  if(dateText){var fs=dz.h;ctx.textAlign='center';ctx.textBaseline='middle';do{fs--;ctx.font='bold '+fs+'px Candara, Calibri, serif';}while(ctx.measureText(dateText).width>dz.w-4&&fs>6);ctx.fillStyle=getColor('dateText');ctx.fillText(dateText,dz.x+dz.w/2,dz.y+dz.h/2);}
+  if(dateText){var fs=dz.h;ctx.textAlign='center';ctx.textBaseline='middle';do{fs--;ctx.font='bold '+fs+'px Candara,Calibri,serif';}while(ctx.measureText(dateText).width>dz.w-4&&fs>6);ctx.fillStyle=getColor('dateText');ctx.fillText(dateText,dz.x+dz.w/2,dz.y+dz.h/2);}
   ctx.fillStyle=makeGrad(ctx,gColors,W);ctx.fillRect(ez.x,ez.y,ez.w,ez.h);
   var ezText=useEnds?'AUCTION ENDS':'AUCTION BEGINS';
   var endsFs=ez.h;ctx.textAlign='center';ctx.textBaseline='middle';
-  do{endsFs--;ctx.font='bold '+endsFs+'px Candara, Calibri, serif';}
-  while(ctx.measureText(ezText).width>ez.w-4&&endsFs>6);
-  ctx.fillStyle=getColor('auctionText');
-  ctx.strokeStyle=getColor('auctionText');ctx.lineWidth=0.75;ctx.lineJoin='round';
-  ctx.strokeText(ezText,ez.x+ez.w/2,ez.y+ez.h/2);
-  ctx.fillText(ezText,ez.x+ez.w/2,ez.y+ez.h/2);
+  do{endsFs--;ctx.font='bold '+endsFs+'px Candara,Calibri,serif';}while(ctx.measureText(ezText).width>ez.w-4&&endsFs>6);
+  ctx.fillStyle=getColor('auctionText');ctx.strokeStyle=getColor('auctionText');ctx.lineWidth=0.75;ctx.lineJoin='round';
+  ctx.strokeText(ezText,ez.x+ez.w/2,ez.y+ez.h/2);ctx.fillText(ezText,ez.x+ez.w/2,ez.y+ez.h/2);
   if(colorState.bannerBorder){var bc=hexToRgb(getColor('bannerBorder'));ctx.strokeStyle='rgb('+bc[0]+','+bc[1]+','+bc[2]+')';ctx.lineWidth=2;ctx.strokeRect(1,1,W-2,H-2);}
   return true;
 }
 
-// ── Preview / Export ───────────────────────────────────────────────────────
+// ── Preview / Export ──────────────────────────────────────────────────────
 function renderPreview(){
-  if(!currentTemplateImg()){setStatus('Templates loading...',false);return;}
-  if(!logoImg){setStatus('No logo loaded.',false);return;}
-  setStatus('Rendering...',false);
+  if(!currentTemplateImg()||!logoImg)return;
   try{
     var canvas=document.getElementById('previewCanvas');
     if(drawBanner(canvas)){canvas.style.display='block';document.getElementById('previewPlaceholder').style.display='none';setStatus('Preview ready.',true);}
   }catch(err){setStatus('Render error: '+err.message,false);}
 }
-
 function exportBanner(targetW,targetH,size){
-  if(!currentTemplateImg()||!logoImg){setStatus('Upload logo first.',false);return;}
+  if(!currentTemplateImg()||!logoImg){setStatus('Upload a logo first.',false);return;}
   var baseName=document.getElementById('fileName').value.trim()||'banner';
   var filename=baseName+'_'+size+'.png';
-  setStatus('Exporting '+filename+'...',false);
   try{
     var full=document.getElementById('exportCanvas');
     if(!drawBanner(full))return;
@@ -672,48 +727,16 @@ function exportBanner(targetW,targetH,size){
     out.getContext('2d').drawImage(full,0,0,targetW,targetH);
     var a=document.createElement('a');a.download=filename;a.href=out.toDataURL('image/png');
     document.body.appendChild(a);a.click();document.body.removeChild(a);
-    setStatus('Exported '+filename,true);
+    setStatus('Exported: '+filename,true);
   }catch(err){setStatus('Export failed: '+err.message,false);}
 }
 
-// ── Generate preset JSON ───────────────────────────────────────────────────
-function generatePresetJSON(){
-  var name=document.getElementById('auctioneerLabel').textContent.trim();
-  if(!name||name==='No auctioneer loaded'){setStatus('Upload a logo first.',false);return;}
-  var pickerColors={};
-  COLOR_PICKER_KEYS.forEach(function(k){var el=document.getElementById('col-'+k);if(el)pickerColors[k]=el.value;});
-  var logoSlug=name.toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'');
-  var preset={
-    name:name,
-    brandOverrideHex:brandOverride?rgbToHex(brandOverride):null,
-    logoUrl:'logos/'+logoSlug+'.png',
-    colorState:Object.assign({},colorState),
-    pickerColors:pickerColors
-  };
-  if(!preset.brandOverrideHex)delete preset.brandOverrideHex;
-  var json=JSON.stringify(preset,null,2);
-  document.getElementById('presetJsonText').value=json;
-  document.getElementById('presetJsonOutput').style.display='block';
-  document.getElementById('copyConfirm').style.display='none';
-  setStatus('JSON ready — copy and paste into presets.json on GitHub.',true);
-}
-
-function copyPresetJSON(){
-  var ta=document.getElementById('presetJsonText');
-  ta.select();
-  document.execCommand('copy');
-  document.getElementById('copyConfirm').style.display='block';
-  setTimeout(function(){document.getElementById('copyConfirm').style.display='none';},2000);
-}
-
-// ── Init ───────────────────────────────────────────────────────────────────
+// ── Init ──────────────────────────────────────────────────────────────────
 bindLogoFile();
-
-var _endsLoaded=false,_beginsLoaded=false;
-function checkReady(){if(_endsLoaded&&_beginsLoaded){setStatus('Ready. Upload a logo or load a preset.',true);loadConfig();}}
-
-loadImageSrc(TEMPLATE_ENDS_SRC,function(img){templateEndsImg=img;_endsLoaded=true;checkReady();});
-loadImageSrc(TEMPLATE_BEGINS_SRC,function(img){templateBeginsImg=img;_beginsLoaded=true;checkReady();});
+var _tLoaded=0;
+function onTemplateLoad(){_tLoaded++;if(_tLoaded===2){setStatus('Ready.',true);loadConfig();}}
+loadImageSrc(TEMPLATE_ENDS_SRC,function(img){templateEndsImg=img;onTemplateLoad();});
+loadImageSrc(TEMPLATE_BEGINS_SRC,function(img){templateBeginsImg=img;onTemplateLoad();});
 </script>
 </body>
 </html>
