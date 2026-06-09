@@ -208,7 +208,26 @@
     "bannerBorder": "#e3151a"
         }
     },
-    {     
+    { 
+"name": "MikeHavenarAuctioneers",
+  "brandOverrideHex": "#870000",
+  "logoUrl": "logos/MikeHvenarAuctioneers",
+  "colorState": {
+    "gradDir": true,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": true,
+    "btnText": true,
+    "auctionText": true,
+    "dateText": true
+  },
+  "pickerColors": {
+    "photoBorder": "#000000",
+    "btnBg": "#810000",
+    "bannerBorder": "#000000"
+        }
+    },
+    { 
       "name": "Bryan'sAuctionServices",
       "brandOverrideHex": "#c2c2c2",
       "logoUrl": "logos/Bryan'sAuctionServices",
