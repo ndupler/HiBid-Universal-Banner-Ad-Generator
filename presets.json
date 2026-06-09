@@ -247,6 +247,44 @@
         }
     },
     { 
+      "name": "PageAuctionCo",
+  "brandOverrideHex": "#bbb9b9",
+  "logoUrl": "logos/PageAuctionCo",
+  "colorState": {
+    "gradDir": false,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": false,
+    "btnText": true,
+    "auctionText": false,
+    "dateText": false
+  },
+  "pickerColors": {
+    "photoBorder": "#84121a",
+    "btnBg": "#84121a",
+    "bannerBorder": "#84121a"
+        }
+    },
+    { 
+      "name": "PowellAuction&RealtyLLC",
+  "brandOverrideHex": "#345cfe",
+  "logoUrl": "logos/PowellAuctionRealtyLLC",
+  "colorState": {
+    "gradDir": false,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": false,
+    "btnText": false,
+    "auctionText": true,
+    "dateText": true
+  },
+  "pickerColors": {
+    "photoBorder": "#ffffff",
+    "btnBg": "#ffffff",
+    "bannerBorder": "#ffffff"
+      }
+    },
+    { 
       "name": "Bryan'sAuctionServices",
       "brandOverrideHex": "#c2c2c2",
       "logoUrl": "logos/Bryan'sAuctionServices",
