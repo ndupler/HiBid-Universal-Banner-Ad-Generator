@@ -228,6 +228,25 @@
         }
     },
     { 
+      "name": "Davis&BellAuctionServicesLLC",
+  "brandOverrideHex": "#5489f2",
+  "logoUrl": "logos/Davis&BellAuctionServicesLLC",
+  "colorState": {
+    "gradDir": true,
+    "photoBorder": false,
+    "bannerBorder": true,
+    "btnBorder": false,
+    "btnText": false,
+    "auctionText": false,
+    "dateText": false
+  },
+  "pickerColors": {
+    "photoBorder": "#ffffff",
+    "btnBg": "#000000",
+    "bannerBorder": "#000000"
+        }
+    },
+    { 
       "name": "Bryan'sAuctionServices",
       "brandOverrideHex": "#c2c2c2",
       "logoUrl": "logos/Bryan'sAuctionServices",
