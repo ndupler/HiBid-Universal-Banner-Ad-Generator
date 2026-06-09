@@ -303,6 +303,25 @@
       }
     },
     { 
+      "name": "ShoresAuctionService",
+  "brandOverrideHex": "#c2c2c2",
+  "logoUrl": "logos/ShoresAuctionService",
+  "colorState": {
+    "gradDir": false,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": false,
+    "btnText": true,
+    "auctionText": false,
+    "dateText": false
+  },
+  "pickerColors": {
+    "photoBorder": "#4130e9",
+    "btnBg": "#4130e9",
+    "bannerBorder": "#4130e9"
+      }
+    },
+    { 
       "name": "Bryan'sAuctionServices",
       "brandOverrideHex": "#c2c2c2",
       "logoUrl": "logos/Bryan'sAuctionServices",
