@@ -285,6 +285,24 @@
       }
     },
     { 
+      "name": "RonBrewerAuctions",
+  "logoUrl": "logos/RonBrewerAuctions",
+  "colorState": {
+    "gradDir": false,
+    "photoBorder": false,
+    "bannerBorder": true,
+    "btnBorder": false,
+    "btnText": false,
+    "auctionText": true,
+    "dateText": true
+  },
+  "pickerColors": {
+    "photoBorder": "#ffffff",
+    "btnBg": "#e5322e",
+    "bannerBorder": "#000000"
+      }
+    },
+    { 
       "name": "Bryan'sAuctionServices",
       "brandOverrideHex": "#c2c2c2",
       "logoUrl": "logos/Bryan'sAuctionServices",
