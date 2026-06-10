@@ -379,6 +379,7 @@
     },
     { 
       "name": "InternationalArtAuctionGallery",
+  "brandOverrideHex": "#ffffff",
   "logoUrl": "logos/InternationalArtAuctionGallery",
   "colorState": {
     "gradDir": true,
@@ -393,8 +394,6 @@
     "photoBorder": "#000000",
     "btnBg": "#080808",
     "bannerBorder": "#000000"
-  },
-  "brandOverrideHex": "#ffffff"
       }
     },
     { 
