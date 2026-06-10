@@ -247,6 +247,24 @@
         }
     },
     { 
+      "name": "DudleysAuction",
+  "logoUrl": "logos/DudleysAuction",
+  "colorState": {
+    "gradDir": true,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": false,
+    "btnText": true,
+    "auctionText": false,
+    "dateText": false
+  },
+  "pickerColors": {
+    "photoBorder": "#124d00",
+    "btnBg": "#124d00",
+    "bannerBorder": "#124d00"
+          }
+    },
+    { 
       "name": "PageAuctionCo",
   "brandOverrideHex": "#bbb9b9",
   "logoUrl": "logos/PageAuctionCo",
