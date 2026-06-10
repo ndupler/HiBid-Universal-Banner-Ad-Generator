@@ -378,6 +378,26 @@
       }
     },
     { 
+      "name": "InternationalArtAuctionGallery",
+  "logoUrl": "logos/InternationalArtAuctionGallery",
+  "colorState": {
+    "gradDir": true,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": true,
+    "btnText": true,
+    "auctionText": false,
+    "dateText": false
+  },
+  "pickerColors": {
+    "photoBorder": "#000000",
+    "btnBg": "#080808",
+    "bannerBorder": "#000000"
+  },
+  "brandOverrideHex": "#ffffff"
+      }
+    },
+    { 
       "name": "Bryan'sAuctionServices",
       "brandOverrideHex": "#c2c2c2",
       "logoUrl": "logos/Bryan'sAuctionServices",
