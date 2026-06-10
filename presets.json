@@ -20,6 +20,25 @@
       }
     },
     {
+    "name": "HonestyComics&CollectiblesLLC",
+    "brandOverrideHex": "#c73b26",
+    "logoUrl": "logos/HonestyComicsCollectiblesLLC",
+    "colorState": {
+      "gradDir": true,
+      "photoBorder": true,
+      "bannerBorder": true,
+      "btnBorder": false,
+      "btnText": true,
+      "auctionText": false,
+      "dateText": false
+  },
+    "pickerColors": {
+      "photoBorder": "#0a0e1f",
+      "btnBg": "#b32c19",
+      "bannerBorder": "#0a0e1f"
+      }
+    },
+    {
       "name": "AllStarAuctionsInc.",
       "brandOverrideHex": "#ffffff",
       "logoUrl": "logos/AllStarAuctionsInc.",
