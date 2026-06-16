@@ -270,6 +270,11 @@
           <div class="step-title">Auction Photos</div>
           <div class="step-desc">Upload up to 5 photos — toggle BG or Transparent per slot</div>
         </div>
+        <div style="margin-left:auto;display:flex;align-items:center;gap:8px;">
+          <span style="font-size:9px;color:var(--text-dim);">Photo Spacing</span>
+          <div class="toggle-track" id="tog-photoSpacing" onclick="doPhotoSpacingToggle()" title="Spread spacing between photos instead of centering"><div class="toggle-thumb"></div></div>
+          <span style="font-size:9px;color:var(--text-faint);" id="lbl-photoSpacing">Centered</span>
+        </div>
       </div>
       <div class="photos-grid" id="slotsGrid"></div>
     </div>
@@ -391,7 +396,7 @@ var useEnds=true, templateEndsImg=null, templateBeginsImg=null;
 var logoImg=null, photoImgs=[null,null,null,null,null], photoTransparent=[false,false,false,false,false];
 var logoPalette=[], brandOverride=null;
 var colorState={gradDir:true,photoBorder:true,bannerBorder:false,btnBorder:true,btnText:true,auctionText:true,dateText:true};
-var currentPresetName=null, configPresets=[];
+var currentPresetName=null, configPresets=[], spreadPhotoSpacing=false;
 
 // ── Gradient table ────────────────────────────────────────────────────────
 var GRADIENT_DIR=[
@@ -510,8 +515,7 @@ function generatePresetJSON(){
   var name=document.getElementById('auctioneerLabel').textContent.trim();
   if(!name||name==='No auctioneer loaded'){setStatus('Upload a logo first.',false);return;}
   var pickerColors={};COLOR_PICKER_KEYS.forEach(function(k){var el=document.getElementById('col-'+k);if(el)pickerColors[k]=el.value;});
-  var slug=name.toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'');
-  var preset={name:name,logoUrl:'logos/'+slug,colorState:Object.assign({},colorState),pickerColors:pickerColors};
+  var preset={name:name,logoUrl:'logos/'+name,colorState:Object.assign({},colorState),pickerColors:pickerColors};
   if(brandOverride)preset.brandOverrideHex=rgbToHex(brandOverride);
   document.getElementById('presetJsonText').value=JSON.stringify(preset,null,2);
   document.getElementById('presetJsonOutput').style.display='block';
@@ -519,6 +523,14 @@ function generatePresetJSON(){
   setStatus('JSON ready — paste into presets.json on GitHub.',true);
 }
 function copyPresetJSON(){var ta=document.getElementById('presetJsonText');ta.select();document.execCommand('copy');document.getElementById('copyConfirm').style.display='inline';setTimeout(function(){document.getElementById('copyConfirm').style.display='none';},2000);}
+
+function doPhotoSpacingToggle(){
+  spreadPhotoSpacing=!spreadPhotoSpacing;
+  var track=document.getElementById('tog-photoSpacing');
+  if(spreadPhotoSpacing){track.classList.add('on');document.getElementById('lbl-photoSpacing').textContent='Spread';}
+  else{track.classList.remove('on');document.getElementById('lbl-photoSpacing').textContent='Centered';}
+  renderPreview();
+}
 
 // ── Template toggle ───────────────────────────────────────────────────────
 function toggleTemplate(){
@@ -667,8 +679,12 @@ function drawBanner(canvas){
     var drawWidths=naturalWidths.map(function(w){return w*sc;});
     var totalUsedW=drawWidths.reduce(function(a,b){return a+b;},0);
     var rawGap=n>1?(z.w-totalUsedW)/(n-1):0;
-    var gap=Math.min(MAX_GAP,Math.max(MIN_GAP,rawGap));
-    var curX=z.x+Math.floor((z.w-(totalUsedW+gap*(n-1)))/2);
+    var gap=spreadPhotoSpacing
+      ? (n>1?(z.w-totalUsedW-8)/(n-1):0)
+      : Math.min(MAX_GAP,Math.max(MIN_GAP,rawGap));
+    var curX = spreadPhotoSpacing
+      ? z.x+4
+      : z.x+Math.floor((z.w-(totalUsedW+gap*(n-1)))/2);
     for(var fi=0;fi<n;fi++){
       var idx=filledIdxs[fi],photo=photoImgs[idx],isTransp=photoTransparent[idx];
       var dW=drawWidths[fi],dH=slotH,dY=z.y;
