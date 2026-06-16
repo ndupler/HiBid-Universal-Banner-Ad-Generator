@@ -247,6 +247,25 @@
         }
     },
     { 
+"name": "PutmanAuctioneersInc.",
+  "brandOverrideHex": "#ffffff",
+  "logoUrl": "logos/PutmanAuctioneersInc.",
+  "colorState": {
+    "gradDir": true,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": false,
+    "btnText": false,
+    "auctionText": false,
+    "dateText": false
+  },
+  "pickerColors": {
+    "photoBorder": "#e22c46",
+    "btnBg": "#e22c46",
+    "bannerBorder": "#e22c46"
+       }
+    },
+    { 
       "name": "Davis&BellAuctionServicesLLC",
   "brandOverrideHex": "#5489f2",
   "logoUrl": "logos/Davis&BellAuctionServicesLLC",
