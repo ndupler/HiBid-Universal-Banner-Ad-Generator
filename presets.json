@@ -77,6 +77,25 @@
       }
     },
     {
+      "name": "Coinhunters",
+  "brandOverrideHex": "#000000",
+  "logoUrl": "logos/Coinhunters",
+  "colorState": {
+    "gradDir": true,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": true,
+    "btnText": true,
+    "auctionText": true,
+    "dateText": true
+  },
+  "pickerColors": {
+    "photoBorder": "#fad107",
+    "btnBg": "#000000",
+    "bannerBorder": "#fad107"
+      }
+    },
+    {
       "name": "BillRamsey&Associates",
       "brandOverrideHex": "#cccccc",
       "logoUrl": "logos/BillRamsey&Associates,LLC",
