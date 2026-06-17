@@ -134,6 +134,25 @@
       }
     },
     {
+"name": "InternationalArtAuctionGalleryNEW",
+  "brandOverrideHex": "#ffffff",
+  "logoUrl": "logos/InternationalArtAuctionGalleryNEW",
+  "colorState": {
+    "gradDir": true,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": false,
+    "btnText": true,
+    "auctionText": false,
+    "dateText": false
+  },
+  "pickerColors": {
+    "photoBorder": "#c95e1f",
+    "btnBg": "#c95e1f",
+    "bannerBorder": "#c95e1f"
+      }
+    },
+    {
   "name": "ChuckCyderman&AssociatesLLC",
   "logoUrl": "logos/ChuckCyderman&AssociatesLLC",
   "colorState": {
