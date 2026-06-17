@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HiBid — Universal Banner Ad Generator</title>
+<title>HiBid — Banner Ad Generator V2</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -11,41 +11,30 @@
     --border: #1c3050; --border2: #243d5c;
     --accent: #4fa8cc; --accent-dim: #2a6a96; --accent-glow: rgba(79,168,204,0.15);
     --text: #e8edf2; --text-dim: #7a9ab8; --text-faint: #3d5a78;
-    --green: #2ecc71; --red: #e74c3c; --yellow: #f0c040;
+    --green: #2ecc71; --red: #e74c3c;
     --radius: 12px; --radius-sm: 7px;
   }
   body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
-
-  /* ── Header ── */
   .header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 12px 28px; display: flex; align-items: center; gap: 14px; position: sticky; top: 0; z-index: 10; backdrop-filter: blur(8px); }
   .header-logo { height: 22px; }
   .header-divider { width: 1px; height: 20px; background: var(--border2); }
   .header-title { font-size: 13px; font-weight: 700; color: var(--text); }
   .header-sub { font-size: 10px; color: var(--accent); margin-top: 1px; }
+  .header-badge { font-size: 9px; font-weight: 700; background: var(--accent); color: var(--surface); padding: 2px 7px; border-radius: 10px; margin-left: 4px; }
   .header-status { display: flex; align-items: center; gap: 7px; margin-left: auto; background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; padding: 5px 14px 5px 10px; }
   .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-dim); flex-shrink: 0; transition: all 0.3s; }
   .status-dot.green { background: var(--green); box-shadow: 0 0 6px rgba(46,204,113,0.5); }
   .status-msg { font-size: 10px; color: var(--text-dim); }
-
-  /* ── Layout ── */
   .page { padding: 20px; display: flex; flex-direction: column; gap: 16px; max-width: 1200px; margin: 0 auto; width: 100%; }
-
-  /* ── Step labels ── */
-  .step-label { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .step-label { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
   .step-num { width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: var(--surface); font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .step-title { font-size: 13px; font-weight: 700; color: var(--text); }
   .step-desc { font-size: 10px; color: var(--text-dim); margin-top: 1px; }
-
-  /* ── Cards ── */
   .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
   .card-inner { padding: 18px 20px; }
-
-  /* ── Step 1: Auctioneer ── */
-  .auctioneer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .section-heading { font-size: 10px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
   .section-heading::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-
-  /* Preset list */
+  .auctioneer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .preset-search { width: 100%; padding: 8px 11px; border-radius: var(--radius-sm); border: 1px solid var(--border2); background: var(--surface2); color: var(--text); font-size: 11px; outline: none; margin-bottom: 8px; transition: border-color 0.15s; }
   .preset-search:focus { border-color: var(--accent); }
   .preset-list { display: flex; flex-direction: column; gap: 5px; max-height: 200px; overflow-y: auto; }
@@ -59,8 +48,6 @@
   .preset-load-btn { padding: 4px 10px; border-radius: 5px; font-size: 9px; font-weight: 700; border: none; background: var(--accent); color: var(--surface); cursor: pointer; white-space: nowrap; }
   .preset-load-btn:hover { filter: brightness(1.1); }
   .preset-empty { font-size: 10px; color: var(--text-faint); padding: 12px 0; text-align: center; }
-
-  /* Logo upload */
   .upload-area { position: relative; border: 1.5px dashed var(--border2); border-radius: 10px; padding: 22px 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; cursor: pointer; transition: all 0.2s; background: var(--surface2); }
   .upload-area:hover { border-color: var(--accent); background: var(--accent-glow); }
   .upload-area input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
@@ -73,9 +60,7 @@
   .loaded-bar .lsub { font-size: 9px; color: var(--text-dim); margin-top: 1px; }
   .btn-reupload { margin-left: auto; background: transparent; border: 1px solid var(--border2); color: var(--text-dim); border-radius: 5px; padding: 4px 9px; font-size: 9px; cursor: pointer; white-space: nowrap; transition: all 0.15s; flex-shrink: 0; }
   .btn-reupload:hover { border-color: var(--accent); color: var(--accent); }
-
-  /* Brand color */
-  .brand-color-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 12px; padding: 10px 12px; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-sm); }
+  .brand-color-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 10px; padding: 10px 12px; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-sm); }
   .palette-row { display: flex; gap: 5px; align-items: center; }
   .swatch { width: 18px; height: 18px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1); }
   input[type=color] { width: 26px; height: 22px; border: 1px solid var(--border2); border-radius: 4px; cursor: pointer; padding: 1px; background: var(--surface2); }
@@ -83,8 +68,6 @@
   .hex-input:focus { border-color: var(--accent); }
   .override-badge { display: none; font-size: 9px; color: var(--accent); align-items: center; gap: 3px; margin-top: 6px; }
   .override-badge.visible { display: flex; }
-
-  /* ── Step 2: Details ── */
   .details-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; align-items: start; }
   .field { display: flex; flex-direction: column; gap: 5px; }
   .field label { font-size: 9px; color: var(--text-dim); font-weight: 700; text-transform: uppercase; letter-spacing: 0.7px; }
@@ -95,8 +78,6 @@
   .tmpl-btn { padding: 9px 16px; border-radius: var(--radius-sm); font-size: 11px; font-weight: 700; cursor: pointer; border: 1px solid var(--accent); background: rgba(79,168,204,0.12); color: var(--accent); transition: all 0.2s; text-align: left; width: 100%; }
   .tmpl-btn:hover { background: rgba(79,168,204,0.22); }
   .tmpl-btn.begins { border-color: var(--green); background: rgba(46,204,113,0.1); color: var(--green); }
-
-  /* ── Step 3: Photos ── */
   .photos-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
   .slot-wrap { display: flex; flex-direction: column; gap: 6px; }
   .drop-zone { width: 100%; aspect-ratio: 1; border: 1.5px dashed var(--border2); border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; position: relative; overflow: hidden; transition: all 0.2s; background: var(--surface2); gap: 3px; }
@@ -114,8 +95,6 @@
   .trans-btn { width: 100%; padding: 5px; border-radius: var(--radius-sm); border: 1px solid var(--border2); background: var(--surface2); color: var(--text-dim); font-size: 9px; font-weight: 700; cursor: pointer; transition: all 0.2s; text-align: center; }
   .trans-btn:hover { border-color: var(--accent-dim); color: var(--text); }
   .trans-btn.active { background: rgba(79,168,204,0.12); color: var(--accent); border-color: var(--accent); }
-
-  /* ── Step 4: Color Controls ── */
   .color-controls-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
   .cc-item { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
   .cc-label { font-size: 10px; color: var(--text-dim); font-weight: 600; }
@@ -126,14 +105,10 @@
   .toggle-track.on .toggle-thumb { transform: translateX(18px); background: var(--accent); }
   .tog-color-btn { width: 24px; height: 18px; border-radius: 4px; border: 1px solid var(--border2); cursor: pointer; padding: 1px; background: var(--surface2); display: block; }
   .tog-color-btn:hover { border-color: var(--accent); }
-
-  /* ── Preview ── */
   .preview-bg { background: repeating-conic-gradient(#111c2e 0% 25%, #0d1828 0% 50%) 0 0 / 16px 16px; border-radius: 10px; border: 1px solid var(--border); padding: 16px; display: flex; align-items: center; justify-content: center; min-height: 100px; }
   .preview-placeholder { color: var(--text-faint); font-size: 12px; }
   canvas { border-radius: 4px; display: block; max-width: 100%; height: auto; }
   .preview-actions { display: flex; gap: 10px; margin-top: 12px; }
-
-  /* ── Buttons ── */
   .btn { padding: 10px 18px; border-radius: 8px; border: none; font-size: 11px; font-weight: 700; cursor: pointer; transition: all 0.18s; display: flex; align-items: center; gap: 6px; white-space: nowrap; justify-content: center; }
   .btn:hover { filter: brightness(1.1); }
   .btn:active { transform: scale(0.97); }
@@ -148,16 +123,10 @@
   .btn-sm-accent:hover { filter: brightness(1.12); }
   .btn-sm-ghost { border: 1px solid var(--border2); background: transparent; color: var(--text-dim); }
   .btn-sm-ghost:hover { border-color: var(--accent-dim); color: var(--text); }
-
-  /* ── JSON output ── */
   .json-output { margin-top: 10px; padding: 10px 12px; background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--radius-sm); display: none; }
   .json-output textarea { width: 100%; height: 110px; background: transparent; border: none; color: var(--text); font-size: 10px; font-family: Consolas, monospace; resize: none; outline: none; }
   .json-copy-row { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
   .copy-confirm { font-size: 9px; color: var(--green); display: none; }
-
-  /* ── Divider ── */
-  .step-divider { display: flex; align-items: center; gap: 12px; color: var(--text-faint); font-size: 10px; }
-  .step-divider::before, .step-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 </style>
 </head>
 <body>
@@ -166,240 +135,163 @@
   <img src="https://i.imgur.com/o7qWsZ4.png" class="header-logo" alt="HiBid">
   <div class="header-divider"></div>
   <div style="display:flex;flex-direction:column;">
-    <div class="header-title">Universal Banner Ad Generator</div>
+    <div class="header-title">Universal Banner Ad Generator <span class="header-badge">V2</span></div>
     <div class="header-sub" id="auctioneerLabel">No auctioneer loaded</div>
   </div>
   <div class="header-status">
     <div class="status-dot" id="statusDot"></div>
-    <div class="status-msg" id="status">Loading…</div>
+    <div class="status-msg" id="status">Ready</div>
   </div>
 </div>
 
 <div class="page">
 
-  <!-- ── STEP 1 ── -->
-  <div class="card">
-    <div class="card-inner">
-      <div class="step-label">
-        <div class="step-num">1</div>
-        <div>
-          <div class="step-title">Load Auctioneer</div>
-          <div class="step-desc">Select a saved preset or upload a new logo</div>
-        </div>
-      </div>
-
-      <div class="auctioneer-grid">
-
-        <!-- Presets -->
-        <div>
-          <div class="section-heading">Saved Presets <span id="presetCount" style="color:var(--text-faint);font-weight:400;text-transform:none;letter-spacing:0;font-size:9px;"></span></div>
-          <input type="text" class="preset-search" id="presetSearch" placeholder="Search auctioneers…" oninput="renderPresetList()">
-          <div class="preset-list" id="presetList"></div>
-          <div class="json-output" id="presetJsonOutput">
-            <div style="font-size:9px;color:var(--text-dim);margin-bottom:6px;">Copy and paste this into your <strong>presets.json</strong> on GitHub:</div>
-            <textarea id="presetJsonText" readonly></textarea>
-            <div class="json-copy-row">
-              <button class="btn-sm btn-sm-accent" onclick="copyPresetJSON()">📋 Copy to Clipboard</button>
-              <span class="copy-confirm" id="copyConfirm">✓ Copied!</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Upload -->
-        <div>
-          <div class="section-heading">New Auctioneer Logo</div>
-          <div id="logoArea" class="upload-area">
-            <div class="upload-icon">↑</div>
-            <div class="upload-title">Click or drag logo here</div>
-            <div class="upload-sub">PNG recommended · filename becomes auctioneer name</div>
-            <input type="file" id="logoFile" accept="image/png,image/jpeg">
-          </div>
-          <div id="paletteDisplay" style="display:none;">
-            <div class="brand-color-row" style="margin-top:10px;">
-              <div class="palette-row" id="paletteRow"></div>
-              <span style="font-size:9px;color:var(--text-dim);margin-left:4px;margin-right:4px;">Override:</span>
-              <input type="color" id="brandColorPicker" value="#0057FF" oninput="document.getElementById('brandColorHex').value=this.value;">
-              <input type="text" id="brandColorHex" value="#0057FF" class="hex-input" oninput="var v=this.value;if(v.indexOf('#')!==0)v='#'+v;if(/^#[0-9A-Fa-f]{6}$/.test(v))document.getElementById('brandColorPicker').value=v;">
-              <button class="btn-sm btn-sm-accent" onclick="applyBrandOverride()">Apply</button>
-              <button class="btn-sm btn-sm-ghost" onclick="clearBrandOverride()">Reset</button>
-            </div>
-            <div id="overrideLabel" class="override-badge"><span style="font-size:11px;">●</span> Using brand color override</div>
-          </div>
-          <div style="margin-top:12px;">
-            <button class="btn-sm btn-sm-ghost" style="width:100%;" onclick="generatePresetJSON()">💾 Generate Preset JSON</button>
-          </div>
-        </div>
-
-      </div>
+  <div class="card"><div class="card-inner">
+    <div class="step-label">
+      <div class="step-num">1</div>
+      <div><div class="step-title">Load Auctioneer</div><div class="step-desc">Select a saved preset or upload a new logo</div></div>
     </div>
-  </div>
-
-  <!-- ── STEP 2 ── -->
-  <div class="card">
-    <div class="card-inner">
-      <div class="step-label">
-        <div class="step-num">2</div>
-        <div>
-          <div class="step-title">Auction Details</div>
-          <div class="step-desc">Enter the date, file name, and choose a template</div>
+    <div class="auctioneer-grid">
+      <div>
+        <div class="section-heading">Saved Presets <span id="presetCount" style="color:var(--text-faint);font-weight:400;text-transform:none;letter-spacing:0;font-size:9px;"></span></div>
+        <input type="text" class="preset-search" id="presetSearch" placeholder="Search auctioneers…" oninput="renderPresetList()">
+        <div class="preset-list" id="presetList"></div>
+        <div class="json-output" id="presetJsonOutput">
+          <div style="font-size:9px;color:var(--text-dim);margin-bottom:6px;">Copy and paste into <strong>presets.json</strong> on GitHub:</div>
+          <textarea id="presetJsonText" readonly></textarea>
+          <div class="json-copy-row">
+            <button class="btn-sm btn-sm-accent" onclick="copyPresetJSON()">📋 Copy to Clipboard</button>
+            <span class="copy-confirm" id="copyConfirm">✓ Copied!</span>
+          </div>
         </div>
       </div>
-      <div class="details-grid">
-        <div class="field">
-          <label>Auction Date</label>
-          <input type="text" id="auctionDate" placeholder="e.g. June 16th" oninput="renderPreview()">
+      <div>
+        <div class="section-heading">New Auctioneer Logo</div>
+        <div id="logoArea" class="upload-area">
+          <div class="upload-icon">↑</div>
+          <div class="upload-title">Click or drag logo here</div>
+          <div class="upload-sub">PNG recommended · filename becomes auctioneer name</div>
+          <input type="file" id="logoFile" accept="image/png,image/jpeg">
         </div>
-        <div class="field">
-          <label>Export File Name</label>
-          <input type="text" id="fileName" value="Banner">
+        <div id="paletteDisplay" style="display:none;">
+          <div class="brand-color-row">
+            <div class="palette-row" id="paletteRow"></div>
+            <span style="font-size:9px;color:var(--text-dim);margin:0 4px;">Override:</span>
+            <input type="color" id="brandColorPicker" value="#0057FF" oninput="document.getElementById('brandColorHex').value=this.value;">
+            <input type="text" id="brandColorHex" value="#0057FF" class="hex-input" oninput="var v=this.value;if(v.indexOf('#')!==0)v='#'+v;if(/^#[0-9A-Fa-f]{6}$/.test(v))document.getElementById('brandColorPicker').value=v;">
+            <button class="btn-sm btn-sm-accent" onclick="applyBrandOverride()">Apply</button>
+            <button class="btn-sm btn-sm-ghost" onclick="clearBrandOverride()">Reset</button>
+          </div>
+          <div id="overrideLabel" class="override-badge"><span style="font-size:11px;">●</span> Using brand color override</div>
         </div>
-        <div class="template-toggle-wrap">
-          <label>Template</label>
-          <button id="templateToggleBtn" class="tmpl-btn" onclick="toggleTemplate()">⏱ Auction Ends</button>
+        <div style="margin-top:12px;">
+          <button class="btn-sm btn-sm-ghost" style="width:100%;" onclick="generatePresetJSON()">💾 Generate Preset JSON</button>
         </div>
       </div>
     </div>
-  </div>
+  </div></div>
 
-  <!-- ── STEP 3 ── -->
-  <div class="card">
-    <div class="card-inner">
-      <div class="step-label">
-        <div class="step-num">3</div>
-        <div>
-          <div class="step-title">Auction Photos</div>
-          <div class="step-desc">Upload up to 5 photos — toggle BG or Transparent per slot</div>
-        </div>
-        <div style="margin-left:auto;display:flex;align-items:center;gap:8px;">
-          <span style="font-size:9px;color:var(--text-dim);">Photo Spacing</span>
-          <div class="toggle-track" id="tog-photoSpacing" onclick="doPhotoSpacingToggle()" title="Spread spacing between photos instead of centering"><div class="toggle-thumb"></div></div>
-          <span style="font-size:9px;color:var(--text-faint);" id="lbl-photoSpacing">Centered</span>
-        </div>
-      </div>
-      <div class="photos-grid" id="slotsGrid"></div>
+  <div class="card"><div class="card-inner">
+    <div class="step-label">
+      <div class="step-num">2</div>
+      <div><div class="step-title">Auction Details</div><div class="step-desc">Enter the date, file name, and choose a template</div></div>
     </div>
-  </div>
-
-  <!-- ── STEP 4 ── -->
-  <div class="card">
-    <div class="card-inner">
-      <div class="step-label">
-        <div class="step-num">4</div>
-        <div>
-          <div class="step-title">Color Controls</div>
-          <div class="step-desc">Fine-tune colors, borders, and text</div>
-        </div>
-      </div>
-      <div class="color-controls-grid">
-        <div class="cc-item">
-          <span class="cc-label">Gradient Direction</span>
-          <div class="cc-right">
-            <span style="font-size:9px;color:var(--text-faint);" id="lbl-gradDir">L→R</span>
-            <div class="toggle-track on" id="tog-gradDir" onclick="doToggle('gradDir')"><div class="toggle-thumb"></div></div>
-          </div>
-        </div>
-        <div class="cc-item">
-          <span class="cc-label">Photo Borders</span>
-          <div class="cc-right">
-            <input type="color" class="tog-color-btn" id="col-photoBorder" value="#FFFFFF" oninput="renderPreview()">
-            <div class="toggle-track on" id="tog-photoBorder" onclick="doToggle('photoBorder')"><div class="toggle-thumb"></div></div>
-          </div>
-        </div>
-        <div class="cc-item">
-          <span class="cc-label">Banner Border</span>
-          <div class="cc-right">
-            <input type="color" class="tog-color-btn" id="col-bannerBorder" value="#FFFFFF" oninput="renderPreview()" style="opacity:0.35;pointer-events:none;">
-            <div class="toggle-track" id="tog-bannerBorder" onclick="doToggle('bannerBorder')"><div class="toggle-thumb"></div></div>
-          </div>
-        </div>
-        <div class="cc-item">
-          <span class="cc-label">Bid Now BG</span>
-          <div class="cc-right">
-            <input type="color" class="tog-color-btn" id="col-btnBg" value="#000000" oninput="renderPreview()">
-          </div>
-        </div>
-        <div class="cc-item">
-          <span class="cc-label">Bid Now Border</span>
-          <div class="cc-right">
-            <div class="toggle-track on" id="tog-btnBorder" onclick="doToggle('btnBorder')"><div class="toggle-thumb"></div></div>
-          </div>
-        </div>
-        <div class="cc-item">
-          <span class="cc-label">Bid Now Text</span>
-          <div class="cc-right">
-            <div class="toggle-track on" id="tog-btnText" onclick="doToggle('btnText')"><div class="toggle-thumb"></div></div>
-          </div>
-        </div>
-        <div class="cc-item">
-          <span class="cc-label">Auction Text</span>
-          <div class="cc-right">
-            <div class="toggle-track on" id="tog-auctionText" onclick="doToggle('auctionText')"><div class="toggle-thumb"></div></div>
-          </div>
-        </div>
-        <div class="cc-item">
-          <span class="cc-label">Date Text</span>
-          <div class="cc-right">
-            <div class="toggle-track on" id="tog-dateText" onclick="doToggle('dateText')"><div class="toggle-thumb"></div></div>
-          </div>
-        </div>
+    <div class="details-grid">
+      <div class="field"><label>Auction Date</label><input type="text" id="auctionDate" placeholder="e.g. June 16th" oninput="renderPreview()"></div>
+      <div class="field"><label>Export File Name</label><input type="text" id="fileName" value="Banner"></div>
+      <div class="template-toggle-wrap">
+        <label>Template</label>
+        <button id="templateToggleBtn" class="tmpl-btn" onclick="toggleTemplate()">⏱ Auction Ends</button>
       </div>
     </div>
-  </div>
+  </div></div>
 
-  <!-- ── STEP 5: Preview & Export ── -->
-  <div class="card">
-    <div class="card-inner">
-      <div class="step-label">
-        <div class="step-num">5</div>
-        <div>
-          <div class="step-title">Preview & Export</div>
-          <div class="step-desc">Review your banner and export in desktop or mobile size</div>
-        </div>
-        <div style="margin-left:auto;display:flex;gap:8px;">
-          <button class="btn btn-ghost" onclick="renderPreview()">↻ Refresh</button>
-          <button class="btn btn-danger" onclick="resetAll()">✕ Reset All</button>
-        </div>
-      </div>
-      <div class="preview-bg">
-        <div id="previewPlaceholder" class="preview-placeholder">Complete steps 1–3 to see your banner preview</div>
-        <canvas id="previewCanvas" style="display:none;width:100%;"></canvas>
-      </div>
-      <div class="preview-actions">
-        <button class="btn btn-primary" onclick="exportBanner(1078,120,'Desktop')">↓ Export Desktop (1078×120)</button>
-        <button class="btn btn-secondary" onclick="exportBanner(468,60,'Mobile')">↓ Export Mobile (468×60)</button>
+  <div class="card"><div class="card-inner">
+    <div class="step-label">
+      <div class="step-num">3</div>
+      <div><div class="step-title">Auction Photos</div><div class="step-desc">Upload up to 5 photos — toggle BG or Transparent per slot</div></div>
+      <div style="margin-left:auto;display:flex;align-items:center;gap:8px;">
+        <span style="font-size:9px;color:var(--text-dim);">Photo Spacing</span>
+        <div class="toggle-track" id="tog-photoSpacing" onclick="doPhotoSpacingToggle()"><div class="toggle-thumb"></div></div>
+        <span style="font-size:9px;color:var(--text-faint);" id="lbl-photoSpacing">Centered</span>
       </div>
     </div>
-  </div>
+    <div class="photos-grid" id="slotsGrid"></div>
+  </div></div>
+
+  <div class="card"><div class="card-inner">
+    <div class="step-label">
+      <div class="step-num">4</div>
+      <div><div class="step-title">Color Controls</div><div class="step-desc">Fine-tune colors, borders, and text</div></div>
+    </div>
+    <div class="color-controls-grid">
+      <div class="cc-item"><span class="cc-label">Gradient Direction</span><div class="cc-right"><span style="font-size:9px;color:var(--text-faint);" id="lbl-gradDir">L→R</span><div class="toggle-track on" id="tog-gradDir" onclick="doToggle('gradDir')"><div class="toggle-thumb"></div></div></div></div>
+      <div class="cc-item"><span class="cc-label">Photo Borders</span><div class="cc-right"><input type="color" class="tog-color-btn" id="col-photoBorder" value="#FFFFFF" oninput="renderPreview()"><div class="toggle-track on" id="tog-photoBorder" onclick="doToggle('photoBorder')"><div class="toggle-thumb"></div></div></div></div>
+      <div class="cc-item"><span class="cc-label">Banner Border</span><div class="cc-right"><input type="color" class="tog-color-btn" id="col-bannerBorder" value="#FFFFFF" oninput="renderPreview()" style="opacity:0.35;pointer-events:none;"><div class="toggle-track" id="tog-bannerBorder" onclick="doToggle('bannerBorder')"><div class="toggle-thumb"></div></div></div></div>
+      <div class="cc-item"><span class="cc-label">Bid Now BG</span><div class="cc-right"><input type="color" class="tog-color-btn" id="col-btnBg" value="#000000" oninput="renderPreview()"></div></div>
+      <div class="cc-item"><span class="cc-label">Bid Now Border</span><div class="cc-right"><div class="toggle-track on" id="tog-btnBorder" onclick="doToggle('btnBorder')"><div class="toggle-thumb"></div></div></div></div>
+      <div class="cc-item"><span class="cc-label">Bid Now Text</span><div class="cc-right"><div class="toggle-track on" id="tog-btnText" onclick="doToggle('btnText')"><div class="toggle-thumb"></div></div></div></div>
+      <div class="cc-item"><span class="cc-label">Auction Text</span><div class="cc-right"><div class="toggle-track on" id="tog-auctionText" onclick="doToggle('auctionText')"><div class="toggle-thumb"></div></div></div></div>
+      <div class="cc-item"><span class="cc-label">Date Text</span><div class="cc-right"><div class="toggle-track on" id="tog-dateText" onclick="doToggle('dateText')"><div class="toggle-thumb"></div></div></div></div>
+    </div>
+  </div></div>
+
+  <div class="card"><div class="card-inner">
+    <div class="step-label">
+      <div class="step-num">5</div>
+      <div><div class="step-title">Preview & Export</div><div class="step-desc">Review your banner and export in desktop or mobile size</div></div>
+      <div style="margin-left:auto;display:flex;gap:8px;">
+        <button class="btn btn-ghost" onclick="renderPreview()">↻ Refresh</button>
+        <button class="btn btn-danger" onclick="resetAll()">✕ Reset All</button>
+      </div>
+    </div>
+    <div class="preview-bg">
+      <div id="previewPlaceholder" class="preview-placeholder">Complete steps 1–3 to see your banner preview</div>
+      <canvas id="previewCanvas" style="display:none;width:100%;"></canvas>
+    </div>
+    <div class="preview-actions">
+      <button class="btn btn-primary" onclick="exportBanner(1078,120,'Desktop')">↓ Export Desktop (1078×120)</button>
+      <button class="btn btn-secondary" onclick="exportBanner(468,60,'Mobile')">↓ Export Mobile (468×60)</button>
+    </div>
+  </div></div>
 
 </div>
-
 <canvas id="exportCanvas" style="display:none;"></canvas>
 
 <script>
-// ── Zones ──────────────────────────────────────────────────────────────────
-var LOGO_ZONE   = {x:5,   y:8,   w:260, h:104};
-var PHOTO_ZONE  = {x:258, y:7,   w:629, h:106};
-var BTN_ZONE    = {x:905, y:67,  w:160, h:40};
-var DATE_ZONE   = {x:913, y:38,  w:144, h:23};
-var ENDS_ZONE   = {x:903, y:12,  w:162, h:20};
-var BEGINS_ZONE = {x:903, y:13,  w:165, h:19};
-var MIN_GAP=6, MAX_GAP=20;
-var TOGGLE_KEYS=['gradDir','photoBorder','bannerBorder','btnBorder','btnText','auctionText','dateText'];
-var COLOR_PICKER_KEYS=['photoBorder','btnBg','bannerBorder'];
+// ── Constants ──────────────────────────────────────────────────────────────
+var BANNER_W      = 1078;
+var BANNER_H      = 120;
+var PAD           = 8;
+var LOGO_MAX_H    = 96;
+var LOGO_MAX_W    = 260;
+var RIGHT_COL_W   = 175;
+var RIGHT_PAD     = 6;
+var BTN_H         = 40;
+var BTN_R         = 10;
+var AUCTION_H     = 20;
+var DATE_H        = 23;
+var STACK_GAP     = 4;
+var PHOTO_MIN_G   = 6;
+var PHOTO_MAX_G   = 20;
 
-// ── Templates ─────────────────────────────────────────────────────────────
-var TEMPLATE_ENDS_SRC   = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABDYAAAB4CAIAAACGrOUUAAAACXBIWXMAAC4jAAAuIwF4pT92AAAEgElEQVR4nO3dMW7bMACGUbPIGqBrl9ylJ89dunQtkAOwQ6ciqUuJpPjTeW9LIIu0k0EfKIu3GwAAAAAAAAAAAAAAAAAAAAAAAHBe6XgtPIK6egIA8KhcaHLOl5OvAwAAmECiAAAAQSQKAAAQRKIAAABBJAoAABDkqfG4t18/J88Exnj++m31FACAw368fV89BaZ7eX5tOcwqCgAAEESiAAAAQSQKAAAQRKIAAABBJAoAABBEogAAAEEkCgAAEESiAAAAQSQKAAAQRKIAAABBJAoAABBEogAAAEEkCgAAEESiAAAAQSQKAAAQRKIAAABBJAoAABBEogAAAEEkCgAAEORp9QQAAOD28vy6egqksIoCAAAEkSgAAEAQiQIAAASRKAAAQBCJAgAABPFELwAA8tXVE+CQcutgFQUAAAgiUQAAgCASBQAACCJRAACAIBIFAAAIIlEAAIAgEgUAAAgiUQAAgCASBQAACCJRAACAIBIFAAAIIlEAAIAgEgUAAAgiUQAAgCASBQAACCJRAACAIBIFAAAIIlEAAIAgEgUAAAgiUQAAgCASBQAACCJRAACAIE+rJwAAAP9VVk+A61hFAQAAgkgUAAAgiEQBAACCSBQAACCIRAEAAIJ4ohcAADHq6gkQ8GA2qygAAEAQiQIAAASRKAAAQBCJAgAABJEoAABAEIkCAAAEkSgAAEAQ+6IAAPAQ+2nUIyepp0bp3LalNJ+tHBy0dH8g7fO5c2T7Ce+yigIAwCfaFrB3iIGjlMlTKgeHuOADbCNRAAB4FNdcZI8NlR6l75jGVY5zb7ZjxcmNXgAAbKXevYAu3bdjtYwyaqCek5TmCY/6TK5iFQUAgJ3VS66/rxmlXfn7x3o8sQaOPnoIiQIAAG1mXPf3n6S2/b7lK/UZN7BJFAAAaDZjLeVoGJTm+Qy5Fe2EvnElCgAAnHV62WHJbWOl47UXTliiAACwuaO7iGy9kFIOzqTOeTvvn1IwjkQBAGBnF/fJQJmzLd0T7n5fHjoMAMBWzu2kni/w0cBlzbBWUQAA2F/OdoqHhDxQq546YNpsJQoAAI9i01DZSL3iXjs3egEAsJX3F8FbZ0nN2wm+LJ6DVRQAADa38HapIZfyy5vklhV+EgUAgP1deZU/+9q9DD2y/y6s+u8fy5S/gkQBAIDV6lZLLpNJFAAACNiGZcgWitdvGjNhTUmiAACwv2u+OFG2+u5N6ThtuRs27b88RaIAALC5Od+IWDDK6du9yqLPZA4PHQYAYCv3FwfqVqN8eOZy6sg7r9qqT6yiAADwQC64Fq9JV/x10DHnDh7ywo9YRQEAYHPXNMNlZVKPfI3kz6zKnAnXQZM8SKIAABDvmh0S67ZPFq6H5zLgVNM+Ljd6AQAAQSQKAAAQRKIAAABBJAoAABBEogAAAEEkCgAAEESiAAAAQSQKAAAQxNaNAADEmLZhORvxX8BnN3sbWQD4tFxoco4bvQAAgCASBQAACCJRAACAIBIFAAAIIlEAAAAAAAAAAAAAAAAAAAAAAAAAAADg9hh+A89OdNJ4zIyiAAAAAElFTkSuQmCC';
-var TEMPLATE_BEGINS_SRC = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABDYAAAB4CAIAAACGrOUUAAAACXBIWXMAAC4jAAAuIwF4pT92AAAEgElEQVR4nO3dPW7bMACGYbPIGqBrl9ylJ89dunQtkAOwQ6ciqSuJfx+d59mSyCLtdtALyuLtBgAAAAAAAAAAAAAAAAAAAAAAAFxXGl4Lj6CungAAPCoXmlzz5eLrAAAABpAoAABAEIkCAAAEkSgAAEAQiQIAAAR5Onjc26+fg2cCfTx//bZ6CgAAjE8UAAAY58fb99VTYJ6X59c7f3WjFwAAEESiAAAAQSQKAAAQRKIAAABBJAoAABBEogAAAEEkCgAAEESiAAAAQSQKAAAQRKIAAABBJAoAABBEogAAAEEkCgAAEESiAAAAQSQKAAAQRKIAAABBJAoAABBEogAAAEGeVk8AAABuL8+vq6dACqsoAABAEIkCAAAEkSgAAEAQiQIAAASRKAAAQBBP9AIAIF9dPQFOKbcGVlEAAIAgEgUAAAgiUQAAgCASBQAACCJRAACAIBIFAAAIIlEAAIAgEgUAAAgiUQAAgCASBQAACCJRAACAIBIFAAAIIlEAAIAgEgUAAAgiUQAAgCASBQAACCJRAACAIBIFAAAIIlEAAIAgEgUAAAgiUQAAgCASBQAACPK0egIAAPBfZfUEmMcqCgAAEESiAAAAQSQKAAAQRKIAAABBJAoAABDEE70AAIhRV0+AgAezWUUBAACCSBQAACCIRAEAAIJIFAAAIIhEAQAAgkgUAAAgiEQBAACC2BcFAICH2E+jnjlJvTRK47Yt5fDZyslBS/MHcnw+d448fsK7rKIAAPCJtgVsHaLjKGXwlMrJISZ8gMdIFAAAHsWci+y+odKitB1zcJXj2pttWHFyoxcAAFupdy+gS/PtWEdG6TVQy0nK4Qn3+kxmsYoCAMDO6pTr7zmjHFf+/rGeT6yOo/ceQqIAAMAxI677209Sj/3+yFfqM25gkygAAHDYiLWUs2FQDs+ny61oF7SNK1EAAOCqy8sOS24bKw2vnThhiQIAwObO7iKy9UJKOTmTOubtvH9KQT8SBQCAnU3uk44yZ1uaJ9z8vjx0GACArVzbST1f4KOBy5phraIAALC/nO0UTwl5oFa9dMCw2UoUAAAexaahspE64147N3oBALCV9xfBW2dJzdsJviyeg1UUAAA2t/B2qS6X8sub5JYVfhIFAID9zbzKH33tXroe2X4XVv33j2XIv4JEAQCA1epWSy6DSRQAAAjYhqXLForzN40ZsKYkUQAA2N+cL06Urb57UxpOW+6GzfFfXiJRAADY3JhvRCwY5fLtXmXRZzKGhw4DALCV+4sDdatRPjxzuXTknVdt1SdWUQAAeCATrsVr0hV/7XTMtYO7vPAjVlEAANjcnGaYVib1zNdI/syqjJlw7TTJkyQKAADx5uyQWLd9snA9PZcOpxr2cbnRCwAACCJRAACAIBIFAAAIIlEAAIAgEgUAAAgiUQAAgCASBQAACCJRAACAILZuBAAgxrANy9mI/wV8dqO3kQWAT8uFJte40QsAAAgiUQAAgCASBQAACCJRAACAIBIFAAAAAAAAAAAAAAAAAAAAAAAAAAAAbo/hN2zBdNQ87rQ3AAAAAElFTkSuQmCC';
+var TOGGLE_KEYS       = ['gradDir','photoBorder','bannerBorder','btnBorder','btnText','auctionText','dateText'];
+var COLOR_PICKER_KEYS = ['photoBorder','btnBg','bannerBorder'];
 
-// ── State ─────────────────────────────────────────────────────────────────
-var useEnds=true, templateEndsImg=null, templateBeginsImg=null;
-var logoImg=null, photoImgs=[null,null,null,null,null], photoTransparent=[false,false,false,false,false];
-var logoPalette=[], brandOverride=null;
-var colorState={gradDir:true,photoBorder:true,bannerBorder:false,btnBorder:true,btnText:true,auctionText:true,dateText:true};
-var currentPresetName=null, configPresets=[], spreadPhotoSpacing=false;
+// ── State ──────────────────────────────────────────────────────────────────
+var logoImg          = null;
+var photoImgs        = [null,null,null,null,null];
+var photoTransparent = [false,false,false,false,false];
+var logoPalette      = [];
+var brandOverride    = null;
+var useEnds          = true;
+var spreadSpacing    = false;
+var currentPreset    = null;
+var configPresets    = [];
+var colorState       = {gradDir:true,photoBorder:true,bannerBorder:false,btnBorder:true,btnText:true,auctionText:true,dateText:true};
 
-// ── Gradient table ────────────────────────────────────────────────────────
-var GRADIENT_DIR=[
+// ── Gradient table ─────────────────────────────────────────────────────────
+var GRADIENTS = [
   {from:'#FF0000',stops:['#FF0000','#DC143C','#800000','#4A0000']},
   {from:'#FFA500',stops:['#FFA500','#CC5500','#A0522D','#6B3A2A']},
   {from:'#FFFF00',stops:['#FFFF00','#FFBF00','#FFD700','#C8A800']},
@@ -432,159 +324,445 @@ var GRADIENT_DIR=[
   {from:'#D2B48C',stops:['#D2B48C','#DEB887','#FFE4B5','#FFE4C4']}
 ];
 
-// ── Helpers ───────────────────────────────────────────────────────────────
+// ── Helpers ────────────────────────────────────────────────────────────────
 function hexToRgb(h){return[parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)];}
-function rgbToHex(rgb){return'#'+rgb.map(function(v){return v.toString(16).padStart(2,'0');}).join('');}
-function colorDist(a,b){return Math.sqrt(Math.pow(a[0]-b[0],2)+Math.pow(a[1]-b[1],2)+Math.pow(a[2]-b[2],2));}
-function matchGradient(rgb){var best=GRADIENT_DIR[0],bd=Infinity;for(var i=0;i<GRADIENT_DIR.length;i++){var d=colorDist(rgb,hexToRgb(GRADIENT_DIR[i].from));if(d<bd){bd=d;best=GRADIENT_DIR[i];}}return best.stops.map(hexToRgb);}
-function extractPalette(img){var c=document.createElement('canvas'),scale=Math.min(1,100/Math.max(img.width,img.height));c.width=Math.round(img.width*scale);c.height=Math.round(img.height*scale);var ctx=c.getContext('2d');ctx.drawImage(img,0,0,c.width,c.height);var data=ctx.getImageData(0,0,c.width,c.height).data,buckets={};for(var i=0;i<data.length;i+=4){var r=data[i],g=data[i+1],b=data[i+2],a=data[i+3];if(a<30)continue;var br=(r+g+b)/3,sat=Math.max(r,g,b)-Math.min(r,g,b);if(br>230||br<20||sat<25)continue;if(r>200&&g<60&&b<60)continue;if(g>200&&r<60&&b<60)continue;var qr=Math.round(r/32)*32,qg=Math.round(g/32)*32,qb=Math.round(b/32)*32;var key=qr+','+qg+','+qb;buckets[key]=(buckets[key]||0)+1;}var keys=Object.keys(buckets).sort(function(a,b){return buckets[b]-buckets[a];});return keys.length===0?[[30,80,130]]:keys.slice(0,5).map(function(k){return k.split(',').map(Number);});}
-function trimImage(img,cb){var c=document.createElement('canvas');c.width=img.width;c.height=img.height;var ctx=c.getContext('2d');ctx.drawImage(img,0,0);var data=ctx.getImageData(0,0,c.width,c.height).data,W=c.width,H=c.height;var minX=W,maxX=0,minY=H,maxY=0;for(var y=0;y<H;y++){for(var x=0;x<W;x++){var idx=(y*W+x)*4,a=data[idx+3];if(a<30)continue;if(x<minX)minX=x;if(x>maxX)maxX=x;if(y<minY)minY=y;if(y>maxY)maxY=y;}}if(minX>maxX||minY>maxY){cb(img);return;}var tw=maxX-minX+1,th=maxY-minY+1;var out=document.createElement('canvas');out.width=tw;out.height=th;out.getContext('2d').drawImage(c,minX,minY,tw,th,0,0,tw,th);var trimmed=new Image();trimmed.onload=function(){cb(trimmed);};trimmed.src=out.toDataURL();}
-function getActivePalette(){return brandOverride?[brandOverride]:logoPalette;}
-function updatePaletteSwatches(rgb){var matched=matchGradient(rgb);document.getElementById('paletteRow').innerHTML='<div class="swatch" style="background:rgb('+matched[0]+');"></div><span style="font-size:9px;color:var(--text-faint);">→</span><div class="swatch" style="background:rgb('+matched[matched.length-1]+');"></div>';}
-function setStatus(msg,green){document.getElementById('status').textContent=msg;document.getElementById('statusDot').classList.toggle('green',!!green);}
-function loadImageFile(file,cb){var r=new FileReader();r.onload=function(e){var img=new Image();img.onload=function(){cb(img);};img.src=e.target.result;};r.readAsDataURL(file);}
-function loadImageSrc(src,cb){var img=new Image();img.crossOrigin='anonymous';img.onload=function(){cb(img);};img.src=src;}
+function rgbToHex(r){return'#'+r.map(function(v){return v.toString(16).padStart(2,'0');}).join('');}
+function colorDist(a,b){return Math.sqrt((a[0]-b[0])*(a[0]-b[0])+(a[1]-b[1])*(a[1]-b[1])+(a[2]-b[2])*(a[2]-b[2]));}
+function matchGradient(rgb){var best=GRADIENTS[0],bd=1e9;for(var i=0;i<GRADIENTS.length;i++){var d=colorDist(rgb,hexToRgb(GRADIENTS[i].from));if(d<bd){bd=d;best=GRADIENTS[i];}}return best.stops.map(hexToRgb);}
 function makeGrad(ctx,gc,W){var g=ctx.createLinearGradient(0,0,W,0);for(var i=0;i<gc.length;i++){var c=gc[i];g.addColorStop(i/(gc.length-1),'rgb('+c[0]+','+c[1]+','+c[2]+')');}return g;}
 function roundRect(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();}
 function getColor(key){if(!colorState[key])return'#000000';var el=document.getElementById('col-'+key);return el?el.value:'#FFFFFF';}
-function updateTogglePickerState(key){var el=document.getElementById('col-'+key);if(!el)return;var on=colorState[key];el.style.opacity=on?'1':'0.35';el.style.pointerEvents=on?'auto':'none';}
-function showLoadedBar(areaId,name,sub,accept,reloadCb){var area=document.getElementById(areaId);area.innerHTML='<div class="loaded-bar"><span class="check">✓</span><div><div class="lname">'+name+'</div><div class="lsub">'+sub+'</div></div><label style="cursor:pointer;"><span class="btn-reupload">Replace</span><input type="file" accept="'+accept+'" style="display:none;"></label></div>';area.querySelector('input[type=file]').addEventListener('change',function(){if(this.files[0])reloadCb(this.files[0]);});}
-function currentTemplateImg(){return useEnds?templateEndsImg:templateBeginsImg;}
+function setStatus(msg,green){document.getElementById('status').textContent=msg;document.getElementById('statusDot').classList.toggle('green',!!green);}
+function updateTogglePickerState(key){var el=document.getElementById('col-'+key);if(!el)return;el.style.opacity=colorState[key]?'1':'0.35';el.style.pointerEvents=colorState[key]?'auto':'none';}
+function getActivePalette(){return brandOverride?[brandOverride]:logoPalette;}
+function updatePaletteSwatches(rgb){var m=matchGradient(rgb);document.getElementById('paletteRow').innerHTML='<div class="swatch" style="background:rgb('+m[0]+');"></div><span style="font-size:9px;color:var(--text-faint);">→</span><div class="swatch" style="background:rgb('+m[m.length-1]+');"></div>';}
+function loadImageFile(file,cb){var r=new FileReader();r.onload=function(e){var img=new Image();img.onload=function(){cb(img);};img.src=e.target.result;};r.readAsDataURL(file);}
+function loadImageSrc(src,cb){var img=new Image();img.crossOrigin='anonymous';img.onload=function(){cb(img);};img.src=src;}
+function extractPalette(img){var c=document.createElement('canvas'),sc=Math.min(1,100/Math.max(img.width,img.height));c.width=Math.round(img.width*sc);c.height=Math.round(img.height*sc);var ctx=c.getContext('2d');ctx.drawImage(img,0,0,c.width,c.height);var data=ctx.getImageData(0,0,c.width,c.height).data,buckets={};for(var i=0;i<data.length;i+=4){var r=data[i],g=data[i+1],b=data[i+2],a=data[i+3];if(a<30)continue;var br=(r+g+b)/3,sat=Math.max(r,g,b)-Math.min(r,g,b);if(br>230||br<20||sat<25)continue;if(r>200&&g<60&&b<60)continue;if(g>200&&r<60&&b<60)continue;var qr=Math.round(r/32)*32,qg=Math.round(g/32)*32,qb=Math.round(b/32)*32;var key=qr+','+qg+','+qb;buckets[key]=(buckets[key]||0)+1;}var keys=Object.keys(buckets).sort(function(a,b){return buckets[b]-buckets[a];});return keys.length===0?[[30,80,130]]:keys.slice(0,5).map(function(k){return k.split(',').map(Number);});}
+function trimImage(img,cb){var c=document.createElement('canvas');c.width=img.width;c.height=img.height;var ctx=c.getContext('2d');ctx.drawImage(img,0,0);var data=ctx.getImageData(0,0,c.width,c.height).data,W=c.width,H=c.height,minX=W,maxX=0,minY=H,maxY=0;for(var y=0;y<H;y++){for(var x=0;x<W;x++){var idx=(y*W+x)*4;if(data[idx+3]<30)continue;if(x<minX)minX=x;if(x>maxX)maxX=x;if(y<minY)minY=y;if(y>maxY)maxY=y;}}if(minX>maxX||minY>maxY){cb(img);return;}var tw=maxX-minX+1,th=maxY-minY+1,out=document.createElement('canvas');out.width=tw;out.height=th;out.getContext('2d').drawImage(c,minX,minY,tw,th,0,0,tw,th);var t=new Image();t.onload=function(){cb(t);};t.src=out.toDataURL();}
+function showLoadedBar(areaId,name,sub,accept,cb){var area=document.getElementById(areaId);area.innerHTML='<div class="loaded-bar"><span class="check">✓</span><div><div class="lname">'+name+'</div><div class="lsub">'+sub+'</div></div><label style="cursor:pointer;"><span class="btn-reupload">Replace</span><input type="file" accept="'+accept+'" style="display:none;"></label></div>';area.querySelector('input[type=file]').addEventListener('change',function(){if(this.files[0])cb(this.files[0]);});}
 
-// ── Config loader ─────────────────────────────────────────────────────────
-async function loadConfig(){
-  try{
-    var res=await fetch('presets.json');
-    if(!res.ok)throw new Error();
-    var data=await res.json();
-    configPresets=data.presets||[];
-    document.getElementById('presetCount').textContent='('+configPresets.length+')';
-    renderPresetList();
-  }catch(e){
-    document.getElementById('presetCount').textContent='';
-    renderPresetList();
+// ── Draw ───────────────────────────────────────────────────────────────────
+function drawBanner(canvas, W, H) {
+  if(!logoImg) return false;
+
+  canvas.width  = W;
+  canvas.height = H;
+  var ctx = canvas.getContext('2d');
+  var sc  = Math.min(W / BANNER_W, H / BANNER_H);
+
+  // Scaled layout values
+  var pad      = Math.round(PAD * sc);
+  var lMaxH    = Math.round(LOGO_MAX_H * sc);
+  var lMaxW    = Math.round(LOGO_MAX_W * sc);
+  var rcW      = Math.round(RIGHT_COL_W * sc);
+  var rcPad    = Math.round(RIGHT_PAD * sc);
+  var btnH     = Math.round(BTN_H * sc);
+  var btnR     = Math.round(BTN_R * sc);
+  var aH       = Math.round(AUCTION_H * sc);
+  var dH       = Math.round(DATE_H * sc);
+  var sGap     = Math.round(STACK_GAP * sc);
+  var minG     = Math.round(PHOTO_MIN_G * sc);
+  var maxG     = Math.round(PHOTO_MAX_G * sc);
+
+  // Gradient
+  var gc = matchGradient(getActivePalette()[0]);
+  if(!colorState.gradDir) gc = gc.slice().reverse();
+  var gFrom = gc[0];
+  ctx.fillStyle = makeGrad(ctx, gc, W);
+  ctx.fillRect(0, 0, W, H);
+
+  // Logo dimensions
+  var lsc = Math.min(lMaxW / logoImg.width, lMaxH / logoImg.height, 1);
+  var lw  = Math.round(logoImg.width  * lsc);
+  var lh  = Math.round(logoImg.height * lsc);
+
+  // Photo zone bounds (using fixed anchors first)
+  var pzX = pad + lw + pad * 2;
+  var pzW = (W - pad - rcW) - pad - pzX;
+  var pzY = pad;
+  var pH  = H - pad * 2;
+
+  // Collect filled photos
+  var filled = [];
+  for(var i = 0; i < 5; i++) { if(photoImgs[i]) filled.push(i); }
+  var nPhotos = filled.length;
+
+  // Photo layout calculation
+  var photoStartX   = pzX + Math.round(pzW / 2); // fallback: center of photo zone
+  var photoEndX     = pzX + Math.round(pzW / 2); // fallback
+  var photoGap      = minG;
+  var photoWidths   = [];
+  var photoSlotH    = pH;
+
+  if(nPhotos > 0) {
+    var natW = [];
+    for(var pi = 0; pi < nPhotos; pi++) {
+      var p = photoImgs[filled[pi]];
+      natW.push((p.width / p.height) * photoSlotH);
+    }
+    var totNat  = natW.reduce(function(a,b){return a+b;}, 0);
+    var maxUsed = pzW - minG * (nPhotos - 1);
+    var scW     = totNat > maxUsed ? maxUsed / totNat : 1;
+    for(var pi = 0; pi < nPhotos; pi++) {
+      photoWidths.push(natW[pi] * scW);
+    }
+    var totUsed = photoWidths.reduce(function(a,b){return a+b;}, 0);
+
+    if(spreadSpacing) {
+      photoGap = nPhotos > 1 ? Math.min((pzW - totUsed - pad*2) / (nPhotos-1) / 2, maxG*2) : 0;
+    } else {
+      var rg = nPhotos > 1 ? (pzW - totUsed) / (nPhotos-1) : 0;
+      photoGap = Math.min(maxG, Math.max(minG, rg));
+    }
+
+    photoStartX = pzX + Math.round((pzW - (totUsed + photoGap*(nPhotos-1))) / 2);
+    photoEndX   = photoStartX + totUsed + photoGap * (nPhotos - 1);
+  }
+
+  // Logo: center between left edge and first photo
+  var lx = Math.round((photoStartX - lw) / 2);
+  if(lx < pad) lx = pad;
+  var ly = Math.round((H - lh) / 2);
+  ctx.drawImage(logoImg, lx, ly, lw, lh);
+
+  // Right col: center between last photo and right edge
+  var rightSpace = W - photoEndX;
+  var rcX = photoEndX + Math.round((rightSpace - rcW) / 2);
+  if(rcX + rcW > W - pad) rcX = W - pad - rcW;
+  if(rcX < photoEndX + pad) rcX = photoEndX + pad;
+
+  // Right column stack (centered vertically)
+  var totalStackH = aH + sGap + dH + sGap + btnH;
+  var stackY      = Math.round((H - totalStackH) / 2);
+
+  // Auction ends/begins
+  var ezText = useEnds ? 'AUCTION ENDS' : 'AUCTION BEGINS';
+  ctx.fillStyle = makeGrad(ctx, gc, W);
+  ctx.fillRect(rcX, stackY, rcW, aH);
+  var ezFs = aH;
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  do { ezFs--; ctx.font = 'bold ' + ezFs + 'px Candara,Calibri,serif'; }
+  while(ctx.measureText(ezText).width > rcW - rcPad*2 && ezFs > 4);
+  ctx.fillStyle   = getColor('auctionText');
+  ctx.strokeStyle = getColor('auctionText');
+  ctx.lineWidth   = 0.75; ctx.lineJoin = 'round';
+  ctx.strokeText(ezText, rcX + rcW/2, stackY + aH/2);
+  ctx.fillText(ezText,   rcX + rcW/2, stackY + aH/2);
+
+  // Date
+  var dateY = stackY + aH + sGap;
+  ctx.fillStyle = makeGrad(ctx, gc, W);
+  ctx.fillRect(rcX, dateY, rcW, dH);
+  var dateStr = document.getElementById('auctionDate').value.trim();
+  if(dateStr) {
+    var dfs = dH;
+    do { dfs--; ctx.font = 'bold ' + dfs + 'px Candara,Calibri,serif'; }
+    while(ctx.measureText(dateStr).width > rcW - rcPad*2 && dfs > 4);
+    ctx.fillStyle = getColor('dateText');
+    ctx.fillText(dateStr, rcX + rcW/2, dateY + dH/2);
+  }
+
+  // Bid Now
+  var btnY = dateY + dH + sGap;
+  roundRect(ctx, rcX, btnY, rcW, btnH, btnR);
+  var btnBgEl  = document.getElementById('col-btnBg');
+  var btnBgVal = btnBgEl ? btnBgEl.value : '#000000';
+  ctx.fillStyle = (btnBgVal && btnBgVal !== '#000000') ? btnBgVal : 'rgb('+gFrom[0]+','+gFrom[1]+','+gFrom[2]+')';
+  ctx.fill();
+  ctx.save(); ctx.clip();
+  var bfs = btnH;
+  do { bfs--; ctx.font = 'bold ' + bfs + 'px Candara,Calibri,serif'; }
+  while(ctx.measureText('BID NOW').width > rcW - rcPad*2 && bfs > 4);
+  ctx.fillStyle = getColor('btnText'); ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.strokeStyle = getColor('btnText'); ctx.lineWidth = 0.75; ctx.lineJoin = 'round';
+  ctx.strokeText('BID NOW', rcX + rcW/2, btnY + btnH/2 + Math.round(3*sc));
+  ctx.fillText('BID NOW',   rcX + rcW/2, btnY + btnH/2 + Math.round(3*sc));
+  ctx.restore();
+  ctx.beginPath(); roundRect(ctx, rcX, btnY, rcW, btnH, btnR);
+  ctx.strokeStyle = getColor('btnBorder'); ctx.lineWidth = Math.max(1,sc); ctx.stroke();
+
+  // Photos
+  if(nPhotos > 0) {
+    var curX = photoStartX;
+    for(var pi = 0; pi < nPhotos; pi++) {
+      var idx   = filled[pi];
+      var photo = photoImgs[idx];
+      var isT   = photoTransparent[idx];
+      var dW    = photoWidths[pi];
+      var dH2   = photoSlotH;
+      var dY    = pzY;
+      if(!isT) { dH2 = dW / (photo.width / photo.height); dY = pzY + Math.round((photoSlotH - dH2) / 2); }
+      ctx.drawImage(photo, curX, dY, dW, dH2);
+      if(!isT) { ctx.strokeStyle = getColor('photoBorder'); ctx.lineWidth = Math.max(1,sc); ctx.strokeRect(curX, dY, dW, dH2); }
+      curX += dW + photoGap;
+    }
+  }
+
+  // Banner border
+  if(colorState.bannerBorder) {
+    var bc = hexToRgb(getColor('bannerBorder'));
+    ctx.strokeStyle = 'rgb('+bc[0]+','+bc[1]+','+bc[2]+')';
+    ctx.lineWidth   = Math.max(2, Math.round(2*sc));
+    ctx.strokeRect(1, 1, W-2, H-2);
+  }
+
+  return true;
+}
+
+// ── Preview / Export ───────────────────────────────────────────────────────
+function renderPreview() {
+  if(!logoImg) return;
+  try {
+    var canvas = document.getElementById('previewCanvas');
+    if(drawBanner(canvas, BANNER_W, BANNER_H)) {
+      canvas.style.display = 'block';
+      document.getElementById('previewPlaceholder').style.display = 'none';
+      setStatus('Preview ready.', true);
+    }
+  } catch(err) {
+    setStatus('Render error: ' + err.message, false);
+    console.error(err);
   }
 }
 
-// ── Preset list ───────────────────────────────────────────────────────────
-function renderPresetList(){
-  var list=document.getElementById('presetList');
-  var search=document.getElementById('presetSearch').value.trim().toLowerCase();
-  var filtered=search?configPresets.filter(function(p){return p.name.toLowerCase().includes(search);}):configPresets;
-  if(filtered.length===0){list.innerHTML='<div class="preset-empty">'+(configPresets.length===0?'No presets loaded.':'No results.')+'</div>';return;}
-  list.innerHTML='';
-  filtered.forEach(function(p){
-    var item=document.createElement('div');
-    item.className='preset-item'+(currentPresetName===p.name?' active':'');
-    var gradColors=p.brandOverrideHex?matchGradient(hexToRgb(p.brandOverrideHex)):null;
-    var swatchStyle=gradColors?'background:linear-gradient(to right,rgb('+gradColors[0]+'),rgb('+gradColors[gradColors.length-1]+'));':'background:#4fa8cc;';
-    item.innerHTML='<div class="preset-swatch" style="'+swatchStyle+'"></div>'
-      +(p.logoUrl?'<img class="preset-thumb" src="'+p.logoUrl+'" onerror="this.style.display=\'none\'">':'')
-      +'<span class="preset-name">'+p.name+'</span>'
-      +(p.brandOverrideHex?'<span class="preset-hex">'+p.brandOverrideHex+'</span>':'')
-      +'<button class="preset-load-btn">Load</button>';
-    item.querySelector('button').addEventListener('click',function(){loadPreset(p);});
+function exportBanner(tw, th, size) {
+  if(!logoImg) { setStatus('Upload a logo first.', false); return; }
+  var name = document.getElementById('fileName').value.trim() || 'banner';
+  try {
+    // Always draw at full 1078x120 then scale down
+    var full = document.getElementById('exportCanvas');
+    if(!drawBanner(full, BANNER_W, BANNER_H)) return;
+    var out = document.createElement('canvas');
+    out.width = tw; out.height = th;
+    out.getContext('2d').drawImage(full, 0, 0, tw, th);
+    var a = document.createElement('a');
+    a.download = name + '_' + size + '.png';
+    a.href = out.toDataURL('image/png');
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setStatus('Exported: ' + name + '_' + size + '.png', true);
+  } catch(err) { setStatus('Export failed: ' + err.message, false); }
+}
+
+// ── Config ─────────────────────────────────────────────────────────────────
+async function loadConfig() {
+  try {
+    var res = await fetch('presets.json');
+    if(!res.ok) throw new Error();
+    var data = await res.json();
+    configPresets = data.presets || [];
+    document.getElementById('presetCount').textContent = '(' + configPresets.length + ')';
+  } catch(e) { configPresets = []; }
+  renderPresetList();
+}
+
+function renderPresetList() {
+  var list   = document.getElementById('presetList');
+  var search = document.getElementById('presetSearch').value.trim().toLowerCase();
+  var items  = search ? configPresets.filter(function(p){return p.name.toLowerCase().includes(search);}) : configPresets;
+  if(items.length === 0) { list.innerHTML = '<div class="preset-empty">' + (configPresets.length===0?'No presets loaded.':'No results.') + '</div>'; return; }
+  list.innerHTML = '';
+  items.forEach(function(p) {
+    var item = document.createElement('div');
+    item.className = 'preset-item' + (currentPreset===p.name?' active':'');
+    var gc = p.brandOverrideHex ? matchGradient(hexToRgb(p.brandOverrideHex)) : null;
+    var sw = gc ? 'background:linear-gradient(to right,rgb('+gc[0]+'),rgb('+gc[gc.length-1]+'));' : 'background:#4fa8cc;';
+    item.innerHTML = '<div class="preset-swatch" style="'+sw+'"></div>'
+      + (p.logoUrl?'<img class="preset-thumb" src="'+p.logoUrl+'" onerror="this.style.display=\'none\'">':'')
+      + '<span class="preset-name">'+p.name+'</span>'
+      + (p.brandOverrideHex?'<span class="preset-hex">'+p.brandOverrideHex+'</span>':'')
+      + '<button class="preset-load-btn">Load</button>';
+    item.querySelector('button').addEventListener('click', function(){ loadPreset(p); });
     list.appendChild(item);
   });
 }
 
-function loadPreset(p){
-  if(p.brandOverrideHex){brandOverride=hexToRgb(p.brandOverrideHex);document.getElementById('brandColorPicker').value=p.brandOverrideHex;document.getElementById('brandColorHex').value=p.brandOverrideHex;document.getElementById('overrideLabel').classList.add('visible');}
-  else{brandOverride=null;document.getElementById('overrideLabel').classList.remove('visible');}
-  if(p.colorState)TOGGLE_KEYS.forEach(function(k){if(k in p.colorState){colorState[k]=p.colorState[k];var track=document.getElementById('tog-'+k);if(colorState[k])track.classList.add('on');else track.classList.remove('on');updateTogglePickerState(k);}});
-  if(p.pickerColors)COLOR_PICKER_KEYS.forEach(function(k){var el=document.getElementById('col-'+k);if(el&&p.pickerColors[k])el.value=p.pickerColors[k];});
-  if(p.logoUrl){
-    loadImageSrc(p.logoUrl,function(img){
-      logoPalette=extractPalette(img);
-      trimImage(img,function(trimmed){
-        logoImg=trimmed;
-        var pal=p.brandOverrideHex?hexToRgb(p.brandOverrideHex):logoPalette[0];
-        if(pal)updatePaletteSwatches(pal);
-        document.getElementById('paletteDisplay').style.display='block';
-        document.getElementById('auctioneerLabel').textContent=p.name;
-        showLoadedBar('logoArea',p.name,'From preset','image/png,image/jpeg',function(f){loadImageFile(f,function(i){logoPalette=extractPalette(i);trimImage(i,function(t){logoImg=t;updatePaletteSwatches(logoPalette[0]);renderPreview();});});});
-        currentPresetName=p.name;renderPresetList();
-        setStatus('Loaded: '+p.name,true);renderPreview();
+function loadPreset(p) {
+  if(p.brandOverrideHex) {
+    brandOverride = hexToRgb(p.brandOverrideHex);
+    document.getElementById('brandColorPicker').value = p.brandOverrideHex;
+    document.getElementById('brandColorHex').value    = p.brandOverrideHex;
+    document.getElementById('overrideLabel').classList.add('visible');
+  } else {
+    brandOverride = null;
+    document.getElementById('overrideLabel').classList.remove('visible');
+  }
+  if(p.colorState) TOGGLE_KEYS.forEach(function(k) {
+    if(k in p.colorState) {
+      colorState[k] = p.colorState[k];
+      var t = document.getElementById('tog-'+k);
+      colorState[k] ? t.classList.add('on') : t.classList.remove('on');
+      updateTogglePickerState(k);
+    }
+  });
+  if(p.pickerColors) COLOR_PICKER_KEYS.forEach(function(k) {
+    var el = document.getElementById('col-'+k);
+    if(el && p.pickerColors[k]) el.value = p.pickerColors[k];
+  });
+  if(p.logoUrl) {
+    loadImageSrc(p.logoUrl, function(img) {
+      logoPalette = extractPalette(img);
+      trimImage(img, function(t) {
+        logoImg = t;
+        var pal = p.brandOverrideHex ? hexToRgb(p.brandOverrideHex) : logoPalette[0];
+        if(pal) updatePaletteSwatches(pal);
+        document.getElementById('paletteDisplay').style.display = 'block';
+        document.getElementById('auctioneerLabel').textContent  = p.name;
+        showLoadedBar('logoArea', p.name, 'From preset', 'image/png,image/jpeg', function(f) {
+          loadImageFile(f, function(i) { logoPalette=extractPalette(i); trimImage(i,function(tt){logoImg=tt;updatePaletteSwatches(logoPalette[0]);renderPreview();}); });
+        });
+        currentPreset = p.name; renderPresetList();
+        setStatus('Loaded: '+p.name, true); renderPreview();
       });
     });
-  }else{currentPresetName=p.name;renderPresetList();setStatus('Preset loaded (no logo)',true);renderPreview();}
+  } else {
+    currentPreset = p.name; renderPresetList();
+    setStatus('Preset loaded (no logo)', true); renderPreview();
+  }
 }
 
-// ── Generate JSON ─────────────────────────────────────────────────────────
-function generatePresetJSON(){
-  var name=document.getElementById('auctioneerLabel').textContent.trim();
-  if(!name||name==='No auctioneer loaded'){setStatus('Upload a logo first.',false);return;}
-  var pickerColors={};COLOR_PICKER_KEYS.forEach(function(k){var el=document.getElementById('col-'+k);if(el)pickerColors[k]=el.value;});
-  var preset={name:name,logoUrl:'logos/'+name,colorState:Object.assign({},colorState),pickerColors:pickerColors};
-  if(brandOverride)preset.brandOverrideHex=rgbToHex(brandOverride);
-  document.getElementById('presetJsonText').value=JSON.stringify(preset,null,2);
-  document.getElementById('presetJsonOutput').style.display='block';
-  document.getElementById('copyConfirm').style.display='none';
-  setStatus('JSON ready — paste into presets.json on GitHub.',true);
+// ── Generate JSON ──────────────────────────────────────────────────────────
+function generatePresetJSON() {
+  var name = document.getElementById('auctioneerLabel').textContent.trim();
+  if(!name || name==='No auctioneer loaded') { setStatus('Upload a logo first.', false); return; }
+  var pc = {};
+  COLOR_PICKER_KEYS.forEach(function(k){ var el=document.getElementById('col-'+k); if(el) pc[k]=el.value; });
+  var preset = {name:name, logoUrl:'logos/'+name, colorState:Object.assign({},colorState), pickerColors:pc};
+  if(brandOverride) preset.brandOverrideHex = rgbToHex(brandOverride);
+  document.getElementById('presetJsonText').value  = JSON.stringify(preset, null, 2);
+  document.getElementById('presetJsonOutput').style.display = 'block';
+  document.getElementById('copyConfirm').style.display      = 'none';
+  setStatus('JSON ready.', true);
 }
-function copyPresetJSON(){var ta=document.getElementById('presetJsonText');ta.select();document.execCommand('copy');document.getElementById('copyConfirm').style.display='inline';setTimeout(function(){document.getElementById('copyConfirm').style.display='none';},2000);}
+function copyPresetJSON() {
+  var ta = document.getElementById('presetJsonText'); ta.select(); document.execCommand('copy');
+  document.getElementById('copyConfirm').style.display = 'inline';
+  setTimeout(function(){ document.getElementById('copyConfirm').style.display='none'; }, 2000);
+}
 
-function doPhotoSpacingToggle(){
-  spreadPhotoSpacing=!spreadPhotoSpacing;
-  var track=document.getElementById('tog-photoSpacing');
-  if(spreadPhotoSpacing){track.classList.add('on');document.getElementById('lbl-photoSpacing').textContent='Spread';}
-  else{track.classList.remove('on');document.getElementById('lbl-photoSpacing').textContent='Centered';}
+// ── Toggles ────────────────────────────────────────────────────────────────
+function toggleTemplate() {
+  useEnds = !useEnds;
+  var btn = document.getElementById('templateToggleBtn');
+  btn.textContent = useEnds ? '⏱ Auction Ends' : '⏱ Auction Begins';
+  useEnds ? btn.classList.remove('begins') : btn.classList.add('begins');
+  setStatus('Switched to '+(useEnds?'Auction Ends':'Auction Begins')+'.', true);
   renderPreview();
 }
-
-// ── Template toggle ───────────────────────────────────────────────────────
-function toggleTemplate(){
-  useEnds=!useEnds;
-  var btn=document.getElementById('templateToggleBtn');
-  if(useEnds){btn.textContent='⏱ Auction Ends';btn.classList.remove('begins');}
-  else{btn.textContent='⏱ Auction Begins';btn.classList.add('begins');}
-  setStatus('Switched to '+(useEnds?'Auction Ends':'Auction Begins')+'.',true);
-  renderPreview();
-}
-
-// ── Color toggles ─────────────────────────────────────────────────────────
-function doToggle(key){
-  colorState[key]=!colorState[key];
-  var track=document.getElementById('tog-'+key);
-  if(colorState[key])track.classList.add('on');else track.classList.remove('on');
-  if(key==='gradDir'){document.getElementById('lbl-gradDir').textContent=colorState[key]?'L→R':'R→L';}
+function doToggle(key) {
+  colorState[key] = !colorState[key];
+  var t = document.getElementById('tog-'+key);
+  colorState[key] ? t.classList.add('on') : t.classList.remove('on');
+  if(key==='gradDir') document.getElementById('lbl-gradDir').textContent = colorState[key]?'L→R':'R→L';
   updateTogglePickerState(key);
   renderPreview();
 }
+function doPhotoSpacingToggle() {
+  spreadSpacing = !spreadSpacing;
+  var t = document.getElementById('tog-photoSpacing');
+  spreadSpacing ? t.classList.add('on') : t.classList.remove('on');
+  document.getElementById('lbl-photoSpacing').textContent = spreadSpacing ? 'Spread' : 'Centered';
+  renderPreview();
+}
 
-// ── Brand override ────────────────────────────────────────────────────────
-function applyBrandOverride(){var hex=document.getElementById('brandColorHex').value.trim();if(hex.indexOf('#')!==0)hex='#'+hex;if(!/^#[0-9A-Fa-f]{6}$/.test(hex)){setStatus('Invalid hex.',false);return;}document.getElementById('brandColorPicker').value=hex;brandOverride=hexToRgb(hex);document.getElementById('overrideLabel').classList.add('visible');updatePaletteSwatches(brandOverride);renderPreview();}
-function clearBrandOverride(){brandOverride=null;document.getElementById('overrideLabel').classList.remove('visible');if(logoPalette.length)updatePaletteSwatches(logoPalette[0]);renderPreview();}
+// ── Brand override ─────────────────────────────────────────────────────────
+function applyBrandOverride() {
+  var hex = document.getElementById('brandColorHex').value.trim();
+  if(hex.indexOf('#')!==0) hex='#'+hex;
+  if(!/^#[0-9A-Fa-f]{6}$/.test(hex)) { setStatus('Invalid hex.', false); return; }
+  document.getElementById('brandColorPicker').value = hex;
+  brandOverride = hexToRgb(hex);
+  document.getElementById('overrideLabel').classList.add('visible');
+  updatePaletteSwatches(brandOverride);
+  renderPreview();
+}
+function clearBrandOverride() {
+  brandOverride = null;
+  document.getElementById('overrideLabel').classList.remove('visible');
+  if(logoPalette.length) updatePaletteSwatches(logoPalette[0]);
+  renderPreview();
+}
 
-// ── Logo upload ───────────────────────────────────────────────────────────
-function bindLogoFile(){var el=document.getElementById('logoFile');if(el)el.addEventListener('change',function(){if(this.files[0])onLogoChange(this.files[0]);});}
-function onLogoChange(file){
-  var rawName=file.name.replace(/\.[^.]+$/,'').replace(/[_-]/g,' ');
-  document.getElementById('auctioneerLabel').textContent=rawName;
-  var today=new Date(),y=today.getFullYear(),m=String(today.getMonth()+1).padStart(2,'0'),d=String(today.getDate()).padStart(2,'0');
-  document.getElementById('fileName').value=rawName.replace(/\s+/g,'_')+'_'+y+'_'+m+'_'+d+'_Category';
-  loadImageFile(file,function(img){
-    logoPalette=extractPalette(img);
-    trimImage(img,function(trimmed){
-      logoImg=trimmed;brandOverride=null;
+// ── Logo upload ────────────────────────────────────────────────────────────
+function bindLogoFile() {
+  var el = document.getElementById('logoFile');
+  if(!el) return;
+  el.addEventListener('change', function(){ if(this.files[0]) onLogoChange(this.files[0]); });
+}
+function onLogoChange(file) {
+  var name = file.name.replace(/\.[^.]+$/,'').replace(/[_-]/g,' ');
+  document.getElementById('auctioneerLabel').textContent = name;
+  var t = new Date(), y=t.getFullYear(), m=String(t.getMonth()+1).padStart(2,'0'), d=String(t.getDate()).padStart(2,'0');
+  document.getElementById('fileName').value = name.replace(/\s+/g,'_')+'_'+y+'_'+m+'_'+d+'_Category';
+  loadImageFile(file, function(img) {
+    logoPalette = extractPalette(img);
+    trimImage(img, function(trimmed) {
+      logoImg = trimmed; brandOverride = null;
       document.getElementById('overrideLabel').classList.remove('visible');
       updatePaletteSwatches(logoPalette[0]);
-      document.getElementById('paletteDisplay').style.display='block';
-      showLoadedBar('logoArea',rawName,img.width+'×'+img.height,'image/png,image/jpeg',function(f){
-        var n=f.name.replace(/\.[^.]+$/,'').replace(/[_-]/g,' ');
-        document.getElementById('auctioneerLabel').textContent=n;
-        loadImageFile(f,function(i){logoPalette=extractPalette(i);trimImage(i,function(t){logoImg=t;brandOverride=null;updatePaletteSwatches(logoPalette[0]);setStatus('Logo replaced.',true);renderPreview();});});
+      document.getElementById('paletteDisplay').style.display = 'block';
+      showLoadedBar('logoArea', name, img.width+'×'+img.height, 'image/png,image/jpeg', function(f) {
+        var n = f.name.replace(/\.[^.]+$/,'').replace(/[_-]/g,' ');
+        document.getElementById('auctioneerLabel').textContent = n;
+        loadImageFile(f, function(i){ logoPalette=extractPalette(i); trimImage(i,function(tt){logoImg=tt;brandOverride=null;updatePaletteSwatches(logoPalette[0]);setStatus('Logo replaced.',true);renderPreview();}); });
       });
-      setStatus('Logo loaded: '+rawName,true);
+      setStatus('Logo loaded: '+name, true);
       renderPreview();
     });
   });
 }
 
-// ── Reset ─────────────────────────────────────────────────────────────────
-function resetAll(){
-  logoImg=null;logoPalette=[];brandOverride=null;currentPresetName=null;
-  photoImgs=[null,null,null,null,null];photoTransparent=[false,false,false,false,false];
+// ── Photo slots ────────────────────────────────────────────────────────────
+(function() {
+  var grid = document.getElementById('slotsGrid');
+  for(var si = 0; si < 5; si++) {
+    (function(i) {
+      var wrap = document.createElement('div'); wrap.className = 'slot-wrap';
+      var zone = document.createElement('div'); zone.className = 'drop-zone'; zone.id = 'zone'+i;
+      zone.innerHTML = '<span class="dz-icon">+</span><span class="dz-label">Photo '+(i+1)+'</span><span class="slot-num">Slot '+(i+1)+'</span><img id="thumb'+i+'" style="display:none;"><button class="clear-btn" onclick="clearSlot(event,'+i+')">✕</button><input type="file" accept="image/*">';
+      zone.querySelector('input[type=file]').addEventListener('change', function(){ if(this.files[0]) handlePhoto(this.files[0],i); });
+      zone.addEventListener('dragover', function(e){ e.preventDefault(); zone.classList.add('dragover'); });
+      zone.addEventListener('dragleave', function(){ zone.classList.remove('dragover'); });
+      zone.addEventListener('drop', function(e){ e.preventDefault(); zone.classList.remove('dragover'); if(e.dataTransfer.files[0]) handlePhoto(e.dataTransfer.files[0],i); });
+      var btn = document.createElement('button'); btn.className='trans-btn'; btn.id='transTog'+i; btn.textContent='BG';
+      btn.onclick = function(){ toggleTransparent(i); };
+      wrap.appendChild(zone); wrap.appendChild(btn); grid.appendChild(wrap);
+    })(si);
+  }
+})();
+
+function handlePhoto(file, idx) {
+  if(!file||!file.type.startsWith('image/')) return;
+  loadImageFile(file, function(img) {
+    photoImgs[idx] = img;
+    var reader = new FileReader();
+    reader.onload = function(e){ var t=document.getElementById('thumb'+idx); t.src=e.target.result; t.style.display='block'; };
+    reader.readAsDataURL(file);
+    document.getElementById('zone'+idx).classList.add('filled');
+    setStatus('Photo '+(idx+1)+' loaded.', true);
+    renderPreview();
+  });
+}
+function clearSlot(e, idx) {
+  e.stopPropagation();
+  photoImgs[idx]=null; photoTransparent[idx]=false;
+  var t=document.getElementById('thumb'+idx); t.src=''; t.style.display='none';
+  document.getElementById('zone'+idx).classList.remove('filled');
+  document.getElementById('zone'+idx).querySelector('input[type=file]').value='';
+  var tb=document.getElementById('transTog'+idx); if(tb){tb.textContent='BG';tb.classList.remove('active');}
+  renderPreview();
+}
+function toggleTransparent(i) {
+  photoTransparent[i] = !photoTransparent[i];
+  var btn = document.getElementById('transTog'+i);
+  photoTransparent[i] ? (btn.textContent='Transparent', btn.classList.add('active')) : (btn.textContent='BG', btn.classList.remove('active'));
+  renderPreview();
+}
+
+// ── Reset ──────────────────────────────────────────────────────────────────
+function resetAll() {
+  logoImg=null; logoPalette=[]; brandOverride=null; currentPreset=null;
+  photoImgs=[null,null,null,null,null]; photoTransparent=[false,false,false,false,false];
   document.getElementById('logoArea').innerHTML='<div class="upload-icon">↑</div><div class="upload-title">Click or drag logo here</div><div class="upload-sub">PNG recommended · filename becomes auctioneer name</div><input type="file" id="logoFile" accept="image/png,image/jpeg">';
   bindLogoFile();
   document.getElementById('paletteDisplay').style.display='none';
@@ -596,163 +774,24 @@ function resetAll(){
   document.getElementById('brandColorPicker').value='#0057FF';
   document.getElementById('overrideLabel').classList.remove('visible');
   document.getElementById('presetJsonOutput').style.display='none';
+  spreadSpacing=false;
+  document.getElementById('tog-photoSpacing').classList.remove('on');
+  document.getElementById('lbl-photoSpacing').textContent='Centered';
   useEnds=true;
-  var tbtn=document.getElementById('templateToggleBtn');tbtn.textContent='⏱ Auction Ends';tbtn.classList.remove('begins');
-  TOGGLE_KEYS.forEach(function(k){var isOn=k!=='bannerBorder';colorState[k]=isOn;var track=document.getElementById('tog-'+k);if(isOn)track.classList.add('on');else track.classList.remove('on');var cpEl=document.getElementById('col-'+k);if(cpEl){cpEl.value='#FFFFFF';updateTogglePickerState(k);}});
+  document.getElementById('templateToggleBtn').textContent='⏱ Auction Ends';
+  document.getElementById('templateToggleBtn').classList.remove('begins');
+  TOGGLE_KEYS.forEach(function(k){var isOn=k!=='bannerBorder';colorState[k]=isOn;var track=document.getElementById('tog-'+k);isOn?track.classList.add('on'):track.classList.remove('on');var cp=document.getElementById('col-'+k);if(cp){cp.value='#FFFFFF';updateTogglePickerState(k);}});
   document.getElementById('col-btnBg').value='#000000';
   document.getElementById('lbl-gradDir').textContent='L→R';
   document.getElementById('previewCanvas').style.display='none';
   document.getElementById('previewPlaceholder').style.display='block';
   renderPresetList();
-  setStatus('Reset.',true);
+  setStatus('Reset.', true);
 }
 
-// ── Photo slots ───────────────────────────────────────────────────────────
-(function(){
-  var grid=document.getElementById('slotsGrid');
-  for(var si=0;si<5;si++){
-    (function(i){
-      var wrap=document.createElement('div');wrap.className='slot-wrap';
-      var zone=document.createElement('div');zone.className='drop-zone';zone.id='zone'+i;
-      zone.innerHTML='<span class="dz-icon">+</span><span class="dz-label">Photo '+(i+1)+'</span><span class="slot-num">Slot '+(i+1)+'</span><img id="thumb'+i+'" style="display:none;"><button class="clear-btn" onclick="clearSlot(event,'+i+')">✕</button><input type="file" accept="image/*">';
-      zone.querySelector('input[type=file]').addEventListener('change',function(){if(this.files[0])handlePhoto(this.files[0],i);});
-      zone.addEventListener('dragover',function(e){e.preventDefault();zone.classList.add('dragover');});
-      zone.addEventListener('dragleave',function(){zone.classList.remove('dragover');});
-      zone.addEventListener('drop',function(e){e.preventDefault();zone.classList.remove('dragover');if(e.dataTransfer.files[0])handlePhoto(e.dataTransfer.files[0],i);});
-      var btn=document.createElement('button');btn.className='trans-btn';btn.id='transTog'+i;btn.textContent='BG';btn.onclick=function(){toggleTransparent(i);};
-      wrap.appendChild(zone);wrap.appendChild(btn);grid.appendChild(wrap);
-    })(si);
-  }
-})();
-
-function handlePhoto(file,idx){if(!file||!file.type.startsWith('image/'))return;loadImageFile(file,function(img){photoImgs[idx]=img;var reader=new FileReader();reader.onload=function(e){var t=document.getElementById('thumb'+idx);t.src=e.target.result;t.style.display='block';};reader.readAsDataURL(file);document.getElementById('zone'+idx).classList.add('filled');setStatus('Photo '+(idx+1)+' loaded.',true);renderPreview();});}
-function clearSlot(e,idx){e.stopPropagation();photoImgs[idx]=null;photoTransparent[idx]=false;var t=document.getElementById('thumb'+idx);t.src='';t.style.display='none';document.getElementById('zone'+idx).classList.remove('filled');document.getElementById('zone'+idx).querySelector('input[type=file]').value='';var tb=document.getElementById('transTog'+idx);if(tb){tb.textContent='BG';tb.classList.remove('active');}renderPreview();}
-function toggleTransparent(i){photoTransparent[i]=!photoTransparent[i];var btn=document.getElementById('transTog'+i);if(photoTransparent[i]){btn.textContent='Transparent';btn.classList.add('active');}else{btn.textContent='BG';btn.classList.remove('active');}renderPreview();}
-
-// ── Draw banner ───────────────────────────────────────────────────────────
-function drawBanner(canvas){
-  var tmpl=currentTemplateImg();if(!tmpl||!logoImg)return false;
-  var W=tmpl.width,H=tmpl.height;canvas.width=W;canvas.height=H;
-  var ctx=canvas.getContext('2d');
-  var gColors=matchGradient(getActivePalette()[0]);
-  if(!colorState.gradDir)gColors=gColors.slice().reverse();
-  var gFrom=gColors[0];
-  ctx.fillStyle=makeGrad(ctx,gColors,W);ctx.fillRect(0,0,W,H);
-  var tmpC=document.createElement('canvas');tmpC.width=W;tmpC.height=H;
-  tmpC.getContext('2d').drawImage(tmpl,0,0);
-  var tData=tmpC.getContext('2d').getImageData(0,0,W,H).data;
-  var overlayC=document.createElement('canvas');overlayC.width=W;overlayC.height=H;
-  var overlayCtx=overlayC.getContext('2d');
-  var overlayData=overlayCtx.getImageData(0,0,W,H);
-  var od=overlayData.data;
-  var aCol=hexToRgb(getColor('auctionText'));
-  var ez=useEnds?ENDS_ZONE:BEGINS_ZONE;
-  for(var ti=0;ti<tData.length;ti+=4){
-    var px=(ti/4)%W|0,py=(ti/4)/W|0;
-    var tr=tData[ti],tg=tData[ti+1],tb=tData[ti+2],ta=tData[ti+3];
-    var inLogo=px>=LOGO_ZONE.x&&px<LOGO_ZONE.x+LOGO_ZONE.w&&py>=LOGO_ZONE.y&&py<LOGO_ZONE.y+LOGO_ZONE.h;
-    var inPhoto=px>=PHOTO_ZONE.x&&px<PHOTO_ZONE.x+PHOTO_ZONE.w&&py>=PHOTO_ZONE.y&&py<PHOTO_ZONE.y+PHOTO_ZONE.h;
-    var inBtn=px>=BTN_ZONE.x&&px<BTN_ZONE.x+BTN_ZONE.w&&py>=BTN_ZONE.y&&py<BTN_ZONE.y+BTN_ZONE.h;
-    var inDate=px>=DATE_ZONE.x&&px<DATE_ZONE.x+DATE_ZONE.w&&py>=DATE_ZONE.y&&py<DATE_ZONE.y+DATE_ZONE.h;
-    var inEnds=px>=ez.x&&px<ez.x+ez.w&&py>=ez.y&&py<ez.y+ez.h;
-    if(inLogo||inPhoto||inBtn||inDate||inEnds)continue;
-    if(tr<30&&tg<30&&tb<30)continue;
-    if(tr>180&&tg<60&&tb<60)continue;
-    if(tg>180&&tr<60&&tb<60)continue;
-    if(tb>180&&tr<60&&tg<60)continue;
-    if(tr>200&&tg>200&&tb>200){od[ti]=aCol[0];od[ti+1]=aCol[1];od[ti+2]=aCol[2];od[ti+3]=ta;}
-    else{od[ti]=tr;od[ti+1]=tg;od[ti+2]=tb;od[ti+3]=ta;}
-  }
-  overlayCtx.putImageData(overlayData,0,0);ctx.drawImage(overlayC,0,0);
-  var lz=LOGO_ZONE,ls=Math.min(lz.w/logoImg.width,lz.h/logoImg.height);
-  var lw=logoImg.width*ls,lh=logoImg.height*ls;
-  ctx.drawImage(logoImg,lz.x,lz.y+(lz.h-lh)/2,lw,lh);
-  var logoEndX=lz.x+lw,pad=8;
-  var z={x:logoEndX+pad,y:PHOTO_ZONE.y,w:BTN_ZONE.x-pad-(logoEndX+pad),h:PHOTO_ZONE.h};
-  var filledIdxs=[];for(var i=0;i<5;i++){if(photoImgs[i])filledIdxs.push(i);}
-  if(filledIdxs.length>0){
-    var slotH=z.h,n=filledIdxs.length;
-    var naturalWidths=filledIdxs.map(function(i){var p=photoImgs[i];return(p.width/p.height)*slotH;});
-    var totalNat=naturalWidths.reduce(function(a,b){return a+b;},0);
-    var maxW=z.w-(MIN_GAP*(n-1));
-    var sc=totalNat>maxW?maxW/totalNat:1;
-    var drawWidths=naturalWidths.map(function(w){return w*sc;});
-    var totalUsedW=drawWidths.reduce(function(a,b){return a+b;},0);
-    var rawGap=n>1?(z.w-totalUsedW)/(n-1):0;
-    var gap=spreadPhotoSpacing
-      ? (n>1?(z.w-totalUsedW-8)/(n-1):0)
-      : Math.min(MAX_GAP,Math.max(MIN_GAP,rawGap));
-    var curX = spreadPhotoSpacing
-      ? z.x+4
-      : z.x+Math.floor((z.w-(totalUsedW+gap*(n-1)))/2);
-    for(var fi=0;fi<n;fi++){
-      var idx=filledIdxs[fi],photo=photoImgs[idx],isTransp=photoTransparent[idx];
-      var dW=drawWidths[fi],dH=slotH,dY=z.y;
-      if(!isTransp){dH=dW/(photo.width/photo.height);dY=z.y+Math.floor((slotH-dH)/2);}
-      ctx.drawImage(photo,curX,dY,dW,dH);
-      if(!isTransp){ctx.strokeStyle=getColor('photoBorder');ctx.lineWidth=1;ctx.strokeRect(curX,dY,dW,dH);}
-      curX+=dW+gap;
-    }
-  }
-  var bz=BTN_ZONE,br=10;
-  roundRect(ctx,bz.x,bz.y,bz.w,bz.h,br);
-  var btnBgEl=document.getElementById('col-btnBg');
-  var btnBgVal=btnBgEl?btnBgEl.value:'#000000';
-  ctx.fillStyle=(btnBgVal&&btnBgVal!=='#000000')?btnBgVal:'rgb('+gFrom[0]+','+gFrom[1]+','+gFrom[2]+')';
-  ctx.fill();
-  ctx.save();ctx.clip();
-  var btnFontSize=bz.h;
-  do{btnFontSize--;ctx.font='bold '+btnFontSize+'px Candara,Calibri,serif';}
-  while((ctx.measureText('BID NOW').width>bz.w-4||btnFontSize>bz.h-4)&&btnFontSize>6);
-  ctx.fillStyle=getColor('btnText');ctx.textAlign='center';ctx.textBaseline='middle';
-  ctx.strokeStyle=getColor('btnText');ctx.lineWidth=0.75;ctx.lineJoin='round';
-  ctx.strokeText('BID NOW',bz.x+bz.w/2,bz.y+bz.h/2+3);ctx.fillText('BID NOW',bz.x+bz.w/2,bz.y+bz.h/2+3);
-  ctx.restore();
-  ctx.beginPath();roundRect(ctx,bz.x,bz.y,bz.w,bz.h,br);
-  ctx.strokeStyle=getColor('btnBorder');ctx.lineWidth=1;ctx.stroke();
-  var dz=DATE_ZONE;
-  ctx.fillStyle=makeGrad(ctx,gColors,W);ctx.fillRect(dz.x,dz.y,dz.w,dz.h);
-  var dateText=document.getElementById('auctionDate').value.trim();
-  if(dateText){var fs=dz.h;ctx.textAlign='center';ctx.textBaseline='middle';do{fs--;ctx.font='bold '+fs+'px Candara,Calibri,serif';}while(ctx.measureText(dateText).width>dz.w-4&&fs>6);ctx.fillStyle=getColor('dateText');ctx.fillText(dateText,dz.x+dz.w/2,dz.y+dz.h/2);}
-  ctx.fillStyle=makeGrad(ctx,gColors,W);ctx.fillRect(ez.x,ez.y,ez.w,ez.h);
-  var ezText=useEnds?'AUCTION ENDS':'AUCTION BEGINS';
-  var endsFs=ez.h;ctx.textAlign='center';ctx.textBaseline='middle';
-  do{endsFs--;ctx.font='bold '+endsFs+'px Candara,Calibri,serif';}while(ctx.measureText(ezText).width>ez.w-4&&endsFs>6);
-  ctx.fillStyle=getColor('auctionText');ctx.strokeStyle=getColor('auctionText');ctx.lineWidth=0.75;ctx.lineJoin='round';
-  ctx.strokeText(ezText,ez.x+ez.w/2,ez.y+ez.h/2);ctx.fillText(ezText,ez.x+ez.w/2,ez.y+ez.h/2);
-  if(colorState.bannerBorder){var bc=hexToRgb(getColor('bannerBorder'));ctx.strokeStyle='rgb('+bc[0]+','+bc[1]+','+bc[2]+')';ctx.lineWidth=2;ctx.strokeRect(1,1,W-2,H-2);}
-  return true;
-}
-
-// ── Preview / Export ──────────────────────────────────────────────────────
-function renderPreview(){
-  if(!currentTemplateImg()||!logoImg)return;
-  try{
-    var canvas=document.getElementById('previewCanvas');
-    if(drawBanner(canvas)){canvas.style.display='block';document.getElementById('previewPlaceholder').style.display='none';setStatus('Preview ready.',true);}
-  }catch(err){setStatus('Render error: '+err.message,false);}
-}
-function exportBanner(targetW,targetH,size){
-  if(!currentTemplateImg()||!logoImg){setStatus('Upload a logo first.',false);return;}
-  var baseName=document.getElementById('fileName').value.trim()||'banner';
-  var filename=baseName+'_'+size+'.png';
-  try{
-    var full=document.getElementById('exportCanvas');
-    if(!drawBanner(full))return;
-    var out=document.createElement('canvas');out.width=targetW;out.height=targetH;
-    out.getContext('2d').drawImage(full,0,0,targetW,targetH);
-    var a=document.createElement('a');a.download=filename;a.href=out.toDataURL('image/png');
-    document.body.appendChild(a);a.click();document.body.removeChild(a);
-    setStatus('Exported: '+filename,true);
-  }catch(err){setStatus('Export failed: '+err.message,false);}
-}
-
-// ── Init ──────────────────────────────────────────────────────────────────
+// ── Init ───────────────────────────────────────────────────────────────────
 bindLogoFile();
-var _tLoaded=0;
-function onTemplateLoad(){_tLoaded++;if(_tLoaded===2){setStatus('Ready.',true);loadConfig();}}
-loadImageSrc(TEMPLATE_ENDS_SRC,function(img){templateEndsImg=img;onTemplateLoad();});
-loadImageSrc(TEMPLATE_BEGINS_SRC,function(img){templateBeginsImg=img;onTemplateLoad();});
+loadConfig();
 </script>
 </body>
 </html>
