@@ -77,6 +77,25 @@
       }
     },
     {
+"name": "MostAnythingAuctions",
+  "brandOverrideHex": "#000000",
+  "logoUrl": "logos/MostAnythingAuctions",
+  "colorState": {
+    "gradDir": true,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": false,
+    "btnText": false,
+    "auctionText": true,
+    "dateText": true
+  },
+  "pickerColors": {
+    "photoBorder": "#36a395",
+    "btnBg": "#36a395",
+    "bannerBorder": "#36a395"
+      }
+    },
+    {
       "name": "Coinhunters",
   "brandOverrideHex": "#000000",
   "logoUrl": "logos/Coinhunters",
@@ -93,6 +112,44 @@
     "photoBorder": "#fad107",
     "btnBg": "#000000",
     "bannerBorder": "#fad107"
+      }
+    },
+    {
+"name": "Seuyco",
+  "brandOverrideHex": "#7daeed",
+  "logoUrl": "logos/Seuyco",
+  "colorState": {
+    "gradDir": false,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": true,
+    "btnText": true,
+    "auctionText": false,
+    "dateText": false
+  },
+  "pickerColors": {
+    "photoBorder": "#000000",
+    "btnBg": "#100e0e",
+    "bannerBorder": "#000000"
+      }
+    },
+    {
+"name": "RhythmAuctions",
+  "brandOverrideHex": "#7daeed",
+  "logoUrl": "logos/RhythmAuctions",
+  "colorState": {
+    "gradDir": false,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": false,
+    "btnText": true,
+    "auctionText": false,
+    "dateText": false
+  },
+  "pickerColors": {
+    "photoBorder": "#b2001c",
+    "btnBg": "#b2001c",
+    "bannerBorder": "#b2001c"
       }
     },
     {
