@@ -11,9 +11,10 @@
     --border: #1c3050; --border2: #243d5c;
     --accent: #4fa8cc; --accent-dim: #2a6a96; --accent-glow: rgba(79,168,204,0.15);
     --text: #e8edf2; --text-dim: #7a9ab8; --text-faint: #3d5a78;
-    --green: #2ecc71; --red: #e74c3c;
+    --green: #2ecc71; --red: #e74c3c; --yellow: #f0c040;
     --radius: 12px; --radius-sm: 7px;
   }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
   .header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 12px 28px; display: flex; align-items: center; gap: 14px; position: sticky; top: 0; z-index: 10; backdrop-filter: blur(8px); }
   .header-logo { height: 22px; }
@@ -38,7 +39,7 @@
   .preset-search { width: 100%; padding: 8px 11px; border-radius: var(--radius-sm); border: 1px solid var(--border2); background: var(--surface2); color: var(--text); font-size: 11px; outline: none; margin-bottom: 8px; transition: border-color 0.15s; }
   .preset-search:focus { border-color: var(--accent); }
   .preset-list { display: flex; flex-direction: column; gap: 5px; max-height: 200px; overflow-y: auto; }
-  .preset-item { display: flex; align-items: center; gap: 9px; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 8px 10px; cursor: pointer; transition: all 0.15s; }
+  .preset-item { display: flex; align-items: center; gap: 9px; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 8px 10px; transition: all 0.15s; }
   .preset-item:hover { border-color: var(--accent); background: var(--accent-glow); }
   .preset-item.active { border-color: var(--accent); background: var(--accent-glow); }
   .preset-swatch { width: 28px; height: 28px; border-radius: 5px; border: 1px solid rgba(255,255,255,0.1); flex-shrink: 0; }
@@ -69,15 +70,17 @@
   .override-badge { display: none; font-size: 9px; color: var(--accent); align-items: center; gap: 3px; margin-top: 6px; }
   .override-badge.visible { display: flex; }
   .details-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; align-items: start; }
-  .field { display: flex; flex-direction: column; gap: 5px; }
+  .field { display: flex; flex-direction: column; gap: 5px; transition: opacity 0.2s; }
   .field label { font-size: 9px; color: var(--text-dim); font-weight: 700; text-transform: uppercase; letter-spacing: 0.7px; }
   .field input[type=text] { padding: 9px 11px; border-radius: var(--radius-sm); border: 1px solid var(--border2); background: var(--surface2); color: var(--text); font-size: 12px; outline: none; transition: border-color 0.15s, box-shadow 0.15s; }
   .field input[type=text]:focus { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-glow); }
   .template-toggle-wrap { display: flex; flex-direction: column; gap: 5px; }
   .template-toggle-wrap label { font-size: 9px; color: var(--text-dim); font-weight: 700; text-transform: uppercase; letter-spacing: 0.7px; }
-  .tmpl-btn { padding: 9px 16px; border-radius: var(--radius-sm); font-size: 11px; font-weight: 700; cursor: pointer; border: 1px solid var(--accent); background: rgba(79,168,204,0.12); color: var(--accent); transition: all 0.2s; text-align: left; width: 100%; }
+  .tmpl-btn { padding: 8px 16px; border-radius: var(--radius-sm); font-size: 11px; font-weight: 700; cursor: pointer; border: 1px solid var(--accent); background: rgba(79,168,204,0.12); color: var(--accent); transition: all 0.2s; text-align: left; width: 100%; }
   .tmpl-btn:hover { background: rgba(79,168,204,0.22); }
   .tmpl-btn.begins { border-color: var(--green); background: rgba(46,204,113,0.1); color: var(--green); }
+  .tmpl-btn.multiple { border-color: var(--yellow); background: rgba(240,192,64,0.1); color: var(--yellow); }
+  .tmpl-btn.multiple.active { background: rgba(240,192,64,0.25); box-shadow: 0 0 0 2px rgba(240,192,64,0.3); }
   .photos-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
   .slot-wrap { display: flex; flex-direction: column; gap: 6px; }
   .drop-zone { width: 100%; aspect-ratio: 1; border: 1.5px dashed var(--border2); border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; position: relative; overflow: hidden; transition: all 0.2s; background: var(--surface2); gap: 3px; }
@@ -146,6 +149,7 @@
 
 <div class="page">
 
+  <!-- STEP 1 -->
   <div class="card"><div class="card-inner">
     <div class="step-label">
       <div class="step-num">1</div>
@@ -191,21 +195,26 @@
     </div>
   </div></div>
 
+  <!-- STEP 2 -->
   <div class="card"><div class="card-inner">
     <div class="step-label">
       <div class="step-num">2</div>
       <div><div class="step-title">Auction Details</div><div class="step-desc">Enter the date, file name, and choose a template</div></div>
     </div>
     <div class="details-grid">
-      <div class="field"><label>Auction Date</label><input type="text" id="auctionDate" placeholder="e.g. June 16th" oninput="renderPreview()"></div>
+      <div class="field" id="dateField"><label>Auction Date</label><input type="text" id="auctionDate" placeholder="e.g. June 16th" oninput="renderPreview()"></div>
       <div class="field"><label>Export File Name</label><input type="text" id="fileName" value="Banner"></div>
       <div class="template-toggle-wrap">
         <label>Template</label>
-        <button id="templateToggleBtn" class="tmpl-btn" onclick="toggleTemplate()">⏱ Auction Ends</button>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <button id="templateToggleBtn" class="tmpl-btn" onclick="toggleTemplate()">⏱ Auction Ends</button>
+          <button id="multipleBtn" class="tmpl-btn multiple" onclick="toggleMultiple()">🔀 Multiple Auctions</button>
+        </div>
       </div>
     </div>
   </div></div>
 
+  <!-- STEP 3 -->
   <div class="card"><div class="card-inner">
     <div class="step-label">
       <div class="step-num">3</div>
@@ -219,6 +228,7 @@
     <div class="photos-grid" id="slotsGrid"></div>
   </div></div>
 
+  <!-- STEP 4 -->
   <div class="card"><div class="card-inner">
     <div class="step-label">
       <div class="step-num">4</div>
@@ -236,6 +246,7 @@
     </div>
   </div></div>
 
+  <!-- STEP 5 -->
   <div class="card"><div class="card-inner">
     <div class="step-label">
       <div class="step-num">5</div>
@@ -260,20 +271,20 @@
 
 <script>
 // ── Constants ──────────────────────────────────────────────────────────────
-var BANNER_W      = 1078;
-var BANNER_H      = 120;
-var PAD           = 8;
-var LOGO_MAX_H    = 96;
-var LOGO_MAX_W    = 260;
-var RIGHT_COL_W   = 175;
-var RIGHT_PAD     = 6;
-var BTN_H         = 40;
-var BTN_R         = 10;
-var AUCTION_H     = 20;
-var DATE_H        = 23;
-var STACK_GAP     = 4;
-var PHOTO_MIN_G   = 6;
-var PHOTO_MAX_G   = 20;
+var BANNER_W    = 1078;
+var BANNER_H    = 120;
+var PAD         = 8;
+var LOGO_MAX_H  = 96;
+var LOGO_MAX_W  = 260;
+var RIGHT_COL_W = 175;
+var RIGHT_PAD   = 6;
+var BTN_H       = 40;
+var BTN_R       = 10;
+var AUCTION_H   = 20;
+var DATE_H      = 23;
+var STACK_GAP   = 4;
+var PHOTO_MIN_G = 6;
+var PHOTO_MAX_G = 20;
 
 var TOGGLE_KEYS       = ['gradDir','photoBorder','bannerBorder','btnBorder','btnText','auctionText','dateText'];
 var COLOR_PICKER_KEYS = ['photoBorder','btnBg','bannerBorder'];
@@ -285,6 +296,7 @@ var photoTransparent = [false,false,false,false,false];
 var logoPalette      = [];
 var brandOverride    = null;
 var useEnds          = true;
+var multipleAuctions = false;
 var spreadSpacing    = false;
 var currentPreset    = null;
 var configPresets    = [];
@@ -341,307 +353,13 @@ function loadImageSrc(src,cb){var img=new Image();img.crossOrigin='anonymous';im
 function extractPalette(img){var c=document.createElement('canvas'),sc=Math.min(1,100/Math.max(img.width,img.height));c.width=Math.round(img.width*sc);c.height=Math.round(img.height*sc);var ctx=c.getContext('2d');ctx.drawImage(img,0,0,c.width,c.height);var data=ctx.getImageData(0,0,c.width,c.height).data,buckets={};for(var i=0;i<data.length;i+=4){var r=data[i],g=data[i+1],b=data[i+2],a=data[i+3];if(a<30)continue;var br=(r+g+b)/3,sat=Math.max(r,g,b)-Math.min(r,g,b);if(br>230||br<20||sat<25)continue;if(r>200&&g<60&&b<60)continue;if(g>200&&r<60&&b<60)continue;var qr=Math.round(r/32)*32,qg=Math.round(g/32)*32,qb=Math.round(b/32)*32;var key=qr+','+qg+','+qb;buckets[key]=(buckets[key]||0)+1;}var keys=Object.keys(buckets).sort(function(a,b){return buckets[b]-buckets[a];});return keys.length===0?[[30,80,130]]:keys.slice(0,5).map(function(k){return k.split(',').map(Number);});}
 function trimImage(img,cb){var c=document.createElement('canvas');c.width=img.width;c.height=img.height;var ctx=c.getContext('2d');ctx.drawImage(img,0,0);var data=ctx.getImageData(0,0,c.width,c.height).data,W=c.width,H=c.height,minX=W,maxX=0,minY=H,maxY=0;for(var y=0;y<H;y++){for(var x=0;x<W;x++){var idx=(y*W+x)*4;if(data[idx+3]<30)continue;if(x<minX)minX=x;if(x>maxX)maxX=x;if(y<minY)minY=y;if(y>maxY)maxY=y;}}if(minX>maxX||minY>maxY){cb(img);return;}var tw=maxX-minX+1,th=maxY-minY+1,out=document.createElement('canvas');out.width=tw;out.height=th;out.getContext('2d').drawImage(c,minX,minY,tw,th,0,0,tw,th);var t=new Image();t.onload=function(){cb(t);};t.src=out.toDataURL();}
 function showLoadedBar(areaId,name,sub,accept,cb){var area=document.getElementById(areaId);area.innerHTML='<div class="loaded-bar"><span class="check">✓</span><div><div class="lname">'+name+'</div><div class="lsub">'+sub+'</div></div><label style="cursor:pointer;"><span class="btn-reupload">Replace</span><input type="file" accept="'+accept+'" style="display:none;"></label></div>';area.querySelector('input[type=file]').addEventListener('change',function(){if(this.files[0])cb(this.files[0]);});}
+function setDateFieldEnabled(enabled){var f=document.getElementById('dateField');f.style.opacity=enabled?'1':'0.35';f.style.pointerEvents=enabled?'auto':'none';}
 
-// ── Draw ───────────────────────────────────────────────────────────────────
-function drawBanner(canvas, W, H) {
-  if(!logoImg) return false;
-
-  canvas.width  = W;
-  canvas.height = H;
-  var ctx = canvas.getContext('2d');
-  var sc  = Math.min(W / BANNER_W, H / BANNER_H);
-
-  // Scaled layout values
-  var pad      = Math.round(PAD * sc);
-  var lMaxH    = Math.round(LOGO_MAX_H * sc);
-  var lMaxW    = Math.round(LOGO_MAX_W * sc);
-  var rcW      = Math.round(RIGHT_COL_W * sc);
-  var rcPad    = Math.round(RIGHT_PAD * sc);
-  var btnH     = Math.round(BTN_H * sc);
-  var btnR     = Math.round(BTN_R * sc);
-  var aH       = Math.round(AUCTION_H * sc);
-  var dH       = Math.round(DATE_H * sc);
-  var sGap     = Math.round(STACK_GAP * sc);
-  var minG     = Math.round(PHOTO_MIN_G * sc);
-  var maxG     = Math.round(PHOTO_MAX_G * sc);
-
-  // Gradient
-  var gc = matchGradient(getActivePalette()[0]);
-  if(!colorState.gradDir) gc = gc.slice().reverse();
-  var gFrom = gc[0];
-  ctx.fillStyle = makeGrad(ctx, gc, W);
-  ctx.fillRect(0, 0, W, H);
-
-  // Logo dimensions
-  var lsc = Math.min(lMaxW / logoImg.width, lMaxH / logoImg.height, 1);
-  var lw  = Math.round(logoImg.width  * lsc);
-  var lh  = Math.round(logoImg.height * lsc);
-
-  // Photo zone bounds (using fixed anchors first)
-  var pzX = pad + lw + pad * 2;
-  var pzW = (W - pad - rcW) - pad - pzX;
-  var pzY = pad;
-  var pH  = H - pad * 2;
-
-  // Collect filled photos
-  var filled = [];
-  for(var i = 0; i < 5; i++) { if(photoImgs[i]) filled.push(i); }
-  var nPhotos = filled.length;
-
-  // Photo layout calculation
-  var photoStartX   = pzX + Math.round(pzW / 2); // fallback: center of photo zone
-  var photoEndX     = pzX + Math.round(pzW / 2); // fallback
-  var photoGap      = minG;
-  var photoWidths   = [];
-  var photoSlotH    = pH;
-
-  if(nPhotos > 0) {
-    var natW = [];
-    for(var pi = 0; pi < nPhotos; pi++) {
-      var p = photoImgs[filled[pi]];
-      natW.push((p.width / p.height) * photoSlotH);
-    }
-    var totNat  = natW.reduce(function(a,b){return a+b;}, 0);
-    var maxUsed = pzW - minG * (nPhotos - 1);
-    var scW     = totNat > maxUsed ? maxUsed / totNat : 1;
-    for(var pi = 0; pi < nPhotos; pi++) {
-      photoWidths.push(natW[pi] * scW);
-    }
-    var totUsed = photoWidths.reduce(function(a,b){return a+b;}, 0);
-
-    if(spreadSpacing) {
-      photoGap = nPhotos > 1 ? Math.min((pzW - totUsed - pad*2) / (nPhotos-1) / 2, maxG*2) : 0;
-    } else {
-      var rg = nPhotos > 1 ? (pzW - totUsed) / (nPhotos-1) : 0;
-      photoGap = Math.min(maxG, Math.max(minG, rg));
-    }
-
-    photoStartX = pzX + Math.round((pzW - (totUsed + photoGap*(nPhotos-1))) / 2);
-    photoEndX   = photoStartX + totUsed + photoGap * (nPhotos - 1);
-  }
-
-  // Logo: center between left edge and first photo
-  var lx = Math.round((photoStartX - lw) / 2);
-  if(lx < pad) lx = pad;
-  var ly = Math.round((H - lh) / 2);
-  ctx.drawImage(logoImg, lx, ly, lw, lh);
-
-  // Right col: center between last photo and right edge
-  var rightSpace = W - photoEndX;
-  var rcX = photoEndX + Math.round((rightSpace - rcW) / 2);
-  if(rcX + rcW > W - pad) rcX = W - pad - rcW;
-  if(rcX < photoEndX + pad) rcX = photoEndX + pad;
-
-  // Right column stack (centered vertically)
-  var totalStackH = aH + sGap + dH + sGap + btnH;
-  var stackY      = Math.round((H - totalStackH) / 2);
-
-  // Auction ends/begins
-  var ezText = useEnds ? 'AUCTION ENDS' : 'AUCTION BEGINS';
-  ctx.fillStyle = makeGrad(ctx, gc, W);
-  ctx.fillRect(rcX, stackY, rcW, aH);
-  var ezFs = aH;
-  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-  do { ezFs--; ctx.font = 'bold ' + ezFs + 'px Candara,Calibri,serif'; }
-  while(ctx.measureText(ezText).width > rcW - rcPad*2 && ezFs > 4);
-  ctx.fillStyle   = getColor('auctionText');
-  ctx.strokeStyle = getColor('auctionText');
-  ctx.lineWidth   = 0.75; ctx.lineJoin = 'round';
-  ctx.strokeText(ezText, rcX + rcW/2, stackY + aH/2);
-  ctx.fillText(ezText,   rcX + rcW/2, stackY + aH/2);
-
-  // Date
-  var dateY = stackY + aH + sGap;
-  ctx.fillStyle = makeGrad(ctx, gc, W);
-  ctx.fillRect(rcX, dateY, rcW, dH);
-  var dateStr = document.getElementById('auctionDate').value.trim();
-  if(dateStr) {
-    var dfs = dH;
-    do { dfs--; ctx.font = 'bold ' + dfs + 'px Candara,Calibri,serif'; }
-    while(ctx.measureText(dateStr).width > rcW - rcPad*2 && dfs > 4);
-    ctx.fillStyle = getColor('dateText');
-    ctx.fillText(dateStr, rcX + rcW/2, dateY + dH/2);
-  }
-
-  // Bid Now
-  var btnY = dateY + dH + sGap;
-  roundRect(ctx, rcX, btnY, rcW, btnH, btnR);
-  var btnBgEl  = document.getElementById('col-btnBg');
-  var btnBgVal = btnBgEl ? btnBgEl.value : '#000000';
-  ctx.fillStyle = (btnBgVal && btnBgVal !== '#000000') ? btnBgVal : 'rgb('+gFrom[0]+','+gFrom[1]+','+gFrom[2]+')';
-  ctx.fill();
-  ctx.save(); ctx.clip();
-  var bfs = btnH;
-  do { bfs--; ctx.font = 'bold ' + bfs + 'px Candara,Calibri,serif'; }
-  while(ctx.measureText('BID NOW').width > rcW - rcPad*2 && bfs > 4);
-  ctx.fillStyle = getColor('btnText'); ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-  ctx.strokeStyle = getColor('btnText'); ctx.lineWidth = 0.75; ctx.lineJoin = 'round';
-  ctx.strokeText('BID NOW', rcX + rcW/2, btnY + btnH/2 + Math.round(3*sc));
-  ctx.fillText('BID NOW',   rcX + rcW/2, btnY + btnH/2 + Math.round(3*sc));
-  ctx.restore();
-  ctx.beginPath(); roundRect(ctx, rcX, btnY, rcW, btnH, btnR);
-  ctx.strokeStyle = getColor('btnBorder'); ctx.lineWidth = Math.max(1,sc); ctx.stroke();
-
-  // Photos
-  if(nPhotos > 0) {
-    var curX = photoStartX;
-    for(var pi = 0; pi < nPhotos; pi++) {
-      var idx   = filled[pi];
-      var photo = photoImgs[idx];
-      var isT   = photoTransparent[idx];
-      var dW    = photoWidths[pi];
-      var dH2   = photoSlotH;
-      var dY    = pzY;
-      if(!isT) { dH2 = dW / (photo.width / photo.height); dY = pzY + Math.round((photoSlotH - dH2) / 2); }
-      ctx.drawImage(photo, curX, dY, dW, dH2);
-      if(!isT) { ctx.strokeStyle = getColor('photoBorder'); ctx.lineWidth = Math.max(1,sc); ctx.strokeRect(curX, dY, dW, dH2); }
-      curX += dW + photoGap;
-    }
-  }
-
-  // Banner border
-  if(colorState.bannerBorder) {
-    var bc = hexToRgb(getColor('bannerBorder'));
-    ctx.strokeStyle = 'rgb('+bc[0]+','+bc[1]+','+bc[2]+')';
-    ctx.lineWidth   = Math.max(2, Math.round(2*sc));
-    ctx.strokeRect(1, 1, W-2, H-2);
-  }
-
-  return true;
-}
-
-// ── Preview / Export ───────────────────────────────────────────────────────
-function renderPreview() {
-  if(!logoImg) return;
-  try {
-    var canvas = document.getElementById('previewCanvas');
-    if(drawBanner(canvas, BANNER_W, BANNER_H)) {
-      canvas.style.display = 'block';
-      document.getElementById('previewPlaceholder').style.display = 'none';
-      setStatus('Preview ready.', true);
-    }
-  } catch(err) {
-    setStatus('Render error: ' + err.message, false);
-    console.error(err);
-  }
-}
-
-function exportBanner(tw, th, size) {
-  if(!logoImg) { setStatus('Upload a logo first.', false); return; }
-  var name = document.getElementById('fileName').value.trim() || 'banner';
-  try {
-    // Always draw at full 1078x120 then scale down
-    var full = document.getElementById('exportCanvas');
-    if(!drawBanner(full, BANNER_W, BANNER_H)) return;
-    var out = document.createElement('canvas');
-    out.width = tw; out.height = th;
-    out.getContext('2d').drawImage(full, 0, 0, tw, th);
-    var a = document.createElement('a');
-    a.download = name + '_' + size + '.png';
-    a.href = out.toDataURL('image/png');
-    document.body.appendChild(a); a.click(); document.body.removeChild(a);
-    setStatus('Exported: ' + name + '_' + size + '.png', true);
-  } catch(err) { setStatus('Export failed: ' + err.message, false); }
-}
-
-// ── Config ─────────────────────────────────────────────────────────────────
-async function loadConfig() {
-  try {
-    var res = await fetch('presets.json');
-    if(!res.ok) throw new Error();
-    var data = await res.json();
-    configPresets = data.presets || [];
-    document.getElementById('presetCount').textContent = '(' + configPresets.length + ')';
-  } catch(e) { configPresets = []; }
-  renderPresetList();
-}
-
-function renderPresetList() {
-  var list   = document.getElementById('presetList');
-  var search = document.getElementById('presetSearch').value.trim().toLowerCase();
-  var items  = search ? configPresets.filter(function(p){return p.name.toLowerCase().includes(search);}) : configPresets;
-  if(items.length === 0) { list.innerHTML = '<div class="preset-empty">' + (configPresets.length===0?'No presets loaded.':'No results.') + '</div>'; return; }
-  list.innerHTML = '';
-  items.forEach(function(p) {
-    var item = document.createElement('div');
-    item.className = 'preset-item' + (currentPreset===p.name?' active':'');
-    var gc = p.brandOverrideHex ? matchGradient(hexToRgb(p.brandOverrideHex)) : null;
-    var sw = gc ? 'background:linear-gradient(to right,rgb('+gc[0]+'),rgb('+gc[gc.length-1]+'));' : 'background:#4fa8cc;';
-    item.innerHTML = '<div class="preset-swatch" style="'+sw+'"></div>'
-      + (p.logoUrl?'<img class="preset-thumb" src="'+p.logoUrl+'" onerror="this.style.display=\'none\'">':'')
-      + '<span class="preset-name">'+p.name+'</span>'
-      + (p.brandOverrideHex?'<span class="preset-hex">'+p.brandOverrideHex+'</span>':'')
-      + '<button class="preset-load-btn">Load</button>';
-    item.querySelector('button').addEventListener('click', function(){ loadPreset(p); });
-    list.appendChild(item);
-  });
-}
-
-function loadPreset(p) {
-  if(p.brandOverrideHex) {
-    brandOverride = hexToRgb(p.brandOverrideHex);
-    document.getElementById('brandColorPicker').value = p.brandOverrideHex;
-    document.getElementById('brandColorHex').value    = p.brandOverrideHex;
-    document.getElementById('overrideLabel').classList.add('visible');
-  } else {
-    brandOverride = null;
-    document.getElementById('overrideLabel').classList.remove('visible');
-  }
-  if(p.colorState) TOGGLE_KEYS.forEach(function(k) {
-    if(k in p.colorState) {
-      colorState[k] = p.colorState[k];
-      var t = document.getElementById('tog-'+k);
-      colorState[k] ? t.classList.add('on') : t.classList.remove('on');
-      updateTogglePickerState(k);
-    }
-  });
-  if(p.pickerColors) COLOR_PICKER_KEYS.forEach(function(k) {
-    var el = document.getElementById('col-'+k);
-    if(el && p.pickerColors[k]) el.value = p.pickerColors[k];
-  });
-  if(p.logoUrl) {
-    loadImageSrc(p.logoUrl, function(img) {
-      logoPalette = extractPalette(img);
-      trimImage(img, function(t) {
-        logoImg = t;
-        var pal = p.brandOverrideHex ? hexToRgb(p.brandOverrideHex) : logoPalette[0];
-        if(pal) updatePaletteSwatches(pal);
-        document.getElementById('paletteDisplay').style.display = 'block';
-        document.getElementById('auctioneerLabel').textContent  = p.name;
-        showLoadedBar('logoArea', p.name, 'From preset', 'image/png,image/jpeg', function(f) {
-          loadImageFile(f, function(i) { logoPalette=extractPalette(i); trimImage(i,function(tt){logoImg=tt;updatePaletteSwatches(logoPalette[0]);renderPreview();}); });
-        });
-        currentPreset = p.name; renderPresetList();
-        setStatus('Loaded: '+p.name, true); renderPreview();
-      });
-    });
-  } else {
-    currentPreset = p.name; renderPresetList();
-    setStatus('Preset loaded (no logo)', true); renderPreview();
-  }
-}
-
-// ── Generate JSON ──────────────────────────────────────────────────────────
-function generatePresetJSON() {
-  var name = document.getElementById('auctioneerLabel').textContent.trim();
-  if(!name || name==='No auctioneer loaded') { setStatus('Upload a logo first.', false); return; }
-  var pc = {};
-  COLOR_PICKER_KEYS.forEach(function(k){ var el=document.getElementById('col-'+k); if(el) pc[k]=el.value; });
-  var preset = {name:name, logoUrl:'logos/'+name, colorState:Object.assign({},colorState), pickerColors:pc};
-  if(brandOverride) preset.brandOverrideHex = rgbToHex(brandOverride);
-  document.getElementById('presetJsonText').value  = JSON.stringify(preset, null, 2);
-  document.getElementById('presetJsonOutput').style.display = 'block';
-  document.getElementById('copyConfirm').style.display      = 'none';
-  setStatus('JSON ready.', true);
-}
-function copyPresetJSON() {
-  var ta = document.getElementById('presetJsonText'); ta.select(); document.execCommand('copy');
-  document.getElementById('copyConfirm').style.display = 'inline';
-  setTimeout(function(){ document.getElementById('copyConfirm').style.display='none'; }, 2000);
-}
-
-// ── Toggles ────────────────────────────────────────────────────────────────
-function toggleTemplate() {
+// ── Template toggles ───────────────────────────────────────────────────────
+function toggleTemplate(){
+  multipleAuctions = false;
+  document.getElementById('multipleBtn').classList.remove('active');
+  setDateFieldEnabled(true);
   useEnds = !useEnds;
   var btn = document.getElementById('templateToggleBtn');
   btn.textContent = useEnds ? '⏱ Auction Ends' : '⏱ Auction Begins';
@@ -649,120 +367,163 @@ function toggleTemplate() {
   setStatus('Switched to '+(useEnds?'Auction Ends':'Auction Begins')+'.', true);
   renderPreview();
 }
-function doToggle(key) {
-  colorState[key] = !colorState[key];
-  var t = document.getElementById('tog-'+key);
-  colorState[key] ? t.classList.add('on') : t.classList.remove('on');
-  if(key==='gradDir') document.getElementById('lbl-gradDir').textContent = colorState[key]?'L→R':'R→L';
+
+function toggleMultiple(){
+  multipleAuctions = !multipleAuctions;
+  var btn = document.getElementById('multipleBtn');
+  if(multipleAuctions){
+    btn.classList.add('active');
+    setDateFieldEnabled(false);
+    setStatus('Switched to Multiple Auctions.', true);
+  } else {
+    btn.classList.remove('active');
+    setDateFieldEnabled(true);
+    setStatus('Switched to '+(useEnds?'Auction Ends':'Auction Begins')+'.', true);
+  }
+  renderPreview();
+}
+
+// ── Color toggles ──────────────────────────────────────────────────────────
+function doToggle(key){
+  colorState[key]=!colorState[key];
+  var t=document.getElementById('tog-'+key);
+  colorState[key]?t.classList.add('on'):t.classList.remove('on');
+  if(key==='gradDir')document.getElementById('lbl-gradDir').textContent=colorState[key]?'L→R':'R→L';
   updateTogglePickerState(key);
   renderPreview();
 }
-function doPhotoSpacingToggle() {
-  spreadSpacing = !spreadSpacing;
-  var t = document.getElementById('tog-photoSpacing');
-  spreadSpacing ? t.classList.add('on') : t.classList.remove('on');
-  document.getElementById('lbl-photoSpacing').textContent = spreadSpacing ? 'Spread' : 'Centered';
+function doPhotoSpacingToggle(){
+  spreadSpacing=!spreadSpacing;
+  var t=document.getElementById('tog-photoSpacing');
+  spreadSpacing?t.classList.add('on'):t.classList.remove('on');
+  document.getElementById('lbl-photoSpacing').textContent=spreadSpacing?'Spread':'Centered';
   renderPreview();
 }
 
 // ── Brand override ─────────────────────────────────────────────────────────
-function applyBrandOverride() {
-  var hex = document.getElementById('brandColorHex').value.trim();
-  if(hex.indexOf('#')!==0) hex='#'+hex;
-  if(!/^#[0-9A-Fa-f]{6}$/.test(hex)) { setStatus('Invalid hex.', false); return; }
-  document.getElementById('brandColorPicker').value = hex;
-  brandOverride = hexToRgb(hex);
-  document.getElementById('overrideLabel').classList.add('visible');
-  updatePaletteSwatches(brandOverride);
-  renderPreview();
-}
-function clearBrandOverride() {
-  brandOverride = null;
-  document.getElementById('overrideLabel').classList.remove('visible');
-  if(logoPalette.length) updatePaletteSwatches(logoPalette[0]);
-  renderPreview();
-}
+function applyBrandOverride(){var hex=document.getElementById('brandColorHex').value.trim();if(hex.indexOf('#')!==0)hex='#'+hex;if(!/^#[0-9A-Fa-f]{6}$/.test(hex)){setStatus('Invalid hex.',false);return;}document.getElementById('brandColorPicker').value=hex;brandOverride=hexToRgb(hex);document.getElementById('overrideLabel').classList.add('visible');updatePaletteSwatches(brandOverride);renderPreview();}
+function clearBrandOverride(){brandOverride=null;document.getElementById('overrideLabel').classList.remove('visible');if(logoPalette.length)updatePaletteSwatches(logoPalette[0]);renderPreview();}
 
 // ── Logo upload ────────────────────────────────────────────────────────────
-function bindLogoFile() {
-  var el = document.getElementById('logoFile');
-  if(!el) return;
-  el.addEventListener('change', function(){ if(this.files[0]) onLogoChange(this.files[0]); });
-}
-function onLogoChange(file) {
-  var name = file.name.replace(/\.[^.]+$/,'').replace(/[_-]/g,' ');
-  document.getElementById('auctioneerLabel').textContent = name;
-  var t = new Date(), y=t.getFullYear(), m=String(t.getMonth()+1).padStart(2,'0'), d=String(t.getDate()).padStart(2,'0');
-  document.getElementById('fileName').value = name.replace(/\s+/g,'_')+'_'+y+'_'+m+'_'+d+'_Category';
-  loadImageFile(file, function(img) {
-    logoPalette = extractPalette(img);
-    trimImage(img, function(trimmed) {
-      logoImg = trimmed; brandOverride = null;
+function bindLogoFile(){var el=document.getElementById('logoFile');if(!el)return;el.addEventListener('change',function(){if(this.files[0])onLogoChange(this.files[0]);});}
+function onLogoChange(file){
+  var name=file.name.replace(/\.[^.]+$/,'').replace(/[_-]/g,' ');
+  document.getElementById('auctioneerLabel').textContent=name;
+  var t=new Date(),y=t.getFullYear(),m=String(t.getMonth()+1).padStart(2,'0'),d=String(t.getDate()).padStart(2,'0');
+  document.getElementById('fileName').value=name.replace(/\s+/g,'_')+'_'+y+'_'+m+'_'+d+'_Category';
+  loadImageFile(file,function(img){
+    logoPalette=extractPalette(img);
+    trimImage(img,function(trimmed){
+      logoImg=trimmed;brandOverride=null;
       document.getElementById('overrideLabel').classList.remove('visible');
       updatePaletteSwatches(logoPalette[0]);
-      document.getElementById('paletteDisplay').style.display = 'block';
-      showLoadedBar('logoArea', name, img.width+'×'+img.height, 'image/png,image/jpeg', function(f) {
-        var n = f.name.replace(/\.[^.]+$/,'').replace(/[_-]/g,' ');
-        document.getElementById('auctioneerLabel').textContent = n;
-        loadImageFile(f, function(i){ logoPalette=extractPalette(i); trimImage(i,function(tt){logoImg=tt;brandOverride=null;updatePaletteSwatches(logoPalette[0]);setStatus('Logo replaced.',true);renderPreview();}); });
+      document.getElementById('paletteDisplay').style.display='block';
+      showLoadedBar('logoArea',name,img.width+'×'+img.height,'image/png,image/jpeg',function(f){
+        var n=f.name.replace(/\.[^.]+$/,'').replace(/[_-]/g,' ');
+        document.getElementById('auctioneerLabel').textContent=n;
+        loadImageFile(f,function(i){logoPalette=extractPalette(i);trimImage(i,function(tt){logoImg=tt;brandOverride=null;updatePaletteSwatches(logoPalette[0]);setStatus('Logo replaced.',true);renderPreview();});});
       });
-      setStatus('Logo loaded: '+name, true);
+      setStatus('Logo loaded: '+name,true);
       renderPreview();
     });
   });
 }
 
+// ── Config ─────────────────────────────────────────────────────────────────
+async function loadConfig(){
+  try{
+    var res=await fetch('presets.json');
+    if(!res.ok)throw new Error();
+    var data=await res.json();
+    configPresets=data.presets||[];
+    document.getElementById('presetCount').textContent='('+configPresets.length+')';
+  }catch(e){configPresets=[];}
+  renderPresetList();
+}
+
+function renderPresetList(){
+  var list=document.getElementById('presetList');
+  var search=document.getElementById('presetSearch').value.trim().toLowerCase();
+  var items=search?configPresets.filter(function(p){return p.name.toLowerCase().includes(search);}):configPresets;
+  if(items.length===0){list.innerHTML='<div class="preset-empty">'+(configPresets.length===0?'No presets loaded.':'No results.')+'</div>';return;}
+  list.innerHTML='';
+  items.forEach(function(p){
+    var item=document.createElement('div');
+    item.className='preset-item'+(currentPreset===p.name?' active':'');
+    var gc=p.brandOverrideHex?matchGradient(hexToRgb(p.brandOverrideHex)):null;
+    var sw=gc?'background:linear-gradient(to right,rgb('+gc[0]+'),rgb('+gc[gc.length-1]+'));':'background:#4fa8cc;';
+    item.innerHTML='<div class="preset-swatch" style="'+sw+'"></div>'
+      +(p.logoUrl?'<img class="preset-thumb" src="'+p.logoUrl+'" onerror="this.style.display=\'none\'">':'')
+      +'<span class="preset-name">'+p.name+'</span>'
+      +(p.brandOverrideHex?'<span class="preset-hex">'+p.brandOverrideHex+'</span>':'')
+      +'<button class="preset-load-btn">Load</button>';
+    item.querySelector('button').addEventListener('click',function(){loadPreset(p);});
+    list.appendChild(item);
+  });
+}
+
+function loadPreset(p){
+  if(p.brandOverrideHex){brandOverride=hexToRgb(p.brandOverrideHex);document.getElementById('brandColorPicker').value=p.brandOverrideHex;document.getElementById('brandColorHex').value=p.brandOverrideHex;document.getElementById('overrideLabel').classList.add('visible');}
+  else{brandOverride=null;document.getElementById('overrideLabel').classList.remove('visible');}
+  if(p.colorState)TOGGLE_KEYS.forEach(function(k){if(k in p.colorState){colorState[k]=p.colorState[k];var t=document.getElementById('tog-'+k);colorState[k]?t.classList.add('on'):t.classList.remove('on');updateTogglePickerState(k);}});
+  if(p.pickerColors)COLOR_PICKER_KEYS.forEach(function(k){var el=document.getElementById('col-'+k);if(el&&p.pickerColors[k])el.value=p.pickerColors[k];});
+  if(p.logoUrl){
+    loadImageSrc(p.logoUrl,function(img){
+      logoPalette=extractPalette(img);
+      trimImage(img,function(t){
+        logoImg=t;
+        var pal=p.brandOverrideHex?hexToRgb(p.brandOverrideHex):logoPalette[0];
+        if(pal)updatePaletteSwatches(pal);
+        document.getElementById('paletteDisplay').style.display='block';
+        document.getElementById('auctioneerLabel').textContent=p.name;
+        showLoadedBar('logoArea',p.name,'From preset','image/png,image/jpeg',function(f){loadImageFile(f,function(i){logoPalette=extractPalette(i);trimImage(i,function(tt){logoImg=tt;updatePaletteSwatches(logoPalette[0]);renderPreview();});});});
+        currentPreset=p.name;renderPresetList();
+        setStatus('Loaded: '+p.name,true);renderPreview();
+      });
+    });
+  }else{currentPreset=p.name;renderPresetList();setStatus('Preset loaded (no logo)',true);renderPreview();}
+}
+
+function generatePresetJSON(){
+  var name=document.getElementById('auctioneerLabel').textContent.trim();
+  if(!name||name==='No auctioneer loaded'){setStatus('Upload a logo first.',false);return;}
+  var pc={};COLOR_PICKER_KEYS.forEach(function(k){var el=document.getElementById('col-'+k);if(el)pc[k]=el.value;});
+  var preset={name:name,logoUrl:'logos/'+name,colorState:Object.assign({},colorState),pickerColors:pc};
+  if(brandOverride)preset.brandOverrideHex=rgbToHex(brandOverride);
+  document.getElementById('presetJsonText').value=JSON.stringify(preset,null,2);
+  document.getElementById('presetJsonOutput').style.display='block';
+  document.getElementById('copyConfirm').style.display='none';
+  setStatus('JSON ready.',true);
+}
+function copyPresetJSON(){var ta=document.getElementById('presetJsonText');ta.select();document.execCommand('copy');document.getElementById('copyConfirm').style.display='inline';setTimeout(function(){document.getElementById('copyConfirm').style.display='none';},2000);}
+
 // ── Photo slots ────────────────────────────────────────────────────────────
-(function() {
-  var grid = document.getElementById('slotsGrid');
-  for(var si = 0; si < 5; si++) {
-    (function(i) {
-      var wrap = document.createElement('div'); wrap.className = 'slot-wrap';
-      var zone = document.createElement('div'); zone.className = 'drop-zone'; zone.id = 'zone'+i;
-      zone.innerHTML = '<span class="dz-icon">+</span><span class="dz-label">Photo '+(i+1)+'</span><span class="slot-num">Slot '+(i+1)+'</span><img id="thumb'+i+'" style="display:none;"><button class="clear-btn" onclick="clearSlot(event,'+i+')">✕</button><input type="file" accept="image/*">';
-      zone.querySelector('input[type=file]').addEventListener('change', function(){ if(this.files[0]) handlePhoto(this.files[0],i); });
-      zone.addEventListener('dragover', function(e){ e.preventDefault(); zone.classList.add('dragover'); });
-      zone.addEventListener('dragleave', function(){ zone.classList.remove('dragover'); });
-      zone.addEventListener('drop', function(e){ e.preventDefault(); zone.classList.remove('dragover'); if(e.dataTransfer.files[0]) handlePhoto(e.dataTransfer.files[0],i); });
-      var btn = document.createElement('button'); btn.className='trans-btn'; btn.id='transTog'+i; btn.textContent='BG';
-      btn.onclick = function(){ toggleTransparent(i); };
-      wrap.appendChild(zone); wrap.appendChild(btn); grid.appendChild(wrap);
+(function(){
+  var grid=document.getElementById('slotsGrid');
+  for(var si=0;si<5;si++){
+    (function(i){
+      var wrap=document.createElement('div');wrap.className='slot-wrap';
+      var zone=document.createElement('div');zone.className='drop-zone';zone.id='zone'+i;
+      zone.innerHTML='<span class="dz-icon">+</span><span class="dz-label">Photo '+(i+1)+'</span><span class="slot-num">Slot '+(i+1)+'</span><img id="thumb'+i+'" style="display:none;"><button class="clear-btn" onclick="clearSlot(event,'+i+')">✕</button><input type="file" accept="image/*">';
+      zone.querySelector('input[type=file]').addEventListener('change',function(){if(this.files[0])handlePhoto(this.files[0],i);});
+      zone.addEventListener('dragover',function(e){e.preventDefault();zone.classList.add('dragover');});
+      zone.addEventListener('dragleave',function(){zone.classList.remove('dragover');});
+      zone.addEventListener('drop',function(e){e.preventDefault();zone.classList.remove('dragover');if(e.dataTransfer.files[0])handlePhoto(e.dataTransfer.files[0],i);});
+      var btn=document.createElement('button');btn.className='trans-btn';btn.id='transTog'+i;btn.textContent='BG';
+      btn.onclick=function(){toggleTransparent(i);};
+      wrap.appendChild(zone);wrap.appendChild(btn);grid.appendChild(wrap);
     })(si);
   }
 })();
 
-function handlePhoto(file, idx) {
-  if(!file||!file.type.startsWith('image/')) return;
-  loadImageFile(file, function(img) {
-    photoImgs[idx] = img;
-    var reader = new FileReader();
-    reader.onload = function(e){ var t=document.getElementById('thumb'+idx); t.src=e.target.result; t.style.display='block'; };
-    reader.readAsDataURL(file);
-    document.getElementById('zone'+idx).classList.add('filled');
-    setStatus('Photo '+(idx+1)+' loaded.', true);
-    renderPreview();
-  });
-}
-function clearSlot(e, idx) {
-  e.stopPropagation();
-  photoImgs[idx]=null; photoTransparent[idx]=false;
-  var t=document.getElementById('thumb'+idx); t.src=''; t.style.display='none';
-  document.getElementById('zone'+idx).classList.remove('filled');
-  document.getElementById('zone'+idx).querySelector('input[type=file]').value='';
-  var tb=document.getElementById('transTog'+idx); if(tb){tb.textContent='BG';tb.classList.remove('active');}
-  renderPreview();
-}
-function toggleTransparent(i) {
-  photoTransparent[i] = !photoTransparent[i];
-  var btn = document.getElementById('transTog'+i);
-  photoTransparent[i] ? (btn.textContent='Transparent', btn.classList.add('active')) : (btn.textContent='BG', btn.classList.remove('active'));
-  renderPreview();
-}
+function handlePhoto(file,idx){if(!file||!file.type.startsWith('image/'))return;loadImageFile(file,function(img){photoImgs[idx]=img;var reader=new FileReader();reader.onload=function(e){var t=document.getElementById('thumb'+idx);t.src=e.target.result;t.style.display='block';};reader.readAsDataURL(file);document.getElementById('zone'+idx).classList.add('filled');setStatus('Photo '+(idx+1)+' loaded.',true);renderPreview();});}
+function clearSlot(e,idx){e.stopPropagation();photoImgs[idx]=null;photoTransparent[idx]=false;var t=document.getElementById('thumb'+idx);t.src='';t.style.display='none';document.getElementById('zone'+idx).classList.remove('filled');document.getElementById('zone'+idx).querySelector('input[type=file]').value='';var tb=document.getElementById('transTog'+idx);if(tb){tb.textContent='BG';tb.classList.remove('active');}renderPreview();}
+function toggleTransparent(i){photoTransparent[i]=!photoTransparent[i];var btn=document.getElementById('transTog'+i);photoTransparent[i]?(btn.textContent='Transparent',btn.classList.add('active')):(btn.textContent='BG',btn.classList.remove('active'));renderPreview();}
 
 // ── Reset ──────────────────────────────────────────────────────────────────
-function resetAll() {
-  logoImg=null; logoPalette=[]; brandOverride=null; currentPreset=null;
-  photoImgs=[null,null,null,null,null]; photoTransparent=[false,false,false,false,false];
+function resetAll(){
+  logoImg=null;logoPalette=[];brandOverride=null;currentPreset=null;
+  photoImgs=[null,null,null,null,null];photoTransparent=[false,false,false,false,false];
   document.getElementById('logoArea').innerHTML='<div class="upload-icon">↑</div><div class="upload-title">Click or drag logo here</div><div class="upload-sub">PNG recommended · filename becomes auctioneer name</div><input type="file" id="logoFile" accept="image/png,image/jpeg">';
   bindLogoFile();
   document.getElementById('paletteDisplay').style.display='none';
@@ -777,16 +538,196 @@ function resetAll() {
   spreadSpacing=false;
   document.getElementById('tog-photoSpacing').classList.remove('on');
   document.getElementById('lbl-photoSpacing').textContent='Centered';
-  useEnds=true;
+  useEnds=true;multipleAuctions=false;
   document.getElementById('templateToggleBtn').textContent='⏱ Auction Ends';
   document.getElementById('templateToggleBtn').classList.remove('begins');
+  document.getElementById('multipleBtn').classList.remove('active');
+  setDateFieldEnabled(true);
   TOGGLE_KEYS.forEach(function(k){var isOn=k!=='bannerBorder';colorState[k]=isOn;var track=document.getElementById('tog-'+k);isOn?track.classList.add('on'):track.classList.remove('on');var cp=document.getElementById('col-'+k);if(cp){cp.value='#FFFFFF';updateTogglePickerState(k);}});
   document.getElementById('col-btnBg').value='#000000';
   document.getElementById('lbl-gradDir').textContent='L→R';
   document.getElementById('previewCanvas').style.display='none';
   document.getElementById('previewPlaceholder').style.display='block';
   renderPresetList();
-  setStatus('Reset.', true);
+  setStatus('Reset.',true);
+}
+
+// ── Draw ───────────────────────────────────────────────────────────────────
+function drawBanner(canvas, W, H) {
+  if(!logoImg) return false;
+  canvas.width = W; canvas.height = H;
+  var ctx = canvas.getContext('2d');
+  var sc  = Math.min(W/BANNER_W, H/BANNER_H);
+
+  var pad   = Math.round(PAD*sc);
+  var lMaxH = Math.round(LOGO_MAX_H*sc);
+  var lMaxW = Math.round(LOGO_MAX_W*sc);
+  var rcW   = Math.round(RIGHT_COL_W*sc);
+  var rcPad = Math.round(RIGHT_PAD*sc);
+  var btnH  = Math.round(BTN_H*sc);
+  var btnR  = Math.round(BTN_R*sc);
+  var aH    = Math.round(AUCTION_H*sc);
+  var dH    = Math.round(DATE_H*sc);
+  var sGap  = Math.round(STACK_GAP*sc);
+  var minG  = Math.round(PHOTO_MIN_G*sc);
+  var maxG  = Math.round(PHOTO_MAX_G*sc);
+
+  // Gradient
+  var gc = matchGradient(getActivePalette()[0]);
+  if(!colorState.gradDir) gc = gc.slice().reverse();
+  var gFrom = gc[0];
+  ctx.fillStyle = makeGrad(ctx,gc,W);
+  ctx.fillRect(0,0,W,H);
+
+  // Logo dimensions
+  var lsc = Math.min(lMaxW/logoImg.width, lMaxH/logoImg.height, 1);
+  var lw  = Math.round(logoImg.width*lsc);
+  var lh  = Math.round(logoImg.height*lsc);
+
+  // Photo zone using fixed anchors
+  var pzX = pad + lw + pad*2;
+  var pzW = (W - pad - rcW) - pad - pzX;
+  var pzY = pad;
+  var pzH = H - pad*2;
+
+  // Collect photos
+  var filled  = [];
+  for(var i=0;i<5;i++){if(photoImgs[i])filled.push(i);}
+  var nP = filled.length;
+
+  // Photo layout
+  var pStartX  = pzX + Math.round(pzW/2);
+  var pEndX    = pzX + Math.round(pzW/2);
+  var pGap     = minG;
+  var pWidths  = [];
+  var pSlotH   = pzH;
+
+  if(nP > 0){
+    var natW=[], totNat=0;
+    for(var pi=0;pi<nP;pi++){var p=photoImgs[filled[pi]];var nw=(p.width/p.height)*pSlotH;natW.push(nw);totNat+=nw;}
+    var maxUsed=pzW-minG*(nP-1);
+    var scW=totNat>maxUsed?maxUsed/totNat:1;
+    var totUsed=0;
+    for(var pi=0;pi<nP;pi++){var dw=natW[pi]*scW;pWidths.push(dw);totUsed+=dw;}
+    if(spreadSpacing){
+      pGap=nP>1?Math.min((pzW-totUsed-pad*2)/(nP-1)/2,maxG*2):0;
+    }else{
+      var rg=nP>1?(pzW-totUsed)/(nP-1):0;
+      pGap=Math.min(maxG,Math.max(minG,rg));
+    }
+    pStartX=pzX+Math.round((pzW-(totUsed+pGap*(nP-1)))/2);
+    pEndX=pStartX+totUsed+pGap*(nP-1);
+  }
+
+  // Center logo between left edge and first photo
+  var lx=Math.round((pStartX-lw)/2);
+  if(lx<pad)lx=pad;
+  var ly=Math.round((H-lh)/2);
+  ctx.drawImage(logoImg,lx,ly,lw,lh);
+
+  // Center right col between last photo and right edge
+  var rightSpace=W-pEndX;
+  var rcX=pEndX+Math.round((rightSpace-rcW)/2);
+  if(rcX+rcW>W-pad)rcX=W-pad-rcW;
+  if(rcX<pEndX+pad)rcX=pEndX+pad;
+
+  // Right column stack
+  var totalSH=aH+sGap+dH+sGap+btnH;
+  var stackY=Math.round((H-totalSH)/2);
+
+  // Determine text based on mode
+  var ezText = multipleAuctions ? 'MULTIPLE AUCTIONS' : (useEnds ? 'AUCTION ENDS' : 'AUCTION BEGINS');
+  var dateStr = multipleAuctions ? 'CLOSING SOON!' : document.getElementById('auctionDate').value.trim();
+
+  // Auction text
+  ctx.fillStyle=makeGrad(ctx,gc,W);ctx.fillRect(rcX,stackY,rcW,aH);
+  var ezFs=aH;ctx.textAlign='center';ctx.textBaseline='middle';
+  do{ezFs--;ctx.font='bold '+ezFs+'px Candara,Calibri,serif';}
+  while(ctx.measureText(ezText).width>rcW-rcPad*2&&ezFs>4);
+  ctx.fillStyle=getColor('auctionText');ctx.strokeStyle=getColor('auctionText');ctx.lineWidth=0.75;ctx.lineJoin='round';
+  ctx.strokeText(ezText,rcX+rcW/2,stackY+aH/2);ctx.fillText(ezText,rcX+rcW/2,stackY+aH/2);
+
+  // Date / Closing Soon
+  var dateY=stackY+aH+sGap;
+  ctx.fillStyle=makeGrad(ctx,gc,W);ctx.fillRect(rcX,dateY,rcW,dH);
+  if(dateStr){
+    var dfs=dH;
+    do{dfs--;ctx.font='bold '+dfs+'px Candara,Calibri,serif';}
+    while(ctx.measureText(dateStr).width>rcW-rcPad*2&&dfs>4);
+    ctx.fillStyle=getColor('dateText');
+    ctx.strokeStyle=getColor('dateText');ctx.lineWidth=0.75;ctx.lineJoin='round';
+    ctx.strokeText(dateStr,rcX+rcW/2,dateY+dH/2);
+    ctx.fillText(dateStr,rcX+rcW/2,dateY+dH/2);
+  }
+
+  // Bid Now
+  var btnY=dateY+dH+sGap;
+  roundRect(ctx,rcX,btnY,rcW,btnH,btnR);
+  var btnBgEl=document.getElementById('col-btnBg');
+  var btnBgVal=btnBgEl?btnBgEl.value:'#000000';
+  ctx.fillStyle=(btnBgVal&&btnBgVal!=='#000000')?btnBgVal:'rgb('+gFrom[0]+','+gFrom[1]+','+gFrom[2]+')';
+  ctx.fill();
+  ctx.save();ctx.clip();
+  var bfs=btnH;
+  do{bfs--;ctx.font='bold '+bfs+'px Candara,Calibri,serif';}
+  while(ctx.measureText('BID NOW').width>rcW-rcPad*2&&bfs>4);
+  ctx.fillStyle=getColor('btnText');ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.strokeStyle=getColor('btnText');ctx.lineWidth=0.75;ctx.lineJoin='round';
+  ctx.strokeText('BID NOW',rcX+rcW/2,btnY+btnH/2+Math.round(3*sc));
+  ctx.fillText('BID NOW',rcX+rcW/2,btnY+btnH/2+Math.round(3*sc));
+  ctx.restore();
+  ctx.beginPath();roundRect(ctx,rcX,btnY,rcW,btnH,btnR);
+  ctx.strokeStyle=getColor('btnBorder');ctx.lineWidth=Math.max(1,sc);ctx.stroke();
+
+  // Photos
+  if(nP>0){
+    var curX=pStartX;
+    for(var pi=0;pi<nP;pi++){
+      var idx=filled[pi],photo=photoImgs[idx],isT=photoTransparent[idx];
+      var dW=pWidths[pi],dH2=pSlotH,dY=pzY;
+      if(!isT){dH2=dW/(photo.width/photo.height);dY=pzY+Math.round((pSlotH-dH2)/2);}
+      ctx.drawImage(photo,curX,dY,dW,dH2);
+      if(!isT){ctx.strokeStyle=getColor('photoBorder');ctx.lineWidth=Math.max(1,sc);ctx.strokeRect(curX,dY,dW,dH2);}
+      curX+=dW+pGap;
+    }
+  }
+
+  // Banner border
+  if(colorState.bannerBorder){
+    var bc=hexToRgb(getColor('bannerBorder'));
+    ctx.strokeStyle='rgb('+bc[0]+','+bc[1]+','+bc[2]+')';
+    ctx.lineWidth=Math.max(2,Math.round(2*sc));
+    ctx.strokeRect(1,1,W-2,H-2);
+  }
+
+  return true;
+}
+
+// ── Preview / Export ───────────────────────────────────────────────────────
+function renderPreview(){
+  if(!logoImg)return;
+  try{
+    var canvas=document.getElementById('previewCanvas');
+    if(drawBanner(canvas,BANNER_W,BANNER_H)){
+      canvas.style.display='block';
+      document.getElementById('previewPlaceholder').style.display='none';
+      setStatus('Preview ready.',true);
+    }
+  }catch(err){setStatus('Render error: '+err.message,false);console.error(err);}
+}
+
+function exportBanner(tw,th,size){
+  if(!logoImg){setStatus('Upload a logo first.',false);return;}
+  var name=document.getElementById('fileName').value.trim()||'banner';
+  try{
+    var full=document.getElementById('exportCanvas');
+    if(!drawBanner(full,BANNER_W,BANNER_H))return;
+    var out=document.createElement('canvas');out.width=tw;out.height=th;
+    out.getContext('2d').drawImage(full,0,0,tw,th);
+    var a=document.createElement('a');a.download=name+'_'+size+'.png';a.href=out.toDataURL('image/png');
+    document.body.appendChild(a);a.click();document.body.removeChild(a);
+    setStatus('Exported: '+name+'_'+size+'.png',true);
+  }catch(err){setStatus('Export failed: '+err.message,false);}
 }
 
 // ── Init ───────────────────────────────────────────────────────────────────
