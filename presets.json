@@ -323,6 +323,63 @@
         }
     },
     { 
+"name": "WashingtonSurplusInc",
+  "brandOverrideHex": "#b8b9bc",
+  "logoUrl": "logos/WashingtonSurplusInc",
+  "colorState": {
+    "gradDir": false,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": false,
+    "btnText": true,
+    "auctionText": false,
+    "dateText": false
+  },
+  "pickerColors": {
+    "photoBorder": "#1b337d",
+    "btnBg": "#1b337d",
+    "bannerBorder": "#1b337d"
+       }
+    },
+    { 
+"name": "ETXLiquidation",
+  "brandOverrideHex": "#bfbfbf",
+  "logoUrl": "logos/ETXLiquidation",
+  "colorState": {
+    "gradDir": false,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": false,
+    "btnText": true,
+    "auctionText": false,
+    "dateText": false
+  },
+  "pickerColors": {
+    "photoBorder": "#3a69a1",
+    "btnBg": "#3a69a1",
+    "bannerBorder": "#3a69a1"
+       }
+    },
+    { 
+      "name": "TheCarlinCompanyRealty&Auctioneers",
+        "brandOverrideHex": "b2aeae",
+  "logoUrl": "logos/TheCarlinCompanyRealty&Auctioneers",
+  "colorState": {
+    "gradDir": false,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": false,
+    "btnText": false,
+    "auctionText": false,
+    "dateText": false
+  },
+  "pickerColors": {
+    "photoBorder": "#000000",
+    "btnBg": "#eaba1c",
+    "bannerBorder": "#eaba1c"
+       }
+    },
+    { 
 "name": "MikeHavenarAuctioneers",
   "brandOverrideHex": "#870000",
   "logoUrl": "logos/MikeHavenarAuctioneers",
