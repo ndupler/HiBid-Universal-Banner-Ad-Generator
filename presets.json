@@ -20,22 +20,22 @@
       }
     },
     {
-    "name": "HonestyComics&CollectiblesLLC",
-    "brandOverrideHex": "#c73b26",
-    "logoUrl": "logos/HonestyComics&CollectiblesLLC",
-    "colorState": {
-      "gradDir": true,
-      "photoBorder": true,
-      "bannerBorder": true,
-      "btnBorder": false,
-      "btnText": true,
-      "auctionText": false,
-      "dateText": false
-  },
-    "pickerColors": {
-      "photoBorder": "#0a0e1f",
-      "btnBg": "#b32c19",
-      "bannerBorder": "#0a0e1f"
+      "name": "HonestyComics&CollectiblesLLC",
+      "brandOverrideHex": "#c73b26",
+      "logoUrl": "logos/HonestyComics&CollectiblesLLC",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#0a0e1f",
+        "btnBg": "#b32c19",
+        "bannerBorder": "#0a0e1f"
       }
     },
     {
@@ -58,174 +58,174 @@
       }
     },
     {
-"name": "DeMossAuctionCo",
-  "brandOverrideHex": "#b8b8b8",
-  "logoUrl": "logos/DeMossAuctionCo",
-  "colorState": {
-    "gradDir": false,
-    "photoBorder": false,
-    "bannerBorder": true,
-    "btnBorder": false,
-    "btnText": false,
-    "auctionText": false,
-    "dateText": false
-  },
-  "pickerColors": {
-    "photoBorder": "#ffffff",
-    "btnBg": "#f00000",
-    "bannerBorder": "#ec0000"
+      "name": "DeMossAuctionCo",
+      "brandOverrideHex": "#b8b8b8",
+      "logoUrl": "logos/DeMossAuctionCo",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": false,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#ffffff",
+        "btnBg": "#f00000",
+        "bannerBorder": "#ec0000"
       }
     },
     {
-"name": "MostAnythingAuctions",
-  "brandOverrideHex": "#000000",
-  "logoUrl": "logos/MostAnythingAuctions",
-  "colorState": {
-    "gradDir": true,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": false,
-    "btnText": false,
-    "auctionText": true,
-    "dateText": true
-  },
-  "pickerColors": {
-    "photoBorder": "#36a395",
-    "btnBg": "#36a395",
-    "bannerBorder": "#36a395"
+      "name": "MostAnythingAuctions",
+      "brandOverrideHex": "#000000",
+      "logoUrl": "logos/MostAnythingAuctions",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#36a395",
+        "btnBg": "#36a395",
+        "bannerBorder": "#36a395"
       }
     },
     {
       "name": "Coinhunters",
-  "brandOverrideHex": "#000000",
-  "logoUrl": "logos/Coinhunters",
-  "colorState": {
-    "gradDir": true,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": true,
-    "btnText": true,
-    "auctionText": true,
-    "dateText": true
-  },
-  "pickerColors": {
-    "photoBorder": "#fad107",
-    "btnBg": "#000000",
-    "bannerBorder": "#fad107"
+      "brandOverrideHex": "#000000",
+      "logoUrl": "logos/Coinhunters",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": true,
+        "btnText": true,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#fad107",
+        "btnBg": "#000000",
+        "bannerBorder": "#fad107"
       }
     },
     {
-"name": "Seuyco",
-  "brandOverrideHex": "#7daeed",
-  "logoUrl": "logos/Seuyco",
-  "colorState": {
-    "gradDir": false,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": true,
-    "btnText": true,
-    "auctionText": false,
-    "dateText": false
-  },
-  "pickerColors": {
-    "photoBorder": "#000000",
-    "btnBg": "#100e0e",
-    "bannerBorder": "#000000"
+      "name": "Seuyco",
+      "brandOverrideHex": "#7daeed",
+      "logoUrl": "logos/Seuyco",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": true,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#000000",
+        "btnBg": "#100e0e",
+        "bannerBorder": "#000000"
       }
     },
     {
       "name": "DownsAuction",
-        "brandOverrideHex": "#000000",
-  "logoUrl": "logos/DownsAuction",
-  "colorState": {
-    "gradDir": false,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": false,
-    "btnText": true,
-    "auctionText": false,
-    "dateText": false
-  },
-  "pickerColors": {
-    "photoBorder": "#1f5dad",
-    "btnBg": "#1f5dad",
-    "bannerBorder": "#1f5dad"
+      "brandOverrideHex": "#000000",
+      "logoUrl": "logos/DownsAuction",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#1f5dad",
+        "btnBg": "#1f5dad",
+        "bannerBorder": "#1f5dad"
       }
     },
     {
       "name": "RedlineAuctionService",
-        "brandOverrideHex": "#000000",
-  "logoUrl": "logos/RedlineAuctionService",
-  "colorState": {
-    "gradDir": true,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": false,
-    "btnText": false,
-    "auctionText": true,
-    "dateText": true
-  },
-  "pickerColors": {
-    "photoBorder": "#FF5528",
-    "btnBg": "#FF5528",
-    "bannerBorder": "#FF5528"
+      "brandOverrideHex": "#000000",
+      "logoUrl": "logos/RedlineAuctionService",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#ff5528",
+        "btnBg": "#ff5528",
+        "bannerBorder": "#ff5528"
       }
     },
     {
       "name": "EquipmentMarketers&Appraisers",
-        "brandOverrideHex": "#bfbfbf",
-  "logoUrl": "logos/EquipmentMarketers&Appraisers",
-  "colorState": {
-    "gradDir": false,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": false,
-    "btnText": true,
-    "auctionText": true,
-    "dateText": true
-  },
-  "pickerColors": {
-    "photoBorder": "#503424",
-    "btnBg": "#4F3424",
-    "bannerBorder": "#4F3424"
+      "brandOverrideHex": "#bfbfbf",
+      "logoUrl": "logos/EquipmentMarketers&Appraisers",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#503424",
+        "btnBg": "#4f3424",
+        "bannerBorder": "#4f3424"
       }
     },
     {
       "name": "ExitRealtyBobLamb&Associates",
-        "brandOverrideHex": "#FFFFFF",
-  "logoUrl": "logos/ExitRealtyBobLamb&Associates",
-  "colorState": {
-    "gradDir": true,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": false,
-    "btnText": true,
-    "auctionText": false,
-    "dateText": false
-  },
-  "pickerColors": {
-    "photoBorder": "#2D8C9B",
-    "btnBg": "#2D8C9B",
-    "bannerBorder": "#2D8C9B"
+      "brandOverrideHex": "#ffffff",
+      "logoUrl": "logos/ExitRealtyBobLamb&Associates",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#2d8c9b",
+        "btnBg": "#2d8c9b",
+        "bannerBorder": "#2d8c9b"
       }
     },
     {
-"name": "RhythmAuctions",
-  "brandOverrideHex": "#7daeed",
-  "logoUrl": "logos/RhythmAuctions",
-  "colorState": {
-    "gradDir": false,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": false,
-    "btnText": true,
-    "auctionText": false,
-    "dateText": false
-  },
-  "pickerColors": {
-    "photoBorder": "#b2001c",
-    "btnBg": "#b2001c",
-    "bannerBorder": "#b2001c"
+      "name": "RhythmAuctions",
+      "brandOverrideHex": "#7daeed",
+      "logoUrl": "logos/RhythmAuctions",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#b2001c",
+        "btnBg": "#b2001c",
+        "bannerBorder": "#b2001c"
       }
     },
     {
@@ -245,424 +245,424 @@
         "photoBorder": "#d01c27",
         "btnBg": "#d11b26",
         "bannerBorder": "#d11b27"
-     }
-    },
-    {
-"name": "ColeRingerLLC",
-  "brandOverrideHex": "#a7a5a5",
-  "logoUrl": "logos/ColeRingerLLC",
-  "colorState": {
-    "gradDir": false,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": false,
-    "btnText": true,
-    "auctionText": false,
-    "dateText": false
-  },
-  "pickerColors": {
-    "photoBorder": "#ffffff",
-    "btnBg": "#4424ee",
-    "bannerBorder": "#4828f2"
       }
     },
     {
-"name": "InternationalArtAuctionGalleryNEW",
-  "brandOverrideHex": "#ffffff",
-  "logoUrl": "logos/InternationalArtAuctionGalleryNEW",
-  "colorState": {
-    "gradDir": true,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": false,
-    "btnText": true,
-    "auctionText": false,
-    "dateText": false
-  },
-  "pickerColors": {
-    "photoBorder": "#c95e1f",
-    "btnBg": "#c95e1f",
-    "bannerBorder": "#c95e1f"
+      "name": "ColeRingerLLC",
+      "brandOverrideHex": "#a7a5a5",
+      "logoUrl": "logos/ColeRingerLLC",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#ffffff",
+        "btnBg": "#4424ee",
+        "bannerBorder": "#4828f2"
       }
     },
     {
-  "name": "ChuckCyderman&AssociatesLLC",
-  "logoUrl": "logos/ChuckCyderman&AssociatesLLC",
-  "colorState": {
-    "gradDir": false,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": false,
-    "btnText": false,
-    "auctionText": true,
-    "dateText": true
-  },
-  "pickerColors": {
-    "photoBorder": "#2d7237",
-    "btnBg": "#e9ab00",
-    "bannerBorder": "#276d2d"
+      "name": "InternationalArtAuctionGalleryNEW",
+      "brandOverrideHex": "#ffffff",
+      "logoUrl": "logos/InternationalArtAuctionGalleryNEW",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#c95e1f",
+        "btnBg": "#c95e1f",
+        "bannerBorder": "#c95e1f"
       }
     },
     {
-  "name": "FinestKnown",
-  "brandOverrideHex": "#ffffff",
-  "logoUrl": "logos/finestknown",
-  "colorState": {
-    "gradDir": true,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": true,
-    "btnText": true,
-    "auctionText": false,
-    "dateText": false
-  },
-  "pickerColors": {
-    "photoBorder": "#ffffff",
-    "btnBg": "#030303",
-    "bannerBorder": "#000000"
+      "name": "ChuckCyderman&AssociatesLLC",
+      "logoUrl": "logos/ChuckCyderman&AssociatesLLC",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#2d7237",
+        "btnBg": "#e9ab00",
+        "bannerBorder": "#276d2d"
       }
     },
     {
-"name": "FirstPickCollectibles",
-  "brandOverrideHex": "#000000",
-  "logoUrl": "logos/firstpickcollectibles",
-  "colorState": {
-    "gradDir": true,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": false,
-    "btnText": false,
-    "auctionText": true,
-    "dateText": true
-  },
-  "pickerColors": {
-    "photoBorder": "#b1842c",
-    "btnBg": "#b28927",
-    "bannerBorder": "#b68a31"
+      "name": "FinestKnown",
+      "brandOverrideHex": "#ffffff",
+      "logoUrl": "logos/finestknown",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": true,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#ffffff",
+        "btnBg": "#030303",
+        "bannerBorder": "#000000"
       }
     },
     {
-"name": "Johnny'sAuctionLakeHavasu",
-  "brandOverrideHex": "#000000",
-  "logoUrl": "logos/Johnny'sAuctionLakeHavasu",
-  "colorState": {
-    "gradDir": true,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": false,
-    "btnText": false,
-    "auctionText": true,
-    "dateText": true
-  },
-  "pickerColors": {
-    "photoBorder": "#f48900",
-    "btnBg": "#fceb00",
-    "bannerBorder": "#f48900"
+      "name": "FirstPickCollectibles",
+      "brandOverrideHex": "#000000",
+      "logoUrl": "logos/firstpickcollectibles",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#b1842c",
+        "btnBg": "#b28927",
+        "bannerBorder": "#b68a31"
       }
     },
     {
- "name": "JRSAuctions",
-  "brandOverrideHex": "#ffffff",
-  "logoUrl": "logos/JRSAuctions",
-  "colorState": {
-    "gradDir": true,
-    "photoBorder": false,
-    "bannerBorder": true,
-    "btnBorder": false,
-    "btnText": true,
-    "auctionText": false,
-    "dateText": false
-  },
-  "pickerColors": {
-    "photoBorder": "#ffffff",
-    "btnBg": "#da1300",
-    "bannerBorder": "#000000"
+      "name": "Johnny'sAuctionLakeHavasu",
+      "brandOverrideHex": "#000000",
+      "logoUrl": "logos/Johnny'sAuctionLakeHavasu",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#f48900",
+        "btnBg": "#fceb00",
+        "bannerBorder": "#f48900"
       }
     },
-    { 
-"name": "KrueckebergAuction&Realty",
-  "brandOverrideHex": "#c7c9cc",
-  "logoUrl": "logos/KrueckebergAuction&Realty",
-  "colorState": {
-    "gradDir": false,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": false,
-    "btnText": true,
-    "auctionText": false,
-    "dateText": false
-  },
-  "pickerColors": {
-    "photoBorder": "#e3151a",
-    "btnBg": "#e3151a",
-    "bannerBorder": "#e3151a"
-        }
+    {
+      "name": "JRSAuctions",
+      "brandOverrideHex": "#ffffff",
+      "logoUrl": "logos/JRSAuctions",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": false,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#ffffff",
+        "btnBg": "#da1300",
+        "bannerBorder": "#000000"
+      }
     },
-    { 
-"name": "WashingtonSurplusInc",
-  "brandOverrideHex": "#b8b9bc",
-  "logoUrl": "logos/WashingtonSurplusInc",
-  "colorState": {
-    "gradDir": false,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": false,
-    "btnText": true,
-    "auctionText": false,
-    "dateText": false
-  },
-  "pickerColors": {
-    "photoBorder": "#1b337d",
-    "btnBg": "#1b337d",
-    "bannerBorder": "#1b337d"
-       }
+    {
+      "name": "KrueckebergAuction&Realty",
+      "brandOverrideHex": "#c7c9cc",
+      "logoUrl": "logos/KrueckebergAuction&Realty",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#e3151a",
+        "btnBg": "#e3151a",
+        "bannerBorder": "#e3151a"
+      }
     },
-    { 
-"name": "ETXLiquidation",
-  "brandOverrideHex": "#bfbfbf",
-  "logoUrl": "logos/ETXLiquidation",
-  "colorState": {
-    "gradDir": false,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": false,
-    "btnText": true,
-    "auctionText": false,
-    "dateText": false
-  },
-  "pickerColors": {
-    "photoBorder": "#3a69a1",
-    "btnBg": "#3a69a1",
-    "bannerBorder": "#3a69a1"
-       }
+    {
+      "name": "WashingtonSurplusInc",
+      "brandOverrideHex": "#b8b9bc",
+      "logoUrl": "logos/WashingtonSurplusInc",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#1b337d",
+        "btnBg": "#1b337d",
+        "bannerBorder": "#1b337d"
+      }
     },
-    { 
+    {
+      "name": "ETXLiquidation",
+      "brandOverrideHex": "#bfbfbf",
+      "logoUrl": "logos/ETXLiquidation",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#3a69a1",
+        "btnBg": "#3a69a1",
+        "bannerBorder": "#3a69a1"
+      }
+    },
+    {
       "name": "TheCarlinCompanyRealty&Auctioneers",
-        "brandOverrideHex": "bfbfbf",
-  "logoUrl": "logos/TheCarlinCompanyRealty&Auctioneers",
-  "colorState": {
-    "gradDir": false,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": false,
-    "btnText": false,
-    "auctionText": false,
-    "dateText": false
-  },
-  "pickerColors": {
-    "photoBorder": "#000000",
-    "btnBg": "#eaba1c",
-    "bannerBorder": "#eaba1c"
-       }
+      "brandOverrideHex": "#bfbfbf",
+      "logoUrl": "logos/TheCarlinCompanyRealty&Auctioneers",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#000000",
+        "btnBg": "#eaba1c",
+        "bannerBorder": "#eaba1c"
+      }
     },
-    { 
-"name": "MikeHavenarAuctioneers",
-  "brandOverrideHex": "#870000",
-  "logoUrl": "logos/MikeHavenarAuctioneers",
-  "colorState": {
-    "gradDir": true,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": true,
-    "btnText": true,
-    "auctionText": true,
-    "dateText": true
-  },
-  "pickerColors": {
-    "photoBorder": "#000000",
-    "btnBg": "#810000",
-    "bannerBorder": "#000000"
-        }
+    {
+      "name": "MikeHavenarAuctioneers",
+      "brandOverrideHex": "#870000",
+      "logoUrl": "logos/MikeHavenarAuctioneers",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": true,
+        "btnText": true,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#000000",
+        "btnBg": "#810000",
+        "bannerBorder": "#000000"
+      }
     },
-    { 
-"name": "PutmanAuctioneersInc.",
-  "brandOverrideHex": "#ffffff",
-  "logoUrl": "logos/PutmanAuctioneersInc.",
-  "colorState": {
-    "gradDir": true,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": false,
-    "btnText": false,
-    "auctionText": false,
-    "dateText": false
-  },
-  "pickerColors": {
-    "photoBorder": "#e22c46",
-    "btnBg": "#e22c46",
-    "bannerBorder": "#e22c46"
-       }
+    {
+      "name": "PutmanAuctioneersInc.",
+      "brandOverrideHex": "#ffffff",
+      "logoUrl": "logos/PutmanAuctioneersInc.",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#e22c46",
+        "btnBg": "#e22c46",
+        "bannerBorder": "#e22c46"
+      }
     },
-    { 
+    {
       "name": "Davis&BellAuctionServicesLLC",
-  "brandOverrideHex": "#5489f2",
-  "logoUrl": "logos/Davis&BellAuctionServicesLLC",
-  "colorState": {
-    "gradDir": true,
-    "photoBorder": false,
-    "bannerBorder": true,
-    "btnBorder": false,
-    "btnText": false,
-    "auctionText": false,
-    "dateText": false
-  },
-  "pickerColors": {
-    "photoBorder": "#ffffff",
-    "btnBg": "#000000",
-    "bannerBorder": "#000000"
-        }
+      "brandOverrideHex": "#5489f2",
+      "logoUrl": "logos/Davis&BellAuctionServicesLLC",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": false,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#ffffff",
+        "btnBg": "#000000",
+        "bannerBorder": "#000000"
+      }
     },
-    { 
+    {
       "name": "DudleysAuction",
-  "logoUrl": "logos/DudleysAuction",
-  "colorState": {
-    "gradDir": true,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": false,
-    "btnText": true,
-    "auctionText": false,
-    "dateText": false
-  },
-  "pickerColors": {
-    "photoBorder": "#124d00",
-    "btnBg": "#124d00",
-    "bannerBorder": "#124d00"
-        }
+      "logoUrl": "logos/DudleysAuction",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#124d00",
+        "btnBg": "#124d00",
+        "bannerBorder": "#124d00"
+      }
     },
-    { 
+    {
       "name": "PageAuctionCo",
-  "brandOverrideHex": "#bbb9b9",
-  "logoUrl": "logos/PageAuctionCo",
-  "colorState": {
-    "gradDir": false,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": false,
-    "btnText": true,
-    "auctionText": false,
-    "dateText": false
-  },
-  "pickerColors": {
-    "photoBorder": "#84121a",
-    "btnBg": "#84121a",
-    "bannerBorder": "#84121a"
-        }
+      "brandOverrideHex": "#bbb9b9",
+      "logoUrl": "logos/PageAuctionCo",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#84121a",
+        "btnBg": "#84121a",
+        "bannerBorder": "#84121a"
+      }
     },
-    { 
+    {
       "name": "PowellAuction&RealtyLLC",
-  "brandOverrideHex": "#345cfe",
-  "logoUrl": "logos/PowellAuction&RealtyLLC",
-  "colorState": {
-    "gradDir": false,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": false,
-    "btnText": false,
-    "auctionText": true,
-    "dateText": true
-  },
-  "pickerColors": {
-    "photoBorder": "#ffffff",
-    "btnBg": "#ffffff",
-    "bannerBorder": "#ffffff"
+      "brandOverrideHex": "#345cfe",
+      "logoUrl": "logos/PowellAuction&RealtyLLC",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#ffffff",
+        "btnBg": "#ffffff",
+        "bannerBorder": "#ffffff"
       }
     },
-    { 
+    {
       "name": "RonBrewerAuctions",
-  "logoUrl": "logos/RonBrewerAuctions",
-  "colorState": {
-    "gradDir": false,
-    "photoBorder": false,
-    "bannerBorder": true,
-    "btnBorder": false,
-    "btnText": false,
-    "auctionText": true,
-    "dateText": true
-  },
-  "pickerColors": {
-    "photoBorder": "#ffffff",
-    "btnBg": "#e5322e",
-    "bannerBorder": "#000000"
+      "logoUrl": "logos/RonBrewerAuctions",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": false,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#ffffff",
+        "btnBg": "#e5322e",
+        "bannerBorder": "#000000"
       }
     },
-    { 
+    {
       "name": "ShoresAuctionService",
-  "brandOverrideHex": "#c2c2c2",
-  "logoUrl": "logos/ShoresAuctionService",
-  "colorState": {
-    "gradDir": false,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": false,
-    "btnText": true,
-    "auctionText": false,
-    "dateText": false
-  },
-  "pickerColors": {
-    "photoBorder": "#4130e9",
-    "btnBg": "#4130e9",
-    "bannerBorder": "#4130e9"
+      "brandOverrideHex": "#c2c2c2",
+      "logoUrl": "logos/ShoresAuctionService",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#4130e9",
+        "btnBg": "#4130e9",
+        "bannerBorder": "#4130e9"
       }
     },
-    { 
+    {
       "name": "TexAuctionsBuda",
-  "brandOverrideHex": "#9faafe",
-  "logoUrl": "logos/TexAuctionsBuda",
-  "colorState": {
-    "gradDir": false,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": false,
-    "btnText": false,
-    "auctionText": false,
-    "dateText": false
-  },
-  "pickerColors": {
-    "photoBorder": "#ffffff",
-    "btnBg": "#00a7f5",
-    "bannerBorder": "#00a7f5"
+      "brandOverrideHex": "#9faafe",
+      "logoUrl": "logos/TexAuctionsBuda",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#ffffff",
+        "btnBg": "#00a7f5",
+        "bannerBorder": "#00a7f5"
       }
     },
-    { 
+    {
       "name": "UnitedCountryBlueRidgeLand&AuctionCoInc",
-  "brandOverrideHex": "#b7a9a9",
-  "logoUrl": "logos/UnitedCountryBlueRidgeLand&AuctionCoInc",
-  "colorState": {
-    "gradDir": false,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": false,
-    "btnText": true,
-    "auctionText": false,
-    "dateText": false
-  },
-  "pickerColors": {
-    "photoBorder": "#1f447d",
-    "btnBg": "#03714c",
-    "bannerBorder": "#1f447d"
+      "brandOverrideHex": "#b7a9a9",
+      "logoUrl": "logos/UnitedCountryBlueRidgeLand&AuctionCoInc",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#1f447d",
+        "btnBg": "#03714c",
+        "bannerBorder": "#1f447d"
       }
     },
-    { 
+    {
       "name": "InternationalArtAuctionGallery",
-  "brandOverrideHex": "#ffffff",
-  "logoUrl": "logos/InternationalArtAuctionGallery",
-  "colorState": {
-    "gradDir": true,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": true,
-    "btnText": true,
-    "auctionText": false,
-    "dateText": false
-  },
-  "pickerColors": {
-    "photoBorder": "#000000",
-    "btnBg": "#080808",
-    "bannerBorder": "#000000"
+      "brandOverrideHex": "#ffffff",
+      "logoUrl": "logos/InternationalArtAuctionGallery",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": true,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#000000",
+        "btnBg": "#080808",
+        "bannerBorder": "#000000"
       }
     },
-    { 
+    {
       "name": "Bryan'sAuctionServices",
       "brandOverrideHex": "#c2c2c2",
       "logoUrl": "logos/Bryan'sAuctionServices",
