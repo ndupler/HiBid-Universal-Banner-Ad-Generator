@@ -317,7 +317,8 @@ var spreadSpacing    = false;
 var currentPreset    = null;
 var configPresets    = [];
 var recentPresets    = [];
-var dragSrcIdx       = null;
+var photoBrightness = [100,100,100,100,100];
+var dragSrcIdx      = null;
 var colorState       = {gradDir:true,photoBorder:true,bannerBorder:false,btnBorder:true,btnText:true,auctionText:true,dateText:true};
 
 // ── Gradient table ─────────────────────────────────────────────────────────
@@ -561,7 +562,24 @@ function buildSlots(){
       var btn=document.createElement('button');btn.className='trans-btn'+(photoTransparent[i]?' active':'');btn.id='transTog'+i;btn.textContent=photoTransparent[i]?'Transparent':'BG';
       btn.onclick=function(){toggleTransparent(i);};
 
-      wrap.appendChild(zone);wrap.appendChild(btn);grid.appendChild(wrap);
+      var brightRow=document.createElement('div');
+      brightRow.style.cssText='display:flex;align-items:center;gap:5px;margin-top:2px;';
+      var brightLabel=document.createElement('span');
+      brightLabel.style.cssText='font-size:8px;color:var(--text-faint);white-space:nowrap;';
+      brightLabel.textContent='☀';
+      var brightSlider=document.createElement('input');
+      brightSlider.type='range';brightSlider.min='50';brightSlider.max='150';brightSlider.value=photoBrightness[i];
+      brightSlider.id='bright'+i;
+      brightSlider.style.cssText='flex:1;height:3px;accent-color:var(--accent);cursor:pointer;';
+      brightSlider.addEventListener('input',function(){photoBrightness[i]=parseInt(this.value);renderPreview();});
+      var brightVal=document.createElement('span');
+      brightVal.id='brightVal'+i;
+      brightVal.style.cssText='font-size:8px;color:var(--text-faint);width:28px;text-align:right;';
+      brightVal.textContent=photoBrightness[i]+'%';
+      brightSlider.addEventListener('input',function(){document.getElementById('brightVal'+i).textContent=photoBrightness[i]+'%';});
+      brightRow.appendChild(brightLabel);brightRow.appendChild(brightSlider);brightRow.appendChild(brightVal);
+
+      wrap.appendChild(zone);wrap.appendChild(btn);wrap.appendChild(brightRow);grid.appendChild(wrap);
     })(si);
   }
 }
@@ -569,19 +587,20 @@ function buildSlots(){
 function swapSlots(a,b){
   var tmpImg=photoImgs[a];photoImgs[a]=photoImgs[b];photoImgs[b]=tmpImg;
   var tmpT=photoTransparent[a];photoTransparent[a]=photoTransparent[b];photoTransparent[b]=tmpT;
+  var tmpB=photoBrightness[a];photoBrightness[a]=photoBrightness[b];photoBrightness[b]=tmpB;
   buildSlots();renderPreview();
 }
 
 function handlePhoto(file,idx){if(!file||!file.type.startsWith('image/'))return;loadImageFile(file,function(img){photoImgs[idx]=img;buildSlots();setStatus('Photo '+(idx+1)+' loaded.',true);renderPreview();});}
-function clearSlot(idx){photoImgs[idx]=null;photoTransparent[idx]=false;buildSlots();renderPreview();}
-function clearAllPhotos(){photoImgs=[null,null,null,null,null];photoTransparent=[false,false,false,false,false];buildSlots();setStatus('All photos cleared.',true);renderPreview();}
+function clearSlot(idx){photoImgs[idx]=null;photoTransparent[idx]=false;photoBrightness[idx]=100;buildSlots();renderPreview();}
+function clearAllPhotos(){photoImgs=[null,null,null,null,null];photoTransparent=[false,false,false,false,false];photoBrightness=[100,100,100,100,100];buildSlots();setStatus('All photos cleared.',true);renderPreview();}
 function toggleTransparent(i){photoTransparent[i]=!photoTransparent[i];var btn=document.getElementById('transTog'+i);photoTransparent[i]?(btn.textContent='Transparent',btn.classList.add('active')):(btn.textContent='BG',btn.classList.remove('active'));renderPreview();}
 
 // ── Reset ──────────────────────────────────────────────────────────────────
 function confirmReset(){if(!confirm('Reset everything? This will clear your logo, photos, and all settings.'))return;resetAll();}
 function resetAll(){
   logoImg=null;logoPalette=[];brandOverride=null;currentPreset=null;
-  photoImgs=[null,null,null,null,null];photoTransparent=[false,false,false,false,false];
+  photoImgs=[null,null,null,null,null];photoTransparent=[false,false,false,false,false];photoBrightness=[100,100,100,100,100];
   document.getElementById('logoArea').innerHTML='<div class="upload-icon">↑</div><div class="upload-title">Click or drag logo here</div><div class="upload-sub">PNG recommended · filename becomes auctioneer name</div><input type="file" id="logoFile" accept="image/png,image/jpeg">';
   bindLogoFile();buildSlots();
   document.getElementById('paletteDisplay').style.display='none';
@@ -607,7 +626,25 @@ function resetAll(){
   setStatus('Reset.',true);
 }
 
-// ── Draw ───────────────────────────────────────────────────────────────────
+function downscaleImage(img, targetW, targetH) {
+  var c = document.createElement('canvas');
+  var ctx = c.getContext('2d');
+  var curW = img.width, curH = img.height;
+  c.width = curW; c.height = curH;
+  ctx.drawImage(img, 0, 0);
+  while(curW * 0.5 > targetW || curH * 0.5 > targetH) {
+    curW = Math.max(Math.round(curW * 0.5), targetW);
+    curH = Math.max(Math.round(curH * 0.5), targetH);
+    var tmp = document.createElement('canvas');
+    tmp.width = curW; tmp.height = curH;
+    tmp.getContext('2d').drawImage(c, 0, 0, curW, curH);
+    c = tmp; ctx = c.getContext('2d');
+  }
+  var out = document.createElement('canvas');
+  out.width = targetW; out.height = targetH;
+  out.getContext('2d').drawImage(c, 0, 0, targetW, targetH);
+  return out;
+}
 function drawBanner(canvas,W,H){
   if(!logoImg)return false;
   canvas.width=W;canvas.height=H;
@@ -639,7 +676,9 @@ function drawBanner(canvas,W,H){
     pEndX=pStartX+totUsed+pGap*(nP-1);
   }
   var lx=Math.round((pStartX-lw)/2);if(lx<pad)lx=pad;
-  var ly=Math.round((H-lh)/2);ctx.drawImage(logoImg,lx,ly,lw,lh);
+  var ly=Math.round((H-lh)/2);
+  var scaledLogo=downscaleImage(logoImg,lw,lh);
+  ctx.drawImage(scaledLogo,lx,ly,lw,lh);
   var rightSpace=W-pEndX,rcX=pEndX+Math.round((rightSpace-rcW)/2);
   if(rcX+rcW>W-pad)rcX=W-pad-rcW;if(rcX<pEndX+pad)rcX=pEndX+pad;
   var totalSH=aH+sGap+dH+sGap+btnH,stackY=Math.round((H-totalSH)/2);
@@ -664,7 +703,7 @@ function drawBanner(canvas,W,H){
   ctx.strokeText('BID NOW',rcX+rcW/2,btnY+btnH/2+Math.round(3*sc));ctx.fillText('BID NOW',rcX+rcW/2,btnY+btnH/2+Math.round(3*sc));
   ctx.restore();ctx.beginPath();roundRect(ctx,rcX,btnY,rcW,btnH,btnR);
   ctx.strokeStyle=getColor('btnBorder');ctx.lineWidth=Math.max(1,sc);ctx.stroke();
-  if(nP>0){var curX=pStartX;for(var pi=0;pi<nP;pi++){var idx=filled[pi],photo=photoImgs[idx],isT=photoTransparent[idx],dW=pWidths[pi],dH2=pSlotH,dY=pzY;if(!isT){dH2=dW/(photo.width/photo.height);dY=pzY+Math.round((pSlotH-dH2)/2);}ctx.drawImage(photo,curX,dY,dW,dH2);if(!isT){ctx.strokeStyle=getColor('photoBorder');ctx.lineWidth=Math.max(1,sc);ctx.strokeRect(curX,dY,dW,dH2);}curX+=dW+pGap;}}
+  if(nP>0){var curX=pStartX;for(var pi=0;pi<nP;pi++){var idx=filled[pi],photo=photoImgs[idx],isT=photoTransparent[idx],dW=Math.round(pWidths[pi]),dH2=pSlotH,dY=pzY;if(!isT){dH2=Math.round(dW/(photo.width/photo.height));dY=pzY+Math.round((pSlotH-dH2)/2);}var scaled=downscaleImage(photo,dW,dH2);if(photoBrightness[idx]!==100){var bCtx=scaled.getContext('2d');bCtx.globalCompositeOperation='source-atop';var bf=(photoBrightness[idx]-100)/100;if(bf>0){bCtx.fillStyle='rgba(255,255,255,'+bf+')';bCtx.fillRect(0,0,dW,dH2);}else{bCtx.fillStyle='rgba(0,0,0,'+Math.abs(bf)+')';bCtx.fillRect(0,0,dW,dH2);}bCtx.globalCompositeOperation='source-over';}ctx.drawImage(scaled,curX,dY,dW,dH2);if(!isT){ctx.strokeStyle=getColor('photoBorder');ctx.lineWidth=Math.max(1,sc);ctx.strokeRect(curX,dY,dW,dH2);}curX+=dW+pGap;}}
   if(colorState.bannerBorder){var bc=hexToRgb(getColor('bannerBorder'));ctx.strokeStyle='rgb('+bc[0]+','+bc[1]+','+bc[2]+')';ctx.lineWidth=Math.max(2,Math.round(2*sc));ctx.strokeRect(1,1,W-2,H-2);}
   return true;
 }
