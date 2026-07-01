@@ -135,7 +135,7 @@
     },
     {
       "name": "DownsAuction",
-        "brandOverrideHex": "#7b3b3b3",
+        "brandOverrideHex": "#000000",
   "logoUrl": "logos/DownsAuction",
   "colorState": {
     "gradDir": false,
