@@ -134,6 +134,82 @@
       }
     },
     {
+      "name": "DownsAuction",
+        "brandOverrideHex": "#7b3b3b3",
+  "logoUrl": "logos/DownsAuction",
+  "colorState": {
+    "gradDir": false,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": false,
+    "btnText": true,
+    "auctionText": false,
+    "dateText": false
+  },
+  "pickerColors": {
+    "photoBorder": "#1f5dad",
+    "btnBg": "#1f5dad",
+    "bannerBorder": "#1f5dad"
+      }
+    },
+    {
+      "name": "RedlineAuctionService",
+        "brandOverrideHex": "#000000",
+  "logoUrl": "logos/RedlineAuctionService",
+  "colorState": {
+    "gradDir": true,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": false,
+    "btnText": false,
+    "auctionText": true,
+    "dateText": true
+  },
+  "pickerColors": {
+    "photoBorder": "#FF5528",
+    "btnBg": "#FF5528",
+    "bannerBorder": "#FF5528"
+      }
+    },
+    {
+      "name": "EquipmentMarketers&Appraisers",
+        "brandOverrideHex": "#bfbfbf",
+  "logoUrl": "logos/EquipmentMarketers&Appraisers",
+  "colorState": {
+    "gradDir": false,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": false,
+    "btnText": true,
+    "auctionText": true,
+    "dateText": true
+  },
+  "pickerColors": {
+    "photoBorder": "#503424",
+    "btnBg": "#4F3424",
+    "bannerBorder": "#4F3424"
+      }
+    },
+    {
+      "name": "ExitRealtyBobLamb&Associates",
+        "brandOverrideHex": "#FFFFFF",
+  "logoUrl": "logos/ExitRealtyBobLamb&Associates",
+  "colorState": {
+    "gradDir": true,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": false,
+    "btnText": true,
+    "auctionText": false,
+    "dateText": false
+  },
+  "pickerColors": {
+    "photoBorder": "#2D8C9B",
+    "btnBg": "#2D8C9B",
+    "bannerBorder": "#2D8C9B"
+      }
+    },
+    {
 "name": "RhythmAuctions",
   "brandOverrideHex": "#7daeed",
   "logoUrl": "logos/RhythmAuctions",
