@@ -60,20 +60,20 @@
     {
       "name": "AllStarSportsMemorabilia",
       "brandOverrideHex": "#1C1C1C",
-  "logoUrl": "logos/AllStarSportsMemorabilia",
-  "colorState": {
-    "gradDir": true,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": true,
-    "btnText": true,
-    "auctionText": true,
-    "dateText": true
-  },
-  "pickerColors": {
-    "photoBorder": "#000000",
-    "btnBg": "#000000",
-    "bannerBorder": "#000000"
+      "logoUrl": "logos/AllStarSportsMemorabilia",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": true,
+        "btnText": true,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#000000",
+        "btnBg": "#000000",
+        "bannerBorder": "#000000"
       }
     },
     {
