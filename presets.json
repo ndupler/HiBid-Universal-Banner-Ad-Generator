@@ -58,6 +58,82 @@
       }
     },
     {
+      "name": "AllStarSportsMemorabilia",
+      "brandOverrideHex": "#1C1C1C",
+  "logoUrl": "logos/AllStarSportsMemorabilia",
+  "colorState": {
+    "gradDir": true,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": true,
+    "btnText": true,
+    "auctionText": true,
+    "dateText": true
+  },
+  "pickerColors": {
+    "photoBorder": "#000000",
+    "btnBg": "#000000",
+    "bannerBorder": "#000000"
+      }
+    },
+    {
+      "name": "C&AAuctions",
+      "brandOverrideHex": "#E3A439",
+  "logoUrl": "logos/C&AAuctions",
+  "colorState": {
+    "gradDir": true,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": false,
+    "btnText": true,
+    "auctionText": true,
+    "dateText": true
+  },
+  "pickerColors": {
+    "photoBorder": "#7C0010",
+    "btnBg": "#7C0010",
+    "bannerBorder": "#7C0010"
+      }
+    },
+    {
+      "name": "TumbleweedEquipment&AuctionCoofWestTexas",
+      "brandOverrideHex": "#FFFFFF",
+  "logoUrl": "logos/TumbleweedEquipment&AuctionCoofWestTexas",
+  "colorState": {
+    "gradDir": true,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": false,
+    "btnText": true,
+    "auctionText": false,
+    "dateText": false
+  },
+  "pickerColors": {
+    "photoBorder": "#B12E38",
+    "btnBg": "#B32E34",
+    "bannerBorder": "#B32E34"
+      }
+    },
+    {
+      "name": "BIDBIGNOW",
+      "brandOverrideHex": "#000000",
+  "logoUrl": "logos/BIDBIGNOW",
+  "colorState": {
+    "gradDir": true,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": true,
+    "btnText": true,
+    "auctionText": true,
+    "dateText": true
+  },
+  "pickerColors": {
+    "photoBorder": "#FFFFFF",
+    "btnBg": "#C48A17",
+    "bannerBorder": "#C48A17"
+      }
+    },
+    {
       "name": "DeMossAuctionCo",
       "brandOverrideHex": "#b8b8b8",
       "logoUrl": "logos/DeMossAuctionCo",
