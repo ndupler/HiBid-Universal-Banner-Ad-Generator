@@ -115,6 +115,25 @@
       }
     },
     {
+      "name": "ChrisThompsonAuctions",
+      "brandOverrideHex": "#bdbdbd"
+      "logoUrl": "logos/ChrisThompsonAuctions",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": true,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#030303",
+        "btnBg": "#000000",
+        "bannerBorder": "#030303"
+      }
+    },
+    {
       "name": "ChuckCyderman&AssociatesLLC",
       "logoUrl": "logos/ChuckCyderman&AssociatesLLC",
       "colorState": {
