@@ -116,7 +116,7 @@
     },
     {
       "name": "ChrisThompsonAuctions",
-      "brandOverrideHex": "#bdbdbd"
+      "brandOverrideHex": "#bdbdbd",
       "logoUrl": "logos/ChrisThompsonAuctions",
       "colorState": {
         "gradDir": false,
@@ -135,6 +135,7 @@
     },
     {
       "name": "ChuckCyderman&AssociatesLLC",
+      "brandOverrideHex": "#bdbdbd",
       "logoUrl": "logos/ChuckCyderman&AssociatesLLC",
       "colorState": {
         "gradDir": false,
