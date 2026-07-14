@@ -193,20 +193,20 @@
     {
       "name": "CrazyRichardSoldIt",
       "brandOverrideHex": "#0057FF",
-      "logoUrl": "logos/CrazyRichardSoldIt",
-      "colorState": {
-    "gradDir": true,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": false,
-    "btnText": false,
-    "auctionText": false,
-    "dateText": false
-  },
-  "pickerColors": {
-    "photoBorder": "#050505",
-    "btnBg": "#FFFFFF",
-    "bannerBorder": "#050505"
+      "logoUrl": "logos/CrazyRichardSoldIt",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#050505",
+        "btnBg": "#FFFFFF",
+        "bannerBorder": "#050505"
       }
     },
     {
@@ -401,20 +401,20 @@
     {
       "name": "IntegrityAuctionHouse",
       "brandOverrideHex": "#02266E",
-  "logoUrl": "logos/IntegrityAuctionHouse",
-  "colorState": {
-    "gradDir": true,
-    "photoBorder": true,
-    "bannerBorder": true,
-    "btnBorder": true,
-    "btnText": true,
-    "auctionText": true,
-    "dateText": true
-  },
-  "pickerColors": {
-    "photoBorder": "#9D8220",
-    "btnBg": "#000000",
-    "bannerBorder": "#9D8220"
+      "logoUrl": "logos/IntegrityAuctionHouse",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": true,
+        "btnText": true,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#9D8220",
+        "btnBg": "#000000",
+        "bannerBorder": "#9D8220"
       }
     },
     {
