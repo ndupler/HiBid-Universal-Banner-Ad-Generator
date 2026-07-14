@@ -418,6 +418,25 @@
       }
     },
     {
+      "name": "JFMarketing",
+      "brandOverrideHex": "#CCCCCC",
+      "logoUrl": "logos/JFMarketing",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#B30000",
+        "btnBg": "#B30000",
+        "bannerBorder": "#B30000"
+      }
+    },
+    {
       "name": "Johnny'sAuctionLakeHavasu",
       "brandOverrideHex": "#000000",
       "logoUrl": "logos/Johnny'sAuctionLakeHavasu",
