@@ -191,6 +191,25 @@
       }
     },
     {
+      "name": "CrazyRichardSoldIt",
+      "brandOverrideHex": "#0057FF",
+      "logoUrl": "logos/CrazyRichardSoldIt",
+      "colorState": {
+    "gradDir": true,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": false,
+    "btnText": false,
+    "auctionText": false,
+    "dateText": false
+  },
+  "pickerColors": {
+    "photoBorder": "#050505",
+    "btnBg": "#FFFFFF",
+    "bannerBorder": "#050505"
+      }
+    },
+    {
       "name": "Davis&BellAuctionServicesLLC",
       "brandOverrideHex": "#5489f2",
       "logoUrl": "logos/Davis&BellAuctionServicesLLC",
@@ -377,6 +396,25 @@
         "photoBorder": "#0a0e1f",
         "btnBg": "#b32c19",
         "bannerBorder": "#0a0e1f"
+      }
+    },
+    {
+      "name": "IntegrityAuctionHouse",
+      "brandOverrideHex": "#02266E",
+  "logoUrl": "logos/IntegrityAuctionHouse",
+  "colorState": {
+    "gradDir": true,
+    "photoBorder": true,
+    "bannerBorder": true,
+    "btnBorder": true,
+    "btnText": true,
+    "auctionText": true,
+    "dateText": true
+  },
+  "pickerColors": {
+    "photoBorder": "#9D8220",
+    "btnBg": "#000000",
+    "bannerBorder": "#9D8220"
       }
     },
     {
