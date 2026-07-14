@@ -419,7 +419,7 @@
     },
     {
       "name": "JFMarketing",
-      "brandOverrideHex": "#CCCCCC",
+      "brandOverrideHex": "#cccccc",
       "logoUrl": "logos/JFMarketing",
       "colorState": {
         "gradDir": false,
