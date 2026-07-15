@@ -2,7 +2,7 @@
   "presets": [
     {
       "name": "AffordableCreations",
-      "brandOverrideHex": "#BFBFC0"
+      "brandOverrideHex": "#BFBFC0",
       "logoUrl": "logos/AffordableCreations",
       "colorState": {
         "gradDir": false,
