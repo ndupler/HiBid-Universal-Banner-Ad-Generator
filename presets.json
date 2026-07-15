@@ -1,6 +1,25 @@
 {
   "presets": [
     {
+      "name": "AffordableCreations",
+      "brandOverrideHex": "#BFBFC0"
+      "logoUrl": "logos/AffordableCreations",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#56307B",
+        "btnBg": "#F48188",
+        "bannerBorder": "#56307B"
+      }
+    },
+    {
       "name": "AllStarAuctionsInc.",
       "brandOverrideHex": "#ffffff",
       "logoUrl": "logos/AllStarAuctionsInc.",
