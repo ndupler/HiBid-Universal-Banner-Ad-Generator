@@ -172,6 +172,25 @@
       }
     },
     {
+      "name": "ClearViewRealty&Auction",
+      "brandOverrideHex": "#8b8989",
+      "logoUrl": "logos/ClearViewRealty&Auction",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": true,
+        "btnText": true,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#0D3865",
+        "btnBg": "#0B3664",
+        "bannerBorder": "#0D3865"
+      }
+    },
+    {
       "name": "Coinhunters",
       "brandOverrideHex": "#000000",
       "logoUrl": "logos/Coinhunters",
@@ -207,6 +226,25 @@
         "photoBorder": "#ffffff",
         "btnBg": "#4424ee",
         "bannerBorder": "#4828f2"
+      }
+    },
+    {
+      "name": "CompassAuctions&RealEstate",
+      "brandOverrideHex": "#8b8989",
+      "logoUrl": "logos/CompassAuctions&RealEstate",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#5A337D",
+        "btnBg": "#5A337D",
+        "bannerBorder": "#5A337D"
       }
     },
     {
@@ -475,6 +513,25 @@
       }
     },
     {
+      "name": "JasonSimpsonAuctionGroup",
+      "brandOverrideHex": "#D4D4D4",
+      "logoUrl": "logos/JasonSimpsonAuctionGroup",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#A66C5B",
+        "btnBg": "#A66C5B",
+        "bannerBorder": "#A66C5B"
+      }
+    },
+    {
       "name": "JFMarketing",
       "brandOverrideHex": "#cccccc",
       "logoUrl": "logos/JFMarketing",
@@ -551,6 +608,25 @@
       }
     },
     {
+      "name": "MartinoRealty&Auctioneers",
+      "brandOverrideHex": "#ABABAB",
+      "logoUrl": "logos/MartinoRealty&Auctioneers",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#1C2B39",
+        "btnBg": "#1C2B39",
+        "bannerBorder": "#1C2B39"
+      }
+    },
+    {
       "name": "MikeHavenarAuctioneers",
       "brandOverrideHex": "#870000",
       "logoUrl": "logos/MikeHavenarAuctioneers",
@@ -586,6 +662,25 @@
         "photoBorder": "#36a395",
         "btnBg": "#36a395",
         "bannerBorder": "#36a395"
+      }
+    },
+    {
+      "name": "MotherlodeLiquidation",
+      "brandOverrideHex": "#000000",
+      "logoUrl": "logos/MotherlodeLiquidation",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#CFA656",
+        "btnBg": "#C7A649",
+        "bannerBorder": "#CBA650"
       }
     },
     {
