@@ -854,6 +854,25 @@
       }
     },
     {
+      "name": "Sturgeon'sTractor&TruckSales",
+      "brandOverrideHex": "#ababab",
+      "logoUrl": "logos/Sturgeon'sTractor&TruckSales",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#000000",
+        "btnBg": "#a61d17",
+        "bannerBorder": "#ad201d"
+      }
+    },
+    {
       "name": "TexAuctionsBuda",
       "brandOverrideHex": "#9faafe",
       "logoUrl": "logos/TexAuctionsBuda",
