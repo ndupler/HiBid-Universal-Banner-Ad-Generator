@@ -966,6 +966,25 @@
         "btnBg": "#1b337d",
         "bannerBorder": "#1b337d"
       }
+    },
+    {
+      "name": "WilkinsonAuction&Realty",
+      "brandOverrideHex": "#C2C2C2",
+      "logoUrl": "logos/WilkinsonAuction&Realty",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#C91F24",
+        "btnBg": "#B81717",
+        "bannerBorder": "#C01B1E"
+      }
     }
   ]
 }
