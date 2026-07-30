@@ -437,6 +437,25 @@
       }
     },
     {
+      "name": "HistoricHouston",
+      "brandOverrideHex": "#B8B7B7",
+      "logoUrl": "logos/HistoricHouston",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#000000",
+        "btnBg": "#90B332",
+        "bannerBorder": "#90B332"
+      }
+    },
+    {
       "name": "HonestyComics&CollectiblesLLC",
       "brandOverrideHex": "#c73b26",
       "logoUrl": "logos/HonestyComics&CollectiblesLLC",
