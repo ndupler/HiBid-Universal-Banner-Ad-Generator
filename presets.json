@@ -286,6 +286,25 @@
       }
     },
     {
+      "name": "DavisFamilyAuctionsLLC",
+      "brandOverrideHex": "#000000",
+      "logoUrl": "logos/DavisFamilyAuctionsLLC",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#7D544E",
+        "btnBg": "#7D564B",
+        "bannerBorder": "#D1C7B4"
+      }
+    },
+    {
       "name": "DeMossAuctionCo",
       "brandOverrideHex": "#b8b8b8",
       "logoUrl": "logos/DeMossAuctionCo",
