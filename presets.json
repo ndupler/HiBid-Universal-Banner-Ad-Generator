@@ -456,6 +456,25 @@
       }
     },
     {
+      "name": "GrasonsEstateSalesofSouthernAZ",
+      "brandOverrideHex": "#bfbfbf",
+      "logoUrl": "logos/GrasonsEstateSalesofSouthernAZ",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#ffffff",
+        "btnBg": "#dd1340",
+        "bannerBorder": "#d6173f"
+      }
+    },
+    {
       "name": "HistoricHouston",
       "brandOverrideHex": "#B8B7B7",
       "logoUrl": "logos/HistoricHouston",
