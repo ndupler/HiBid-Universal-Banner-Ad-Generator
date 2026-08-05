@@ -665,6 +665,25 @@
       }
     },
     {
+      "name": "Laura'sImport&AntiqueAuctions",
+      "brandOverrideHex": "#C0C1C4",
+      "logoUrl": "logos/Laura'sImport&AntiqueAuctions",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#A49356",
+        "btnBg": "#A0934E",
+        "bannerBorder": "#A29352"
+      }
+    },
+    {
       "name": "MartinoRealty&Auctioneers",
       "brandOverrideHex": "#ABABAB",
       "logoUrl": "logos/MartinoRealty&Auctioneers",
@@ -927,6 +946,25 @@
         "photoBorder": "#000000",
         "btnBg": "#a61d17",
         "bannerBorder": "#ad201d"
+      }
+    },
+    {
+      "name": "SundownAuctionServices",
+      "brandOverrideHex": "#4D4C4C",
+      "logoUrl": "logos/SundownAuctionServices",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#49A8FF",
+        "btnBg": "#F8CC00",
+        "bannerBorder": "#F8CB00"
       }
     },
     {
