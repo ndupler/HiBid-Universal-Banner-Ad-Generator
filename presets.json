@@ -58,6 +58,25 @@
       }
     },
     {
+      "name": "ANCollectibles",
+      "brandOverrideHex": "#000000",
+      "logoUrl": "logos/ANCollectibles",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#477885",
+        "btnBg": "#537887",
+        "bannerBorder": "#4E7886"
+      }
+    },
+    {
       "name": "BIDBIGNOW",
       "brandOverrideHex": "#000000",
       "logoUrl": "logos/BIDBIGNOW",
@@ -93,6 +112,25 @@
         "photoBorder": "#d01c27",
         "btnBg": "#d11b26",
         "bannerBorder": "#d11b27"
+      }
+    },
+    {
+      "name": "BrettaBrothersInc",
+      "brandOverrideHex": "#A1A1A1",
+      "logoUrl": "logos/BrettaBrothersInc",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#53161E",
+        "btnBg": "#53161E",
+        "bannerBorder": "#54161E"
       }
     },
     {
@@ -229,6 +267,25 @@
       }
     },
     {
+      "name": "Collins&CompanyRealtorsAndAuctioneers",
+      "brandOverrideHex": "#121212",
+      "logoUrl": "logos/Collins&CompanyRealtorsAndAuctioneers",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#F1EE42",
+        "btnBg": "#F0ED29",
+        "bannerBorder": "#F0ED29"
+      }
+    },
+    {
       "name": "CompassAuctions&RealEstate",
       "brandOverrideHex": "#8b8989",
       "logoUrl": "logos/CompassAuctions&RealEstate",
@@ -321,6 +378,25 @@
         "photoBorder": "#ffffff",
         "btnBg": "#f00000",
         "bannerBorder": "#ec0000"
+      }
+    },
+    {
+      "name": "DonGutheryAuctions",
+      "brandOverrideHex": "#A7A8A9",
+      "logoUrl": "logos/DonGutheryAuctions",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#080808",
+        "btnBg": "#ED0200",
+        "bannerBorder": "#F30000"
       }
     },
     {
