@@ -20,6 +20,25 @@
       }
     },
     {
+      "name": "AhrensAuction",
+      "brandOverrideHex": "#C7C7C7",
+      "logoUrl": "logos/AhrensAuction",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#D81213",
+        "btnBg": "#D81213",
+        "bannerBorder": "#E2191E"
+      }
+    },
+    {
       "name": "AllStarAuctionsInc.",
       "brandOverrideHex": "#ffffff",
       "logoUrl": "logos/AllStarAuctionsInc.",
@@ -1022,6 +1041,25 @@
         "photoBorder": "#0a2d3a",
         "btnBg": "#d15016",
         "bannerBorder": "#0e3549"
+      }
+    },
+    {
+      "name": "Stumpff'sRealty&AuctionServiceInc",
+      "brandOverrideHex": "#DEDEDE",
+      "logoUrl": "logos/Stumpff;sREalty&AuctionServiceInc",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": false,
+        "btnBorder": true,
+        "btnText": true,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#FFFFFF",
+        "btnBg": "#000000",
+        "bannerBorder": "#FFFFFF"
       }
     },
     {
