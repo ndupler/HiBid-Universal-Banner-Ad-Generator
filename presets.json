@@ -1045,21 +1045,21 @@
     },
     {
       "name": "Stumpff'sRealty&AuctionServiceInc.",
-      "brandOverrideHex": "#C7C7C7",
+      "brandOverrideHex": "#c7c7c7",
       "logoUrl": "logos/Stumpff'sRealty&AuctionServiceInc.",
       "colorState": {
-        "gradDir": true,
+        "gradDir": false,
         "photoBorder": true,
-        "bannerBorder": false,
-        "btnBorder": true,
-        "btnText": true,
-        "auctionText": true,
-        "dateText": true
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": false,
+        "dateText": false
       },
       "pickerColors": {
-        "photoBorder": "#FFFFFF",
-        "btnBg": "#000000",
-        "bannerBorder": "#FFFFFF"
+        "photoBorder": "#000000",
+        "btnBg": "#efc400",
+        "bannerBorder": "#f4c500"
       }
     },
     {
