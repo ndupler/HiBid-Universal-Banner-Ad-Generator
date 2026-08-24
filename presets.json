@@ -475,6 +475,25 @@
       }
     },
     {
+      "name": "EarlywineAuctions",
+      "brandOverrideHex": "#F5F5F5",
+      "logoUrl": "logos/EarlywineAuctions",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#3540BF",
+        "btnBg": "#3F42C5",
+        "bannerBorder": "#3A41C2"
+      }
+    },
+    {
       "name": "EquipmentMarketers&Appraisers",
       "brandOverrideHex": "#bfbfbf",
       "logoUrl": "logos/EquipmentMarketers&Appraisers",
@@ -567,6 +586,25 @@
         "photoBorder": "#b1842c",
         "btnBg": "#b28927",
         "bannerBorder": "#b68a31"
+      }
+    },
+    {
+      "name": "GrandArmyAuctions",
+      "brandOverrideHex": "#ADADAD",
+      "logoUrl": "logos/GrandArmyAuctions",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": true,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#000000",
+        "btnBg": "#100F0F",
+        "bannerBorder": "#000000"
       }
     },
     {
