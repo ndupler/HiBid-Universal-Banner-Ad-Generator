@@ -855,6 +855,25 @@
       }
     },
     {
+      "name": "MelDavisAuctions",
+      "brandOverrideHex": "#f2f2f2",
+      "logoUrl": "logos/MelDavisAuctions",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#c52421",
+        "btnBg": "#b51e11",
+        "bannerBorder": "#bd211a"
+      }
+    },
+    {
       "name": "MikeHavenarAuctioneers",
       "brandOverrideHex": "#870000",
       "logoUrl": "logos/MikeHavenarAuctioneers",
