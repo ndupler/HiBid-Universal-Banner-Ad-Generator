@@ -1,6 +1,25 @@
 {
   "presets": [
     {
+      "name": "88556 StevensAuctionServiceLLC",
+      "brandOverrideHex": "#0002fe",
+      "logoUrl": "logos/88556 StevensAuctionServiceLLC",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": true,
+        "btnText": true,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#ffffff",
+        "btnBg": "#000000",
+        "bannerBorder": "#1b1818"
+      }
+    },
+    {
       "name": "AffordableCreations",
       "brandOverrideHex": "#BFBFC0",
       "logoUrl": "logos/AffordableCreations",
