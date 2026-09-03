@@ -217,7 +217,31 @@
       <div><div class="step-title">Auction Details</div><div class="step-desc">Enter the date, file name, and choose a template</div></div>
     </div>
     <div class="three-col">
-      <div class="field" id="dateField"><label>Auction Date</label><input type="text" id="auctionDate" placeholder="e.g. June 16th" oninput="renderPreview()"></div>
+      <div class="field" id="dateField">
+        <label>Auction Date</label>
+        <div style="display:flex;gap:6px;">
+          <select id="auctionMonth" onchange="updateAuctionDate()" style="flex:1;">
+            <option value="">Month</option>
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+          </select>
+          <select id="auctionDay" onchange="updateAuctionDate()" style="flex:0 0 80px;">
+            <option value="">Day</option>
+            <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
+          </select>
+        </div>
+        <input type="hidden" id="auctionDate">
+      </div>
       <div class="field"><label>Export File Name</label><input type="text" id="fileName" value="Banner"></div>
       <div class="tmpl-wrap">
         <label>Template</label>
@@ -308,31 +332,32 @@
       <div class="field"><label>Snowcloud Task Link</label><input type="text" id="utmTaskLink" placeholder="https://snowcloud.com/Tasks/Details/..." oninput="parseUtmLinks()"></div>
       <div class="field"><label>HiBid Catalog Link</label><input type="text" id="utmCatalogLink" placeholder="https://hibid.com/catalog/716292/..." oninput="parseUtmLinks()"></div>
     </div>
-    <div class="three-col" style="margin-bottom:14px;">
+    <div class="two-col" style="margin-bottom:14px;">
       <div class="field"><label>Task ID <span id="taskIdStatus" style="color:var(--green);font-size:9px;"></span></label><input type="text" id="utmTaskId" placeholder="Auto-extracted" style="font-family:Consolas,monospace;font-size:10px;" oninput="generateUtm()"></div>
       <div class="field"><label>Auction ID <span id="auctionIdStatus" style="color:var(--green);font-size:9px;"></span></label><input type="text" id="utmAuctionId" placeholder="Auto-extracted" style="font-family:Consolas,monospace;font-size:10px;" oninput="generateUtm()"></div>
-      <div class="field"><label>Category</label>
-        <select id="utmCategory" onchange="generateUtm()">
-          <option value="">— Select a category —</option>
-          <option value="40089">Art</option>
-          <option value="700001">Antiques &amp; Collectibles</option>
-          <option value="40118">Coins &amp; Currency</option>
-          <option value="40252">Jewelry, Watches &amp; Gemstones</option>
-          <option value="40111">Fashion</option>
-          <option value="40391">Kid &amp; Baby Essentials</option>
-          <option value="700004">Home Goods &amp; Decor</option>
-          <option value="700003">Lawn &amp; Garden</option>
-          <option value="40237">Furniture</option>
-          <option value="700002">Sporting Goods</option>
-          <option value="40359">Toys</option>
-          <option value="40196">Computer &amp; Electronics</option>
-          <option value="700006">Cars &amp; Vehicles</option>
-          <option value="700008">Construction &amp; Farm</option>
-          <option value="700007">Boats &amp; Aviation</option>
-          <option value="40060">Real Estate</option>
-          <option value="700009">Business &amp; Industrial</option>
-        </select>
-      </div>
+    </div>
+    <div class="field" style="margin-bottom:14px;">
+      <label>Category</label>
+      <select id="utmCategory" onchange="generateUtm()">
+        <option value="">— Select a category —</option>
+        <option value="40089">Art</option>
+        <option value="700001">Antiques &amp; Collectibles</option>
+        <option value="40118">Coins &amp; Currency</option>
+        <option value="40252">Jewelry, Watches &amp; Gemstones</option>
+        <option value="40111">Fashion</option>
+        <option value="40391">Kid &amp; Baby Essentials</option>
+        <option value="700004">Home Goods &amp; Decor</option>
+        <option value="700003">Lawn &amp; Garden</option>
+        <option value="40237">Furniture</option>
+        <option value="700002">Sporting Goods</option>
+        <option value="40359">Toys</option>
+        <option value="40196">Computer &amp; Electronics</option>
+        <option value="700006">Cars &amp; Vehicles</option>
+        <option value="700008">Construction &amp; Farm</option>
+        <option value="700007">Boats &amp; Aviation</option>
+        <option value="40060">Real Estate</option>
+        <option value="700009">Business &amp; Industrial</option>
+      </select>
     </div>
     <div class="field" style="margin-bottom:14px;">
       <label>Generated URL</label>
@@ -532,8 +557,27 @@ function renderRecentList(){var sec=document.getElementById('recentSection'),lis
 async function loadConfig(){try{var res=await fetch('presets.json');if(!res.ok)throw new Error();var data=await res.json();configPresets=data.presets||[];document.getElementById('presetCount').textContent='('+configPresets.length+')';}catch(e){configPresets=[];}renderPresetList();}
 function renderPresetList(){var list=document.getElementById('presetList'),search=document.getElementById('presetSearch').value.trim().toLowerCase(),items=search?configPresets.filter(function(p){return p.name.toLowerCase().includes(search);}):configPresets;renderRecentList();if(items.length===0){list.innerHTML='<div class="preset-empty">'+(configPresets.length===0?'No presets loaded.':'No results.')+'</div>';return;}list.innerHTML='';items.forEach(function(p){list.appendChild(makePresetItem(p,false));});}
 function loadPreset(p){if(p.brandOverrideHex){brandOverride=hexToRgb(p.brandOverrideHex);document.getElementById('brandColorPicker').value=p.brandOverrideHex;document.getElementById('brandColorHex').value=p.brandOverrideHex;document.getElementById('overrideLabel').classList.add('visible');}else{brandOverride=null;document.getElementById('overrideLabel').classList.remove('visible');}if(p.colorState)TOGGLE_KEYS.forEach(function(k){if(k in p.colorState){colorState[k]=p.colorState[k];var t=document.getElementById('tog-'+k);colorState[k]?t.classList.add('on'):t.classList.remove('on');updateTogglePickerState(k);}});if(p.pickerColors)COLOR_PICKER_KEYS.forEach(function(k){var el=document.getElementById('col-'+k);if(el&&p.pickerColors[k])el.value=p.pickerColors[k];});var t=new Date(),y=t.getFullYear(),m=String(t.getMonth()+1).padStart(2,'0'),d=String(t.getDate()).padStart(2,'0');document.getElementById('fileName').value=p.name.replace(/\s+/g,'_')+'_'+y+'_'+m+'_'+d+'_Category';addToRecent(p.name);if(p.logoUrl){loadImageSrc(p.logoUrl,function(img){logoPalette=extractPalette(img);trimImage(img,function(tt){logoImg=tt;var pal=p.brandOverrideHex?hexToRgb(p.brandOverrideHex):logoPalette[0];if(pal)updatePaletteSwatches(pal);document.getElementById('paletteDisplay').style.display='block';document.getElementById('auctioneerLabel').textContent=p.name;showLoadedBar('logoArea',p.name,'From preset','image/png,image/jpeg',function(f){loadImageFile(f,function(i){logoPalette=extractPalette(i);trimImage(i,function(ttt){logoImg=ttt;updatePaletteSwatches(logoPalette[0]);renderPreview();});});});currentPreset=p.name;renderPresetList();setStatus('Loaded: '+p.name,true);renderPreview();});});}else{currentPreset=p.name;renderPresetList();setStatus('Preset loaded',true);renderPreview();}}
-function generatePresetJSON(){var name=document.getElementById('auctioneerLabel').textContent.trim();if(!name||name==='No auctioneer loaded'){setStatus('Upload a logo first.',false);return;}var pc={};COLOR_PICKER_KEYS.forEach(function(k){var el=document.getElementById('col-'+k);if(el)pc[k]=el.value;});var preset={name:name,logoUrl:'logos/'+name,colorState:Object.assign({},colorState),pickerColors:pc};if(brandOverride)preset.brandOverrideHex=rgbToHex(brandOverride);document.getElementById('presetJsonText').value=JSON.stringify(preset,null,2);document.getElementById('presetJsonOutput').style.display='block';document.getElementById('copyConfirm').style.display='none';setStatus('JSON ready.',true);}
+function generatePresetJSON(){var name=document.getElementById('auctioneerLabel').textContent.trim();if(!name||name==='No auctioneer loaded'){setStatus('Upload a logo first.',false);return;}var pc={};COLOR_PICKER_KEYS.forEach(function(k){var el=document.getElementById('col-'+k);if(el)pc[k]=el.value;});var preset={name:name,logoUrl:'logos/'+name,colorState:Object.assign({},colorState),pickerColors:pc};if(brandOverride)preset.brandOverrideHex=rgbToHex(brandOverride);  var json=JSON.stringify(preset,null,2);
+  document.getElementById('presetJsonText').value=json;document.getElementById('presetJsonOutput').style.display='block';document.getElementById('copyConfirm').style.display='none';setStatus('JSON ready.',true);}
 function copyPresetJSON(){var ta=document.getElementById('presetJsonText');ta.select();document.execCommand('copy');document.getElementById('copyConfirm').style.display='inline';setTimeout(function(){document.getElementById('copyConfirm').style.display='none';},2000);}
+
+// ── Auction date dropdowns ─────────────────────────────────────────────────
+function buildDayDropdown(){
+  var sel=document.getElementById('auctionDay');
+  sel.innerHTML='<option value="">Day</option>';
+  for(var d=1;d<=31;d++){
+    var opt=document.createElement('option');
+    opt.value=d;opt.textContent=d;sel.appendChild(opt);
+  }
+}
+function getOrdinal(n){var s=['th','st','nd','rd'],v=n%100;return n+(s[(v-20)%10]||s[v]||s[0]);}
+function updateAuctionDate(){
+  var month=document.getElementById('auctionMonth').value;
+  var day=document.getElementById('auctionDay').value;
+  var result=month&&day?month.toUpperCase()+' '+getOrdinal(parseInt(day))+'!':'';
+  document.getElementById('auctionDate').value=result;
+  renderPreview();
+}
 
 // ── Template cycle ─────────────────────────────────────────────────────────
 function cycleTemplate(){
@@ -639,9 +683,12 @@ function resetAll(){
   logoImg=null;logoPalette=[];brandOverride=null;currentPreset=null;
   photoImgs=[null,null,null,null,null];photoTransparent=[false,false,false,false,false];photoBrightness=[100,100,100,100,100];
   document.getElementById('logoArea').innerHTML='<div class="upload-icon">↑</div><div class="upload-title">Click or drag logo here</div><div class="upload-sub">PNG recommended · filename becomes auctioneer name</div><input type="file" id="logoFile" accept="image/png,image/jpeg">';
-  bindLogoFile();buildSlots();
+  buildDayDropdown();
+bindLogoFile();buildSlots();
   document.getElementById('paletteDisplay').style.display='none';
   document.getElementById('auctioneerLabel').textContent='No auctioneer loaded';
+  document.getElementById('auctionMonth').value='';
+  document.getElementById('auctionDay').value='';
   document.getElementById('auctionDate').value='';
   document.getElementById('fileName').value='Banner';
   document.getElementById('brandColorHex').value='#0057FF';
@@ -828,7 +875,7 @@ function copyBannerToClipboard(){if(!logoImg){setStatus('Upload a logo first.',f
 
 // ── UTM Generator ──────────────────────────────────────────────────────────
 function parseUtmLinks(){var tl=document.getElementById('utmTaskLink').value.trim(),cl=document.getElementById('utmCatalogLink').value.trim();if(tl){var tid=tl.split('/').filter(Boolean).pop();document.getElementById('utmTaskId').value=tid||'';document.getElementById('taskIdStatus').textContent=tid?'✓ extracted':'';}if(cl){var match=cl.match(/catalog\/(\d+)/);var aid=match?match[1]:'';document.getElementById('utmAuctionId').value=aid;document.getElementById('auctionIdStatus').textContent=aid?'✓ extracted':'';}generateUtm();}
-function generateUtm(){var base=document.getElementById('utmCatalogLink').value.trim(),tid=document.getElementById('utmTaskId').value.trim(),aid=document.getElementById('utmAuctionId').value.trim(),cat=document.getElementById('utmCategory').value;if(!base||!tid||!aid||!cat){document.getElementById('utmOutput').value='';return;}document.getElementById('utmOutput').value=base.split('?')[0]+'?hb_source=hibid&hb_medium=category_banner_ad&hb_campaign='+tid+'&hb_content='+aid+'&hb_ad_type='+cat;}
+function generateUtm(){var tid=document.getElementById('utmTaskId').value.trim(),aid=document.getElementById('utmAuctionId').value.trim(),cat=document.getElementById('utmCategory').value;if(!tid||!aid||!cat){document.getElementById('utmOutput').value='';return;}document.getElementById('utmOutput').value='?hb_source=hibid&hb_medium=category_banner_ad&hb_campaign='+tid+'&hb_content='+aid+'&hb_ad_type='+cat;}
 function copyUtmUrl(){var url=document.getElementById('utmOutput').value.trim();if(!url)return;var conf=document.getElementById('utmCopyConfirm');navigator.clipboard.writeText(url).then(function(){conf.style.display='inline';setTimeout(function(){conf.style.display='none';},2000);}).catch(function(){var el=document.getElementById('utmOutput');el.select();document.execCommand('copy');conf.style.display='inline';setTimeout(function(){conf.style.display='none';},2000);});}
 function clearUtm(){['utmTaskLink','utmCatalogLink','utmTaskId','utmAuctionId','utmOutput'].forEach(function(id){document.getElementById(id).value='';});document.getElementById('utmCategory').value='';document.getElementById('taskIdStatus').textContent='';document.getElementById('auctionIdStatus').textContent='';document.getElementById('utmCopyConfirm').style.display='none';}
 
