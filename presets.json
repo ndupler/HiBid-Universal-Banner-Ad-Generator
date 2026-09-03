@@ -134,6 +134,25 @@
       }
     },
     {
+      "name": "BradshawAuctions",
+      "brandOverrideHex": "#0057FF",
+      "logoUrl": "logos/BradshawAuctions",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#EE1615",
+        "btnBg": "#F51614",
+        "bannerBorder": "#EE1615"
+      }
+    },
+    {
       "name": "BrettaBrothersInc",
       "brandOverrideHex": "#A1A1A1",
       "logoUrl": "logos/BrettaBrothersInc",
