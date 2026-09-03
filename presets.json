@@ -172,6 +172,25 @@
       }
     },
     {
+      "name": "BrightStarAntiquesCo.",
+      "brandOverrideHex": "#d4c4c4",
+      "logoUrl": "logos/BrightStarAntiquesCo.",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#b03d11",
+        "btnBg": "#af3f11",
+        "bannerBorder": "#ad3b11"
+      }
+    },
+    {
       "name": "Bryan'sAuctionServices",
       "brandOverrideHex": "#c2c2c2",
       "logoUrl": "logos/Bryan'sAuctionServices",
