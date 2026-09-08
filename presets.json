@@ -665,6 +665,24 @@
       }
     },
     {
+      "name": "H3Auctions",
+      "logoUrl": "logos/H3Auctions",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#000000",
+        "btnBg": "#e65500",
+        "bannerBorder": "#000000"
+      }
+    },
+    {
       "name": "HistoricHouston",
       "brandOverrideHex": "#B8B7B7",
       "logoUrl": "logos/HistoricHouston",
