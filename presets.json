@@ -702,6 +702,25 @@
       }
     },
     {
+      "name": "HonestShopInc",
+      "brandOverrideHex": "#f3f1f1",
+      "logoUrl": "logos/HonestShopInc",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#ffffff",
+        "btnBg": "#8427e2",
+        "bannerBorder": "#8724de"
+      }
+    },
+    {
       "name": "HonestyComics&CollectiblesLLC",
       "brandOverrideHex": "#c73b26",
       "logoUrl": "logos/HonestyComics&CollectiblesLLC",
