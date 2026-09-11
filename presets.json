@@ -949,6 +949,24 @@
       }
     },
     {
+      "name": "MeridianEquipment",
+      "logoUrl": "logos/MeridianEquipment",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#000000",
+        "btnBg": "#000000",
+        "bannerBorder": "#000000"
+      }
+    },
+    {
       "name": "MikeHavenarAuctioneers",
       "brandOverrideHex": "#870000",
       "logoUrl": "logos/MikeHavenarAuctioneers",
