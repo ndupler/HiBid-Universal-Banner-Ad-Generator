@@ -1308,6 +1308,25 @@
       }
     },
     {
+      "name": "TheHobbyVault",
+      "brandOverrideHex": "#c7c6c6",
+      "logoUrl": "logos/TheHobbyVault",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#5c2fe1",
+        "btnBg": "#5e35e9",
+        "bannerBorder": "#5d32e5"
+      }
+    },
+    {
       "name": "TumbleweedEquipment&AuctionCoofWestTexas",
       "brandOverrideHex": "#FFFFFF",
       "logoUrl": "logos/TumbleweedEquipment&AuctionCoofWestTexas",
