@@ -1137,6 +1137,24 @@
       }
     },
     {
+      "name": "Rowley'sAuctionService",
+      "logoUrl": "logos/Rowley'sAuctionService",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#000000",
+        "btnBg": "#971a26",
+        "bannerBorder": "#000000"
+      }
+    },
+    {
       "name": "Seuyco",
       "brandOverrideHex": "#7daeed",
       "logoUrl": "logos/Seuyco",
@@ -1362,6 +1380,25 @@
         "photoBorder": "#1f447d",
         "btnBg": "#03714c",
         "bannerBorder": "#1f447d"
+      }
+    },
+    {
+      "name": "WarrenInc.",
+      "brandOverrideHex": "#bababa",
+      "logoUrl": "logos/WarrenInc.",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#6a4308",
+        "btnBg": "#6a4307",
+        "bannerBorder": "#6a4307"
       }
     },
     {
