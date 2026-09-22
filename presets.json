@@ -1,6 +1,24 @@
 {
   "presets": [
     {
+      "name": "AccurateGunAuctions",
+      "logoUrl": "logos/AccurateGunAuctions",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": true,
+        "btnText": true,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#ffffff",
+        "btnBg": "#000000",
+        "bannerBorder": "#000000"
+      }
+    },
+    {
       "name": "AffordableCreations",
       "brandOverrideHex": "#BFBFC0",
       "logoUrl": "logos/AffordableCreations",
