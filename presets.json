@@ -1080,6 +1080,25 @@
       }
     },
     {
+      "name": "Property1VegasLLC",
+      "brandOverrideHex": "#000000",
+      "logoUrl": "logos/Property1VegasLLC",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#c9b371",
+        "btnBg": "#c9b371",
+        "bannerBorder": "#c9b371"
+      }
+    },
+    {
       "name": "PutmanAuctioneersInc.",
       "brandOverrideHex": "#ffffff",
       "logoUrl": "logos/PutmanAuctioneersInc.",
