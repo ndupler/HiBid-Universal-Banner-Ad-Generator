@@ -1382,6 +1382,25 @@
       }
     },
     {
+      "name": "TNTAuctionsInc",
+      "brandOverrideHex": "#ebc800",
+      "logoUrl": "logos/TNTAuctionsInc",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#c00000",
+        "btnBg": "#b00000",
+        "bannerBorder": "#b80000"
+      }
+    },
+    {
       "name": "TumbleweedEquipment&AuctionCoofWestTexas",
       "brandOverrideHex": "#FFFFFF",
       "logoUrl": "logos/TumbleweedEquipment&AuctionCoofWestTexas",
