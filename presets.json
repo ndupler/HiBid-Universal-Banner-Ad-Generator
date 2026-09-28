@@ -114,6 +114,25 @@
       }
     },
     {
+      "name": "BestBuyAuctioneers",
+      "brandOverrideHex": "#1b49b6",
+      "logoUrl": "logos/BestBuyAuctioneers",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#eb0002",
+        "btnBg": "#d70000",
+        "bannerBorder": "#e10000"
+      }
+    },
+    {
       "name": "BIDBIGNOW",
       "brandOverrideHex": "#000000",
       "logoUrl": "logos/BIDBIGNOW",
