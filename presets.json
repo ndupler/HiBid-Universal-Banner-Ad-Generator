@@ -1268,6 +1268,25 @@
       }
     },
     {
+      "name": "SpringhillAuctioneers",
+      "brandOverrideHex": "#ededed",
+      "logoUrl": "logos/SpringhillAuctioneers",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#c30b16",
+        "btnBg": "#ca0713",
+        "bannerBorder": "#c30b16"
+      }
+    },
+    {
       "name": "StevensAuctionServiceLLC",
       "brandOverrideHex": "#0002fe",
       "logoUrl": "logos/StevensAuctionServiceLLC",
