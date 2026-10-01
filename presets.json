@@ -171,6 +171,24 @@
       }
     },
     {
+      "name": "BPAUCTIONS",
+      "logoUrl": "logos/BPAUCTIONS",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#ffffff",
+        "btnBg": "#000000",
+        "bannerBorder": "#000000"
+      }
+    },
+    {
       "name": "BradshawAuctions",
       "brandOverrideHex": "#0057FF",
       "logoUrl": "logos/BradshawAuctions",
