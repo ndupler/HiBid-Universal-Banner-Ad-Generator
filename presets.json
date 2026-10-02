@@ -114,6 +114,25 @@
       }
     },
     {
+      "name": "BenzEnterprisesAuctions",
+      "brandOverrideHex": "#c2c2c2",
+      "logoUrl": "logos/BenzEnterprisesAuctions",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": true,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#a70e26",
+        "btnBg": "#990420",
+        "bannerBorder": "#a00923"
+      }
+    },
+    {
       "name": "BestBuyAuctioneers",
       "brandOverrideHex": "#1b49b6",
       "logoUrl": "logos/BestBuyAuctioneers",
