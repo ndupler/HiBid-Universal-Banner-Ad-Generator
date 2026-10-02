@@ -985,6 +985,27 @@
       }
     },
     {
+      "name": "LockStock&BarrelAuctions",
+      "brandOverrideHex": "#000000",
+      "logoUrl": "logos/LockStock&BarrelAuctions",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#b61c2a",
+        "btnBg": "#b61c2a",
+        "bannerBorder": "#ae1926",
+        "auctionText": "#ffffff",
+        "dateText": "#ffffff"
+      }
+    },
+    {
       "name": "MartinoRealty&Auctioneers",
       "brandOverrideHex": "#ABABAB",
       "logoUrl": "logos/MartinoRealty&Auctioneers",
