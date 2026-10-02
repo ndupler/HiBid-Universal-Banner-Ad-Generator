@@ -295,8 +295,8 @@
       <div class="cc-item"><span class="cc-label">Bid Now BG</span><div class="cc-right"><input type="color" class="tog-color-btn" id="col-btnBg" value="#000000" oninput="renderPreview()"></div></div>
       <div class="cc-item"><span class="cc-label">Bid Now Border</span><div class="cc-right"><div class="toggle-track on" id="tog-btnBorder" onclick="doToggle('btnBorder')"><div class="toggle-thumb"></div></div></div></div>
       <div class="cc-item"><span class="cc-label">Bid Now Text</span><div class="cc-right"><div class="toggle-track on" id="tog-btnText" onclick="doToggle('btnText')"><div class="toggle-thumb"></div></div></div></div>
-      <div class="cc-item"><span class="cc-label" id="lbl-auctionText">Auction Text</span><div class="cc-right"><div class="toggle-track on" id="tog-auctionText" onclick="doToggle('auctionText')"><div class="toggle-thumb"></div></div></div></div>
-      <div class="cc-item"><span class="cc-label" id="lbl-dateText">Date Text</span><div class="cc-right"><div class="toggle-track on" id="tog-dateText" onclick="doToggle('dateText')"><div class="toggle-thumb"></div></div></div></div>
+      <div class="cc-item"><span class="cc-label" id="lbl-auctionText">Auction Text</span><div class="cc-right"><input type="color" class="tog-color-btn" id="col-auctionText" value="#FFFFFF" oninput="renderPreview()"><div class="toggle-track on" id="tog-auctionText" onclick="doToggle('auctionText')"><div class="toggle-thumb"></div></div></div></div>
+      <div class="cc-item"><span class="cc-label" id="lbl-dateText">Date Text</span><div class="cc-right"><input type="color" class="tog-color-btn" id="col-dateText" value="#FFFFFF" oninput="renderPreview()"><div class="toggle-track on" id="tog-dateText" onclick="doToggle('dateText')"><div class="toggle-thumb"></div></div></div></div>
     </div>
   </div></div>
 
@@ -384,7 +384,7 @@ var RIGHT_COL_W=175, RIGHT_PAD=6;
 var BTN_H=40, BTN_R=10, AUCTION_H=20, DATE_H=23, STACK_GAP=4;
 var PHOTO_MIN_G=6, PHOTO_MAX_G=20, MAX_RECENT=5;
 var TOGGLE_KEYS=['gradDir','photoBorder','bannerBorder','btnBorder','btnText','auctionText','dateText'];
-var COLOR_PICKER_KEYS=['photoBorder','btnBg','bannerBorder'];
+var COLOR_PICKER_KEYS=['photoBorder','btnBg','bannerBorder','auctionText','dateText'];
 
 // ── State ──────────────────────────────────────────────────────────────────
 var logoImg=null;
@@ -718,7 +718,7 @@ bindLogoFile();buildSlots();
   document.getElementById('lbl-dateText').textContent='Date Text';
   setDateFieldEnabled(true);
   // Reset toggles
-  TOGGLE_KEYS.forEach(function(k){var isOn=k!=='bannerBorder';colorState[k]=isOn;var track=document.getElementById('tog-'+k);isOn?track.classList.add('on'):track.classList.remove('on');var cp=document.getElementById('col-'+k);if(cp){cp.value='#FFFFFF';updateTogglePickerState(k);}});
+  TOGGLE_KEYS.forEach(function(k){var isOn=k!=='bannerBorder';colorState[k]=isOn;var track=document.getElementById('tog-'+k);isOn?track.classList.add('on'):track.classList.remove('on');var cp=document.getElementById('col-'+k);if(cp){cp.value=(k==='btnBg')?'#000000':'#FFFFFF';updateTogglePickerState(k);}});
   document.getElementById('col-btnBg').value='#000000';
   document.getElementById('lbl-gradDir').textContent='L→R';
   document.getElementById('previewCanvas').style.display='none';
@@ -847,9 +847,9 @@ function drawBanner(canvas,W,H){
     var totTH=(l1?s1:0)+((l1&&l2)?lGap:0)+(l2?s2:0);
     var tStartY=pzY+Math.round((pzH-totTH)/2);
     var tCenterX=pStartX+Math.round(textTotalW/2);
-    ctx.textAlign='center';ctx.textBaseline='top';
-    if(l1){ctx.font='bold '+s1+'px Candara,Calibri,serif';ctx.fillStyle=c1;ctx.strokeStyle=c1;ctx.lineWidth=0.75;ctx.lineJoin='round';ctx.strokeText(l1,tCenterX,tStartY);ctx.fillText(l1,tCenterX,tStartY);}
-    if(l2){var l2Y=tStartY+(l1?s1+lGap:0);ctx.font='bold '+s2+'px Candara,Calibri,serif';ctx.fillStyle=c2;ctx.strokeStyle=c2;ctx.lineWidth=0.75;ctx.lineJoin='round';ctx.strokeText(l2,tCenterX,l2Y);ctx.fillText(l2,tCenterX,l2Y);}
+    ctx.textAlign='center';ctx.textBaseline='alphabetic';
+    if(l1){ctx.font='bold '+s1+'px Candara,Calibri,serif';ctx.fillStyle=c1;ctx.fillText(l1,tCenterX,tStartY+Math.round(s1*0.72)-2);}
+    if(l2){var l2Y=tStartY+(l1?s1+lGap:0);ctx.font='bold '+s2+'px Candara,Calibri,serif';ctx.fillStyle=c2;ctx.fillText(l2,tCenterX,l2Y+Math.round(s2*0.72)-2);}
   } else if(nP>0){
     var curX=pStartX;
     for(var pi=0;pi<nP;pi++){
@@ -875,7 +875,7 @@ function copyBannerToClipboard(){if(!logoImg){setStatus('Upload a logo first.',f
 
 // ── UTM Generator ──────────────────────────────────────────────────────────
 function parseUtmLinks(){var tl=document.getElementById('utmTaskLink').value.trim(),cl=document.getElementById('utmCatalogLink').value.trim();if(tl){var tid=tl.split('/').filter(Boolean).pop();document.getElementById('utmTaskId').value=tid||'';document.getElementById('taskIdStatus').textContent=tid?'✓ extracted':'';}if(cl){var match=cl.match(/catalog\/(\d+)/);var aid=match?match[1]:'';document.getElementById('utmAuctionId').value=aid;document.getElementById('auctionIdStatus').textContent=aid?'✓ extracted':'';}generateUtm();}
-function generateUtm(){var tid=document.getElementById('utmTaskId').value.trim(),aid=document.getElementById('utmAuctionId').value.trim(),cat=document.getElementById('utmCategory').value;if(!tid||!aid||!cat){document.getElementById('utmOutput').value='';return;}document.getElementById('utmOutput').value='?hb_source=hibid&hb_medium=category_banner_ad&hb_campaign='+tid+'&hb_content='+aid+'&hb_ad_type='+cat;}
+function generateUtm(){var tid=document.getElementById('utmTaskId').value.trim(),aid=document.getElementById('utmAuctionId').value.trim(),cat=document.getElementById('utmCategory').value;if(!tid||!aid){document.getElementById('utmOutput').value='';return;}var url='?utm_source=hibid&utm_medium=category_banner_ad&utm_campaign='+tid+'&hb_content='+aid;if(cat)url+='&hb_ad_type='+cat;document.getElementById('utmOutput').value=url;}
 function copyUtmUrl(){var url=document.getElementById('utmOutput').value.trim();if(!url)return;var conf=document.getElementById('utmCopyConfirm');navigator.clipboard.writeText(url).then(function(){conf.style.display='inline';setTimeout(function(){conf.style.display='none';},2000);}).catch(function(){var el=document.getElementById('utmOutput');el.select();document.execCommand('copy');conf.style.display='inline';setTimeout(function(){conf.style.display='none';},2000);});}
 function clearUtm(){['utmTaskLink','utmCatalogLink','utmTaskId','utmAuctionId','utmOutput'].forEach(function(id){document.getElementById(id).value='';});document.getElementById('utmCategory').value='';document.getElementById('taskIdStatus').textContent='';document.getElementById('auctionIdStatus').textContent='';document.getElementById('utmCopyConfirm').style.display='none';}
 
