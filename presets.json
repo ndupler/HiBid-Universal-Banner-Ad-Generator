@@ -928,6 +928,27 @@
       }
     },
     {
+      "name": "JohnSiskAuctioneers,Inc.",
+      "brandOverrideHex": "#b5b5b5",
+      "logoUrl": "logos/JohnSiskAuctioneers,Inc.",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#df7700",
+        "btnBg": "#df7700",
+        "bannerBorder": "#e77800",
+        "auctionText": "#ffffff",
+        "dateText": "#ffffff"
+      }
+    },
+    {
       "name": "JRSAuctions",
       "brandOverrideHex": "#ffffff",
       "logoUrl": "logos/JRSAuctions",
