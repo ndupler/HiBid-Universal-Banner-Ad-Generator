@@ -1140,6 +1140,26 @@
       }
     },
     {
+      "name": "Page'sThievesMarket,Inc",
+      "logoUrl": "logos/Page'sThievesMarket,Inc",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#3d3732",
+        "btnBg": "#3d3732",
+        "bannerBorder": "#3d3732",
+        "auctionText": "#3d3732",
+        "dateText": "#3d3732"
+      }
+    },
+    {
       "name": "PageAuctionCo",
       "brandOverrideHex": "#bbb9b9",
       "logoUrl": "logos/PageAuctionCo",
