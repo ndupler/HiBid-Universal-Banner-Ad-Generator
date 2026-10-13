@@ -95,6 +95,26 @@
       }
     },
     {
+      "name": "AmericanRealty&AuctionLLC",
+      "logoUrl": "logos/AmericanRealty&AuctionLLC",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#d90b36",
+        "btnBg": "#d90b36",
+        "bannerBorder": "#d90b36",
+        "auctionText": "#ffffff",
+        "dateText": "#ffffff"
+      }
+    },
+    {
       "name": "ANCollectibles",
       "brandOverrideHex": "#000000",
       "logoUrl": "logos/ANCollectibles",
