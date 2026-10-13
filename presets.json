@@ -1367,6 +1367,27 @@
       }
     },
     {
+      "name": "SoutheasternCreditUnionSolutionsLLC",
+      "logoUrl": "logos/SoutheasternCreditUnionSolutionsLLC",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#01444c",
+        "btnBg": "#01444c",
+        "bannerBorder": "#01444c",
+        "auctionText": "#01444c",
+        "dateText": "#01444c"
+      },
+      "brandOverrideHex": "#bababa"
+    },
+    {
       "name": "SpringhillAuctioneers",
       "brandOverrideHex": "#ededed",
       "logoUrl": "logos/SpringhillAuctioneers",
