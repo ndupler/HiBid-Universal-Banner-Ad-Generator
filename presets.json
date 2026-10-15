@@ -1047,6 +1047,27 @@
       }
     },
     {
+      "name": "Martin&RuttAuctioneers",
+      "logoUrl": "logos/Martin&RuttAuctioneers",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#952a2d",
+        "btnBg": "#892829",
+        "bannerBorder": "#8f292b",
+        "auctionText": "#ffffff",
+        "dateText": "#ffffff"
+      },
+      "brandOverrideHex": "#cdd1b7"
+    },
+    {
       "name": "MartinoRealty&Auctioneers",
       "brandOverrideHex": "#ABABAB",
       "logoUrl": "logos/MartinoRealty&Auctioneers",
