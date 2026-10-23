@@ -1241,6 +1241,27 @@
       }
     },
     {
+      "name": "PCHSignatureAuctions",
+      "logoUrl": "logos/PCHSignatureAuctions",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": true,
+        "btnText": true,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#000000",
+        "btnBg": "#100f0f",
+        "bannerBorder": "#000000",
+        "auctionText": "#000000",
+        "dateText": "#000000"
+      },
+      "brandOverrideHex": "#f0efe7"
+    },
+    {
       "name": "PowellAuction&RealtyLLC",
       "brandOverrideHex": "#345cfe",
       "logoUrl": "logos/PowellAuction&RealtyLLC",
