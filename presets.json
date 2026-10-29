@@ -19,6 +19,27 @@
       }
     },
     {
+      "name": "AdcockAuctions",
+      "brandOverrideHex": "#ffffff",
+      "logoUrl": "logos/AdcockAuctions",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": true,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#010101",
+        "btnBg": "#0f0f0f",
+        "bannerBorder": "#010101",
+        "auctionText": "#ffffff",
+        "dateText": "#ffffff"
+      }
+    },
+    {
       "name": "AffordableCreations",
       "brandOverrideHex": "#BFBFC0",
       "logoUrl": "logos/AffordableCreations",
