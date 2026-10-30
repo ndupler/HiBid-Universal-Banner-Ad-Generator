@@ -1166,6 +1166,26 @@
       }
     },
     {
+      "name": "MiamiAuctionsandAppraisalLLC",
+      "logoUrl": "logos/MiamiAuctionsandAppraisalLLC",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#d3352e",
+        "btnBg": "#cb332b",
+        "bannerBorder": "#100f0f",
+        "auctionText": "#ffffff",
+        "dateText": "#ffffff"
+      }
+    },
+    {
       "name": "MikeHavenarAuctioneers",
       "brandOverrideHex": "#870000",
       "logoUrl": "logos/MikeHavenarAuctioneers",
