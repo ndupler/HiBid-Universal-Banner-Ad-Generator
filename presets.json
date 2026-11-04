@@ -1742,6 +1742,27 @@
       }
     },
     {
+      "name": "UnitedCountryGarrettRealtyandAuction",
+      "brandOverrideHex": "#b3b2b2",
+      "logoUrl": "logos/UnitedCountryGarrettRealtyandAuction",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#1c2a3a",
+        "btnBg": "#1c2a3a",
+        "bannerBorder": "#1c2a3a",
+        "auctionText": "#1c2a3a",
+        "dateText": "#1c2a3a"
+      }
+    },
+    {
       "name": "WarrenInc.",
       "brandOverrideHex": "#bababa",
       "logoUrl": "logos/WarrenInc.",
