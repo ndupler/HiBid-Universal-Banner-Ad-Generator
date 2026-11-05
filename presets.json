@@ -1089,6 +1089,27 @@
       }
     },
     {
+      "name": "MajesticCollectibles",
+      "brandOverrideHex": "#ffffef",
+      "logoUrl": "logos/MajesticCollectibles",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#1d1997",
+        "btnBg": "#f7c800",
+        "bannerBorder": "#221b9a",
+        "auctionText": "#1d1998",
+        "dateText": "#1d1998"
+      }
+    },
+    {
       "name": "Martin&RuttAuctioneers",
       "logoUrl": "logos/Martin&RuttAuctioneers",
       "colorState": {
