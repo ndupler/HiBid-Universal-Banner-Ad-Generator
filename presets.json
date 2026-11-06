@@ -1725,6 +1725,27 @@
       }
     },
     {
+      "name": "Trash2Tresures",
+      "logoUrl": "logos/Trash2Tresures",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": false,
+        "dateText": false
+      },
+      "pickerColors": {
+        "photoBorder": "#0f787a",
+        "btnBg": "#10777d",
+        "bannerBorder": "#0f787a",
+        "auctionText": "#ffffff",
+        "dateText": "#ffffff"
+      },
+      "brandOverrideHex": "#c9c9c9"
+    },
+    {
       "name": "TumbleweedEquipment&AuctionCoofWestTexas",
       "brandOverrideHex": "#FFFFFF",
       "logoUrl": "logos/TumbleweedEquipment&AuctionCoofWestTexas",
