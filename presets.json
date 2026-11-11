@@ -212,6 +212,27 @@
       }
     },
     {
+      "name": "BidHub",
+      "brandOverrideHex": "#000000",
+      "logoUrl": "logos/BidHub",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#e10f1c",
+        "btnBg": "#ce0000",
+        "bannerBorder": "#d70410",
+        "auctionText": "#ffffff",
+        "dateText": "#ffffff"
+      }
+    },
+    {
       "name": "BillRamsey&Associates",
       "brandOverrideHex": "#cccccc",
       "logoUrl": "logos/BillRamsey&Associates,LLC",
@@ -739,6 +760,27 @@
         "photoBorder": "#b1842c",
         "btnBg": "#b28927",
         "bannerBorder": "#b68a31"
+      }
+    },
+    {
+      "name": "GoldStandardAuctions",
+      "brandOverrideHex": "#134106",
+      "logoUrl": "logos/GoldStandardAuctions",
+      "colorState": {
+        "gradDir": false,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#e7d264",
+        "btnBg": "#e1d251",
+        "bannerBorder": "#e4d25b",
+        "auctionText": "#e1d251",
+        "dateText": "#dfd245"
       }
     },
     {
