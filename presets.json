@@ -1303,6 +1303,27 @@
       }
     },
     {
+      "name": "Paul'sAuctionHouse",
+      "brandOverrideHex": "#000000",
+      "logoUrl": "logos/Paul'sAuctionHouse",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#bcaa6c",
+        "btnBg": "#baaa68",
+        "bannerBorder": "#baaa68",
+        "auctionText": "#ffffff",
+        "dateText": "#ffffff"
+      }
+    },
+    {
       "name": "PCHSignatureAuctions",
       "logoUrl": "logos/PCHSignatureAuctions",
       "colorState": {
