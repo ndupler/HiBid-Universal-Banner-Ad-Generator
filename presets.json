@@ -630,6 +630,27 @@
       }
     },
     {
+      "name": "DursrudyAuctions",
+      "brandOverrideHex": "#d9d9d9",
+      "logoUrl": "logos/DursrudyAuctions",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": true,
+        "btnText": true,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#29063c",
+        "btnBg": "#29063c",
+        "bannerBorder": "#29063c",
+        "auctionText": "#29063c",
+        "dateText": "#29063c"
+      }
+    },
+    {
       "name": "DustFactoryAuctionsLLC",
       "brandOverrideHex": "#B8B8B8",
       "logoUrl": "logos/DustFactoryAuctionsLLC",
