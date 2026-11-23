@@ -422,6 +422,27 @@
       }
     },
     {
+      "name": "CLEAuctionCompany",
+      "brandOverrideHex": "#072044",
+      "logoUrl": "logos/CLEAuctionCompany",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": true,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#ac1c1e",
+        "btnBg": "#9e1613",
+        "bannerBorder": "#a51919",
+        "auctionText": "#ffffff",
+        "dateText": "#ffffff"
+      }
+    },
+    {
       "name": "Coinhunters",
       "brandOverrideHex": "#000000",
       "logoUrl": "logos/Coinhunters",
