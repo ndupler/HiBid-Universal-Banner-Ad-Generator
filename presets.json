@@ -729,6 +729,27 @@
       }
     },
     {
+      "name": "Estate Transitions",
+      "brandOverrideHex": "#06090f",
+      "logoUrl": "logos/Estate Transitions",
+      "colorState": {
+        "gradDir": true,
+        "photoBorder": true,
+        "bannerBorder": true,
+        "btnBorder": false,
+        "btnText": false,
+        "auctionText": true,
+        "dateText": true
+      },
+      "pickerColors": {
+        "photoBorder": "#3c82f4",
+        "btnBg": "#3e80f3",
+        "bannerBorder": "#3e80f3",
+        "auctionText": "#ffffff",
+        "dateText": "#ffffff"
+      }
+    },
+    {
       "name": "ETXLiquidation",
       "brandOverrideHex": "#bfbfbf",
       "logoUrl": "logos/ETXLiquidation",
